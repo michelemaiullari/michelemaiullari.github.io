@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CFD Solver for Shock Wave Analysis — Michele Maiullari</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="site-title" href="../index.html">Michele Maiullari</a>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <p class="breadcrumb"><a href="../index.html">&larr; All projects</a></p>
+
+    <p class="context-line">CFD Course Project &mdash; Politecnico di Bari &middot; A.Y. 2024&ndash;2025</p>
+
+    <h1>CFD Solver for Shock Wave Analysis &mdash; Roe &amp; Steger&ndash;Warming Schemes</h1>
+
+    <p class="subtitle">
+      Fortran 77 shock-tube solver for the 1D Euler equations: validation of the
+      Roe-based code against Toro's reference solutions and implementation of a
+      Steger&ndash;Warming flux-splitting scheme.
+    </p>
+
+    <h2>Overview</h2>
+    <p>
+      As the year project of the Computational Fluid Dynamics course at Politecnico di
+      Bari, I analysed the evolution of an airflow inside a shock tube &mdash; the classical
+      Riemann problem for the one-dimensional Euler equations of a gamma-law gas, in
+      which two states at different pressure and density are initially separated by a
+      discontinuity. The project was built around an existing Fortran 77 code,
+      <strong>nozzle_w.f</strong>, based on <strong>Roe's approximate Riemann solver</strong>,
+      with a twofold objective: first verify the correctness of the code, then extend it
+      with a second, independent numerical scheme.
+    </p>
+    <p>
+      The work therefore split into two parts: validating the Roe-based solver against
+      the reference solutions of Toro's <em>Riemann Solvers and Numerical Methods for
+      Fluid Dynamics</em> (Springer), and implementing the
+      <strong>Steger&ndash;Warming flux vector splitting</strong> method within the same
+      code, comparing the two schemes in terms of accuracy, robustness and behaviour on
+      strong shocks, rarefactions and contact discontinuities.
+    </p>
+
+    <h2>Approach</h2>
+    <ul>
+      <li>
+        Verified the existing Roe-based solver on <strong>five standard Riemann problems</strong>
+        from Toro's textbook: a shock tube case (Test 1), two interacting rarefactions
+        (Test 2), a blast-wave-strength case with a pressure ratio of 10<sup>5</sup>
+        (Test 3), a nearly stationary contact discontinuity (Test 4) and a colliding-flow
+        case (Test 5), running each test with its reference shock position and output time.
+      </li>
+      <li>
+        Achieved second-order accuracy through <strong>MUSCL reconstruction</strong> with
+        slope limiters (<strong>van Albada</strong> active, minmod available, MUSCL
+        coefficient &kappa; = &minus;1), <strong>two-stage Runge&ndash;Kutta</strong> time
+        integration, and an <strong>entropy fix</strong> preventing non-physical expansion
+        shocks in the Roe scheme; the time step was constrained by the
+        <strong>CFL condition</strong> (CFL = 0.9).
+      </li>
+      <li>
+        Handled the full code infrastructure: quasi-1D nozzle formulation with geometric
+        source terms, reflective wall boundary conditions, and per-test selection of the
+        initial discontinuity position.
+      </li>
+      <li>
+        Implemented the <strong>Steger&ndash;Warming method</strong> in the 1D case: flux
+        vector splitting based on the homogeneity property of the Euler flux
+        F(U) = A(U)U, with eigenvalue splitting &lambda;<sub>i</sub><sup>&plusmn;</sup> =
+        (&lambda;<sub>i</sub> &plusmn; |&lambda;<sub>i</sub>|)/2 and split fluxes
+        F<sup>&plusmn;</sup> = A<sup>&plusmn;</sup>U assembled at each cell interface.
+      </li>
+      <li>
+        Worked with <strong>GNU Fortran 13.3</strong> on WSL2, Visual Studio Code and
+        <strong>gnuplot</strong> for post-processing; compiled in double precision
+        (gfortran <code>-fdefault-real-8</code>) to remove single-precision round-off
+        that triggered spurious negative-pressure aborts.
+      </li>
+    </ul>
+
+    <h2>Numerical Methods</h2>
+    <p>
+      The shock tube is governed by the <strong>Riemann problem</strong>: a hyperbolic
+      system of conservation laws with piecewise-constant initial data, a left state
+      U<sub>L</sub> and a right state U<sub>R</sub> separated by a discontinuity. The
+      solution consists of waves propagating from the initial discontinuity &mdash;
+      shocks, rarefaction fans and contact discontinuities &mdash; and is known in exact
+      form for the Euler equations, which makes the shock tube the ideal benchmark for
+      numerical schemes.
+    </p>
+    <p>
+      The <strong>Roe solver</strong> linearises the problem at each cell interface
+      through the Roe matrix, which satisfies hyperbolicity, consistency and
+      conservation properties, so that the jump between the two states is decomposed
+      into characteristic waves with their strengths; the intercell flux is then built
+      from the upwind wave contributions. Since the linearised solution can produce
+      non-physical expansion shocks, an entropy fix is applied across rarefactions.
+    </p>
+    <p>
+      The <strong>Steger&ndash;Warming method</strong> belongs instead to the flux vector
+      splitting family: exploiting the homogeneity of the Euler flux, the flux vector is
+      split into two contributions with non-negative and non-positive eigenvalue
+      spectra, each upwinded according to the direction along which information
+      propagates. FVS schemes are simpler and cheaper than Godunov-type solvers, at the
+      price of a lower resolution of contact discontinuities and shear waves.
+    </p>
+    <p>
+      Running both schemes within the same code, on the same grid and the same test
+      set, isolated the effect of the flux function on accuracy and robustness.
+    </p>
+
+    <h2>Results</h2>
+    <ul>
+      <li>Verified the Roe-based code: density, velocity and pressure profiles overlapped the reference solutions reported in Toro's book for Tests 1, 3, 4 and 5.</li>
+      <li>Test 2 (two rarefactions) could not be completed with the Roe implementation: the run consistently aborted with negative pressure values.</li>
+      <li>Validated the implemented Steger&ndash;Warming scheme: profiles overlapped the literature results for Tests 1, 3 and 4, confirming models, initial hypotheses and implementation.</li>
+      <li>Test 2 returned negative pressures also with the Steger&ndash;Warming scheme, even with very conservative settings (coarse grid, low CFL).</li>
+      <li>Test 5 required extremely conservative settings (coarse grid, CFL far below 1, approximate boundary conditions) to remain stable: trends match the reference behaviour, but the added numerical dissipation limits the overlap.</li>
+      <li>Closed the comparison between two independent upwind families &mdash; approximate Riemann solvers and flux vector splitting &mdash; within a single, reproducible Fortran framework.</li>
+    </ul>
+
+    <h2>Skills</h2>
+    <div class="skills">
+      <span>Fortran 77</span>
+      <span>1D Euler equations</span>
+      <span>Riemann problem</span>
+      <span>Roe approximate solver</span>
+      <span>Entropy fix</span>
+      <span>MUSCL reconstruction</span>
+      <span>van Albada &amp; minmod limiters</span>
+      <span>CFL condition</span>
+      <span>Steger&ndash;Warming flux splitting</span>
+      <span>GNU Fortran &middot; WSL2</span>
+      <span>gnuplot</span>
+    </div>
+
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <figure>
+        <img src="../assets/cfd-roe-test1-density.png"
+             alt="Density profile for shock-tube Test 1 computed with the Roe solver: rarefaction fan, contact discontinuity and shock wave (gnuplot)"
+             width="640" height="384" loading="lazy">
+        <figcaption>Test 1 (shock tube) &mdash; density profile, Roe solver with entropy fix</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/cfd-sw-test1-density.png"
+             alt="Density profile for shock-tube Test 1 computed with the implemented Steger–Warming flux splitting (gnuplot)"
+             width="640" height="384" loading="lazy">
+        <figcaption>Test 1 &mdash; density profile with the implemented Steger&ndash;Warming splitting</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/cfd-roe-test4-pressure.png"
+             alt="Pressure profile for Test 4 with a nearly stationary contact discontinuity computed with the Roe solver (gnuplot)"
+             width="640" height="384" loading="lazy">
+        <figcaption>Test 4 (nearly stationary contact) &mdash; pressure profile, Roe solver</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/cfd-sw-test3-density.png"
+             alt="Density profile for the blast-wave-strength Test 3 computed with the Steger–Warming splitting (gnuplot)"
+             width="640" height="384" loading="lazy">
+        <figcaption>Test 3 (blast-wave strength) &mdash; density profile, Steger&ndash;Warming splitting</figcaption>
+      </figure>
+    </div>
+
+    <div class="contact-strip">
+      Questions about the methodology? I am happy to discuss it in detail during an
+      interview &mdash;
+      <a href="mailto:maiullari.michele@icloud.com">maiullari.michele@icloud.com</a>
+    </div>
+
+  </main>
+
+  <footer>
+    &copy; 2026 Michele Maiullari &middot; maiullari.michele@icloud.com
+  </footer>
+
+</body>
+</html>
