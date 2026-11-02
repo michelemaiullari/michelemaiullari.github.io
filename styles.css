@@ -1,0 +1,151 @@
+/* ============================================================
+   Portfolio site — shared stylesheet
+   File location: repository ROOT (next to index.html)
+   ============================================================ */
+
+:root {
+  --accent: #0b4f8a;        /* aerospace navy */
+  --ink: #1c2430;
+  --muted: #5a6472;
+  --line: #e3e7ec;
+  --bg: #ffffff;
+  --bg-soft: #f5f7f9;
+  --banner-bg: #fff8e6;
+  --banner-border: #e3c36a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.65;
+}
+
+/* ---------- Header / navigation ---------- */
+
+.site-header {
+  border-bottom: 1px solid var(--line);
+  padding: 18px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.site-title {
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 1.05rem;
+}
+
+.site-header nav a {
+  margin-left: 18px;
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.site-header nav a:hover { color: var(--accent); }
+
+/* ---------- Page layout ---------- */
+
+main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.breadcrumb a {
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.breadcrumb a:hover { color: var(--accent); }
+
+.context-line {
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  margin: 22px 0 4px;
+}
+
+h1 {
+  font-size: 2rem;
+  line-height: 1.25;
+  margin: 6px 0 8px;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 1.05rem;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin-top: 40px;
+  border-bottom: 2px solid var(--line);
+  padding-bottom: 6px;
+}
+
+ul { padding-left: 22px; }
+li { margin-bottom: 8px; }
+
+/* ---------- NDA / confidentiality banner ---------- */
+
+.nda-banner {
+  background: var(--banner-bg);
+  border: 1px solid var(--banner-border);
+  border-left: 5px solid var(--banner-border);
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin: 28px 0 8px;
+  font-size: 0.95rem;
+}
+
+/* ---------- Skills chips ---------- */
+
+.skills { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.skills span {
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-size: 0.85rem;
+  color: var(--ink);
+}
+
+/* ---------- Notes and contact ---------- */
+
+.muted-note {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.contact-strip {
+  margin-top: 56px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.contact-strip a { color: var(--accent); text-decoration: none; }
+.contact-strip a:hover { text-decoration: underline; }
+
+footer {
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  text-align: center;
+  padding: 18px;
+  font-size: 0.85rem;
+}
