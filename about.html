@@ -4,10 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About — Michele Maiullari</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <a href="index.html">Michele Maiullari</a>
+
+  <header class="site-header">
+    <a class="site-title" href="index.html">Michele Maiullari</a>
     <nav>
       <a href="index.html">Home</a>
       <a href="projects.html">Projects</a>
@@ -16,47 +18,90 @@
   </header>
 
   <main>
-    <section>
-      <p>Profile</p>
-      <h1>About</h1>
-      <p>An aeronautical (MSc) and mechanical (BSc) engineer, oriented to R&D and design.</p>
-      <p>I am an aeronautical-mechanical engineer: BSc in Mechanical Engineering and MSc in Aeronautical Engineering at Politecnico di Bari, with a Master's thesis developed in collaboration with Leonardo S.p.A. on the design and testing of lightweight aeronautical systems, UAVs and UASs built using rapid assembly and deployment techniques. From March to October 2025 I completed an Erasmus exchange at RWTH Aachen University, focusing on non-linear finite element methods, fatigue of structures and model-based product development.</p>
-      <p>Within Leonardo S.p.A.'s Aerotech Academy (Aerostructures Business Unit) I designed a wing and a quick-release wing–fuselage coupling for MALE-ISR UAS platforms — covering conceptual, preliminary and detailed 3D CAD modelling, structural validation and stress analysis, and supporting manufacturing, assembly and testing. My work combines advanced CAD and MBSE with simulation, experimental metrology and industrial troubleshooting: the common thread is taking a design from requirement to validated hardware.</p>
-      <p>I have lived and studied across Germany, Montenegro and Israel, and I am immediately available for international travel and relocation. I am actively seeking roles in R&D, design and systems engineering, and currently leading an early-stage AI project for automated airfoil generation.</p>
-    </section>
 
-    <section>
-      <h2>Education</h2>
-      <ul>
-        <li>MSc, Aeronautical Engineering — Politecnico di Bari, 2023–2026 · thesis with Leonardo S.p.A. on design and testing of lightweight aeronautical systems, UAVs and UASs</li>
-        <li>Erasmus Exchange — RWTH Aachen University, Mar–Oct 2025 · non-linear FEM, fatigue of structures, model-based product development</li>
-        <li>BSc, Mechanical Engineering — Politecnico di Bari, 2020–2023 · thesis with SKF S.p.A. on vibrational analysis of bearings for EV applications</li>
-        <li>Aerotech Academy — Leonardo S.p.A., Aerostructures Business Unit, Oct 2025–Jul 2026</li>
-      </ul>
-    </section>
+    <p class="context-line">Politecnico di Bari &middot; RWTH Aachen &middot; Leonardo S.p.A.</p>
 
-    <section>
-      <h2>Toolkit</h2>
-      <ul>
-        <li>CATIA / 3DEXPERIENCE</li>
-        <li>Autodesk Inventor</li>
-        <li>AutoCAD</li>
-        <li>FreeCAD</li>
-        <li>CATIA Magic System Architect (SysML)</li>
-        <li>Ansys (FEA/CFD)</li>
-        <li>MATLAB / Simulink</li>
-        <li>Python</li>
-        <li>Fortran</li>
-        <li>Arduino</li>
-        <li>GD&T</li>
-        <li>Additive Manufacturing</li>
-      </ul>
-    </section>
+    <h1>About</h1>
+
+    <p class="subtitle">
+      An aeronautical (MSc) and mechanical (BSc) engineer, oriented to R&amp;D and design.
+    </p>
+
+    <p>
+      I am an aeronautical-mechanical engineer: BSc in Mechanical Engineering and MSc in
+      Aeronautical Engineering at Politecnico di Bari, with a Master's thesis developed in
+      collaboration with Leonardo S.p.A. on the design and testing of lightweight
+      aeronautical systems, UAVs and UASs built using rapid assembly and deployment
+      techniques. From March to October 2025 I completed an Erasmus exchange at RWTH Aachen
+      University, focusing on non-linear finite element methods, fatigue of structures and
+      model-based product development.
+    </p>
+
+    <p>
+      Within Leonardo S.p.A.'s AeroTech Academy (Aerostructures Business Unit) I designed a
+      wing and a quick-release wing&ndash;fuselage coupling for MALE-ISR UAS platforms
+      &mdash; covering conceptual, preliminary and detailed 3D CAD modelling, structural
+      validation and stress analysis, and supporting manufacturing, assembly and testing.
+      My work combines advanced CAD and MBSE with simulation, experimental metrology and
+      industrial troubleshooting: the common thread is taking a design from requirement to
+      validated hardware.
+    </p>
+
+    <p>
+      I have lived and studied across Germany, Montenegro and Israel, and I am immediately
+      available for international travel and relocation. I am actively seeking roles in
+      R&amp;D, design and systems engineering, and currently leading an early-stage AI
+      project for automated airfoil generation.
+    </p>
+
+    <h2>Education</h2>
+    <ul>
+      <li>
+        <strong>MSc, Aeronautical Engineering</strong> &mdash; Politecnico di Bari, 2023&ndash;2026<br>
+        <span class="muted-note">
+          Thesis with Leonardo S.p.A. on design and testing of lightweight aeronautical
+          systems, UAVs and UASs.
+        </span>
+      </li>
+      <li>
+        <strong>Erasmus Exchange</strong> &mdash; RWTH Aachen University, Mar&ndash;Oct 2025<br>
+        <span class="muted-note">Non-linear FEM, fatigue of structures, model-based product development.</span>
+      </li>
+      <li>
+        <strong>BSc, Mechanical Engineering</strong> &mdash; Politecnico di Bari, 2020&ndash;2023<br>
+        <span class="muted-note">Thesis with SKF S.p.A. on vibrational analysis of bearings for EV applications.</span>
+      </li>
+      <li>
+        <strong>AeroTech Academy</strong> &mdash; Leonardo S.p.A., Aerostructures Business Unit, Oct 2025&ndash;Jul 2026
+      </li>
+    </ul>
+
+    <h2>Toolkit</h2>
+    <div class="skills">
+      <span>CATIA / 3DEXPERIENCE</span>
+      <span>Autodesk Inventor</span>
+      <span>AutoCAD</span>
+      <span>FreeCAD</span>
+      <span>CATIA Magic System Architect (SysML)</span>
+      <span>Ansys (FEA/CFD)</span>
+      <span>MATLAB / Simulink</span>
+      <span>Python</span>
+      <span>Fortran</span>
+      <span>Arduino</span>
+      <span>GD&amp;T</span>
+      <span>Additive Manufacturing</span>
+    </div>
+
+    <div class="contact-strip">
+      Get in touch &mdash;
+      <a href="mailto:maiullari.michele@icloud.com">maiullari.michele@icloud.com</a>
+    </div>
+
   </main>
 
   <footer>
-    <p>Get in touch — <a href="mailto:maiullari.michele@icloud.com">maiullari.michele@icloud.com</a></p>
-    <p>© 2026 Michele Maiullari · maiullari.michele@icloud.com</p>
+    &copy; 2026 Michele Maiullari &middot; maiullari.michele@icloud.com
   </footer>
+
 </body>
 </html>
