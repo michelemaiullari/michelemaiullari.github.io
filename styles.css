@@ -123,6 +123,29 @@ li { margin-bottom: 8px; }
   color: var(--ink);
 }
 
+/* ---------- Project gallery ---------- */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.gallery figure { margin: 0; }
+
+.gallery img {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.gallery figcaption {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
 /* ---------- Notes and contact ---------- */
 
 .muted-note {
