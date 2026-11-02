@@ -144,31 +144,196 @@
     </div>
 
     <h2>Gallery</h2>
-    <div class="gallery">
-      <figure>
-        <img src="../assets/cfd-roe-test1-density.png"
-             alt="Density profile for shock-tube Test 1 computed with the Roe solver: rarefaction fan, contact discontinuity and shock wave (gnuplot)"
-             width="640" height="384" loading="lazy">
-        <figcaption>Test 1 (shock tube) &mdash; density profile, Roe solver with entropy fix</figcaption>
-      </figure>
-      <figure>
-        <img src="../assets/cfd-sw-test1-density.png"
-             alt="Density profile for shock-tube Test 1 computed with the implemented Steger–Warming flux splitting (gnuplot)"
-             width="640" height="384" loading="lazy">
-        <figcaption>Test 1 &mdash; density profile with the implemented Steger&ndash;Warming splitting</figcaption>
-      </figure>
-      <figure>
-        <img src="../assets/cfd-roe-test4-pressure.png"
-             alt="Pressure profile for Test 4 with a nearly stationary contact discontinuity computed with the Roe solver (gnuplot)"
-             width="640" height="384" loading="lazy">
-        <figcaption>Test 4 (nearly stationary contact) &mdash; pressure profile, Roe solver</figcaption>
-      </figure>
-      <figure>
-        <img src="../assets/cfd-sw-test3-density.png"
-             alt="Density profile for the blast-wave-strength Test 3 computed with the Steger–Warming splitting (gnuplot)"
-             width="640" height="384" loading="lazy">
-        <figcaption>Test 3 (blast-wave strength) &mdash; density profile, Steger&ndash;Warming splitting</figcaption>
-      </figure>
+
+    <p class="muted-note">
+      Numerical results organised as in the project report: for every test the code
+      outputs the density, velocity and pressure profiles along the tube axis
+      (gnuplot post-processing). Test 2 (two interacting rarefactions) is not shown
+      &mdash; both solvers abort with negative pressure values, see <em>Results</em>.
+    </p>
+
+    <div class="gallery-group">
+      <h3>Part 1 &mdash; Validation of the original code (Roe solver)</h3>
+
+      <h4>Test 1 &mdash; Shock tube</h4>
+      <div class="gallery">
+        <figure>
+          <img src="../assets/cfd-roe-test1-density.png"
+               alt="Density profile along the tube for Test 1 (shock tube) computed with the original Roe-based code (gnuplot)"
+               width="640" height="384" loading="lazy">
+          <figcaption>Density &rho; vs position</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/cfd-roe-test1-velocity.png"
+               alt="Velocity profile along the tube for Test 1 (shock tube) computed with the original Roe-based code (gnuplot)"
+               width="640" height="384" loading="lazy">
+          <figcaption>Velocity u vs position</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/cfd-roe-test1-pressure.png"
+               alt="Pressure profile along the tube for Test 1 (shock tube) computed with the original Roe-based code (gnuplot)"
+               width="640" height="384" loading="lazy">
+          <figcaption>Pressure p vs position</figcaption>
+        </figure>
+      </div>
+
+      <h4>Test 3 &mdash; Blast-wave problem</h4>
+      <div class="gallery">
+        <figure>
+          <img src="../assets/cfd-roe-test3-density.png"
+               alt="Density profile along the tube for Test 3 (blast-wave problem) computed with the original Roe-based code (gnuplot)"
+               width="677" height="418" loading="lazy">
+          <figcaption>Density &rho; vs position</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/cfd-roe-test3-velocity.png"
+               alt="Velocity profile along the tube for Test 3 (blast-wave problem) computed with the original Roe-based code (gnuplot)"
+               width="677" height="418" loading="lazy">
+          <figcaption>Velocity u vs position</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/cfd-roe-test3-pressure.png"
+               alt="Pressure profile along the tube for Test 3 (blast-wave problem) computed with the original Roe-based code (gnuplot)"
+               width="677" height="418" loading="lazy">
+          <figcaption>Pressure p vs position</figcaption>
+        </figure>
+      </div>
+
+      <h4>Test 4 &mdash; Nearly stationary contact</h4>
+      <div class="gallery">
+        <figure>
+          <img src="../assets/cfd-roe-test4-density.png"
+               alt="Density profile along the tube for Test 4 (nearly stationary contact) computed with the original Roe-based code (gnuplot)"
+               width="640" height="384" loading="lazy">
+          <figcaption>Density &rho; vs position</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/cfd-roe-test4-velocity.png"
+               alt="Velocity profile along the tube for Test 4 (nearly stationary contact) computed with the original Roe-based code (gnuplot)"
+               width="640" height="384" loading="lazy">
+          <figcaption>Velocity u vs position</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/cfd-roe-test4-pressure.png"
+               alt="Pressure profile along the tube for Test 4 (nearly stationary contact) computed with the original Roe-based code (gnuplot)"
+               width="640" height="384" loading="lazy">
+          <figcaption>Pressure p vs position</figcaption>
+        </figure>
+      </div>
+
+      <h4>Test 5 &mdash; Colliding flows</h4>
+      <div class="gallery">
+        <figure>
+          <img src="../assets/cfd-roe-test5-density.png"
+               alt="Density profile along the tube for Test 5 (colliding flows) computed with the original Roe-based code (gnuplot)"
+               width="640" height="384" loading="lazy">
+          <figcaption>Density &rho; vs position</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/cfd-roe-test5-velocity.png"
+               alt="Velocity profile along the tube for Test 5 (colliding flows) computed with the original Roe-based code (gnuplot)"
+               width="640" height="384" loading="lazy">
+          <figcaption>Velocity u vs position</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/cfd-roe-test5-pressure.png"
+               alt="Pressure profile along the tube for Test 5 (colliding flows) computed with the original Roe-based code (gnuplot)"
+               width="640" height="384" loading="lazy">
+          <figcaption>Pressure p vs position</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="gallery-group">
+      <h3>Part 2 &mdash; With the Steger&ndash;Warming implementation</h3>
+
+      <h4>Test 1 &mdash; Shock tube</h4>
+      <div class="gallery">
+        <figure>
+          <img src="../assets/cfd-sw-test1-density.png"
+               alt="Density profile along the tube for Test 1 (shock tube) computed with the implemented Steger–Warming flux splitting (gnuplot)"
+               width="640" height="384" loading="lazy">
+          <figcaption>Density &rho; vs position</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/cfd-sw-test1-velocity.png"
+               alt="Velocity profile along the tube for Test 1 (shock tube) computed with the implemented Steger–Warming flux splitting (gnuplot)"
+               width="640" height="384" loading="lazy">
+          <figcaption>Velocity u vs position</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/cfd-sw-test1-pressure.png"
+               alt="Pressure profile along the tube for Test 1 (shock tube) computed with the implemented Steger–Warming flux splitting (gnuplot)"
+               width="640" height="384" loading="lazy">
+          <figcaption>Pressure p vs position</figcaption>
+        </figure>
+      </div>
+
+      <h4>Test 3 &mdash; Blast-wave problem</h4>
+      <div class="gallery">
+        <figure>
+          <img src="../assets/cfd-sw-test3-density.png"
+               alt="Density profile along the tube for Test 3 (blast-wave problem) computed with the implemented Steger–Warming flux splitting (gnuplot)"
+               width="640" height="384" loading="lazy">
+          <figcaption>Density &rho; vs position</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/cfd-sw-test3-velocity.png"
+               alt="Velocity profile along the tube for Test 3 (blast-wave problem) computed with the implemented Steger–Warming flux splitting (gnuplot)"
+               width="640" height="384" loading="lazy">
+          <figcaption>Velocity u vs position</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/cfd-sw-test3-pressure.png"
+               alt="Pressure profile along the tube for Test 3 (blast-wave problem) computed with the implemented Steger–Warming flux splitting (gnuplot)"
+               width="640" height="384" loading="lazy">
+          <figcaption>Pressure p vs position</figcaption>
+        </figure>
+      </div>
+
+      <h4>Test 4 &mdash; Nearly stationary contact</h4>
+      <div class="gallery">
+        <figure>
+          <img src="../assets/cfd-sw-test4-density.png"
+               alt="Density profile along the tube for Test 4 (nearly stationary contact) computed with the implemented Steger–Warming flux splitting (gnuplot)"
+               width="640" height="384" loading="lazy">
+          <figcaption>Density &rho; vs position</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/cfd-sw-test4-velocity.png"
+               alt="Velocity profile along the tube for Test 4 (nearly stationary contact) computed with the implemented Steger–Warming flux splitting (gnuplot)"
+               width="640" height="384" loading="lazy">
+          <figcaption>Velocity u vs position</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/cfd-sw-test4-pressure.png"
+               alt="Pressure profile along the tube for Test 4 (nearly stationary contact) computed with the implemented Steger–Warming flux splitting (gnuplot)"
+               width="640" height="384" loading="lazy">
+          <figcaption>Pressure p vs position</figcaption>
+        </figure>
+      </div>
+
+      <h4>Test 5 &mdash; Colliding flows</h4>
+      <div class="gallery">
+        <figure>
+          <img src="../assets/cfd-sw-test5-density.png"
+               alt="Density profile along the tube for Test 5 (colliding flows) computed with the implemented Steger–Warming flux splitting (gnuplot)"
+               width="640" height="384" loading="lazy">
+          <figcaption>Density &rho; vs position</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/cfd-sw-test5-velocity.png"
+               alt="Velocity profile along the tube for Test 5 (colliding flows) computed with the implemented Steger–Warming flux splitting (gnuplot)"
+               width="640" height="384" loading="lazy">
+          <figcaption>Velocity u vs position</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/cfd-sw-test5-pressure.png"
+               alt="Pressure profile along the tube for Test 5 (colliding flows) computed with the implemented Steger–Warming flux splitting (gnuplot)"
+               width="640" height="384" loading="lazy">
+          <figcaption>Pressure p vs position</figcaption>
+        </figure>
+      </div>
     </div>
 
     <div class="contact-strip">
