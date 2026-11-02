@@ -40,18 +40,16 @@
 
     <h2>Overview</h2>
     <p>
-      During an intensive advanced training program at Leonardo's Aerostructures
-      Business Unit, the requirement was to design, structurally validate and prototype
-      a generic UAV wing together with its fuselage junction system &mdash; bridging
+      The requirement was to design, structurally validate and prototype
+      a ISR&ndash;UAV wing together with its fuselage junction system. The work integrated
       analytical load estimation, numerical validation and additive manufacturing
       within a single design loop.
     </p>
     <p>
-      The assigned task covered the complete 3D CAD modeling of the wing internal
+      The task covered the complete 3D CAD modeling of the wing internal
       structure, the analytical estimation of aerodynamic loads, the engineering of a
-      robust wing&ndash;fuselage joint, and the structural validation of the assembly
-      via FEA using a conservative safety factor of 3, adopted as early-stage design
-      limit, followed by a safe-life fatigue assessment of the wing structure.
+      wing&ndash;fuselage Coupling System, and the structural validation of the assembly
+      via FEA, followed by a safe-life fatigue assessment of the wing structure.
     </p>
 
     <h2>Approach</h2>
@@ -62,17 +60,9 @@
         L/U-shaped junction connectors.
       </li>
       <li>
-        Explored different analytical load-estimation methods, including
-        <strong>Schrenk's approximation</strong> and <strong>elliptical lift distributions</strong>;
-        the final aerodynamic loads for the static analysis were obtained by computing the pressure
-        distribution in <strong>steady flight conditions</strong>.
-      </li>
-      <li>
-        Executed static structural <strong>FEA in Ansys</strong> on the final
+        Executed static structural <strong>FEA in Ansys</strong> on the
         wing&ndash;fuselage configuration under limit load conditions, applying the
-        pressure distribution computed for <strong>steady, level flight</strong>
-        &mdash; the equilibrium condition in which thrust balances aerodynamic drag
-        and lift balances the weight of the aircraft.
+        pressure distribution computed for <strong>steady, level flight</strong>.
       </li>
       <li>
         Manufactured the junction via <strong>FDM 3D printing</strong> for rapid
@@ -83,16 +73,13 @@
     <h2>Fatigue Assessment</h2>
     <p>
       The fatigue verification was carried out following a <strong>safe-life
-      approach</strong>: the structure must not experience crack initiation and
-      propagation processes within the design life, defined as a number of target
-      missions.
+      approach</strong>.
     </p>
     <p>
       From the mission profile (flight profile, duration and target number of
       missions), the load spectrum was derived through the
-      <strong>GAG (Ground&ndash;Air&ndash;Ground)</strong> cycle &mdash; taxi, climb,
-      cruise, descent and ground &mdash; which rescales the static solution to each
-      flight phase.
+      <strong>GAG (Ground&ndash;Air&ndash;Ground)</strong> cycle which 
+      rescales the static solution to each flight phase.
     </p>
     <p>
       Fatigue strength is described by <strong>S&ndash;N curves</strong>
