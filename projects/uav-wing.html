@@ -3,86 +3,184 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About — Michele Maiullari</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>UAV Wing Design &amp; Structural Validation — Michele Maiullari</title>
+  <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
 
   <header class="site-header">
-    <a class="site-title" href="index.html">Michele Maiullari</a>
+    <a class="site-title" href="../index.html">Michele Maiullari</a>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
+      <a href="../index.html">Home</a>
+      <a href="../projects.html">Projects</a>
+      <a href="../about.html">About</a>
     </nav>
   </header>
 
   <main>
 
-    <p class="context-line">Politecnico di Bari &middot; RWTH Aachen</p>
+    <p class="breadcrumb"><a href="../projects.html">&larr; All projects</a></p>
 
-    <h1>About</h1>
+    <p class="context-line">AeroTech Academy — Leonardo S.p.A. · Aerostructures Business Unit · 2025–2026</p>
+
+    <h1>UAV Wing Design &amp; Structural Validation</h1>
 
     <p class="subtitle">
-      An aeronautical (MSc) and mechanical (BSc) engineer, oriented to R&amp;D and design.
+      CAD design, aerodynamic load estimation, FEA validation and safe-life fatigue
+      assessment of a UAV wing and its fuselage junction system.
     </p>
 
+    <div class="nda-banner">
+      <strong>Confidentiality notice.</strong>
+      This project was carried out within Leonardo S.p.A.'s AeroTech Academy program.
+      Models and quantitative data are subject to confidentiality and cannot be
+      published. Selected images are included for illustration purposes only, free of
+      sensitive data. This page describes the methodology and competencies.
+    </div>
+
+    <h2>Overview</h2>
     <p>
-      I am an aeronautical-mechanical engineer: BSc in Mechanical Engineering and MSc in
-      Aeronautical Engineering at Politecnico di Bari. Master's thesis developed in
-      collaboration with Leonardo S.p.A. on the design and testing of lightweight
-      aeronautical systems, UAVs and UASs built using rapid assembly and deployment
-      techniques. Bachelor's thesis developed in collaboration with SKF S.p.A.
-      on Noise, Vibration and Harshness analysis of radial deep groove single-row
-      ball bearings for electric automotive applications.
-      I led an early-stage AI project for automated wing and control surface generation.
-      From March to October 2025 I completed an Erasmus exchange at RWTH Aachen
-      University, focusing on non-linear finite element methods, fatigue of structures and
-      model-based product development and system engineering.
+      During an intensive advanced training program at Leonardo's Aerostructures
+      Business Unit, the requirement was to design, structurally validate and prototype
+      a generic UAV wing together with its fuselage junction system &mdash; bridging
+      analytical load estimation, numerical validation and additive manufacturing
+      within a single design loop.
     </p>
-
     <p>
-      I have lived and studied across Germany, Montenegro and Israel, and I am immediately
-      available for international travel and relocation. I am actively seeking roles in
-      R&amp;D, design and systems engineering.
+      The assigned task covered the complete 3D CAD modeling of the wing internal
+      structure, the analytical estimation of aerodynamic loads, the engineering of a
+      robust wing&ndash;fuselage joint, and the structural validation of the assembly
+      via FEA using a conservative safety factor of 3, adopted as early-stage design
+      limit, followed by a safe-life fatigue assessment of the wing structure.
     </p>
 
-    <h2>Education</h2>
+    <h2>Approach</h2>
     <ul>
       <li>
-        <strong>MSc, Aeronautical Engineering</strong> &mdash; Politecnico di Bari, 2023&ndash;2026<br>
-        <span class="muted-note">
-          Thesis with Leonardo S.p.A. on design and testing of lightweight aeronautical
-          systems, UAVs and UASs.
-        </span>
+        Imported airfoil geometry from AirfoilTools into <strong>CATIA V5</strong> and
+        modeled the full internal structural architecture: spars, ribs and
+        L/U-shaped junction connectors.
       </li>
       <li>
-        <strong>Erasmus Exchange</strong> &mdash; RWTH Aachen University, Mar&ndash;Oct 2025<br>
-        <span class="muted-note">Non-linear FEM, fatigue of structures, model-based product development.</span>
+        Explored different analytical load-estimation methods, including
+        <strong>Schrenk's approximation</strong> and <strong>elliptical lift distributions</strong>;
+        the final aerodynamic loads for the static analysis were obtained by computing the pressure
+        distribution in <strong>steady flight conditions</strong>.
       </li>
       <li>
-        <strong>BSc, Mechanical Engineering</strong> &mdash; Politecnico di Bari, 2020&ndash;2023<br>
-        <span class="muted-note">Thesis with SKF S.p.A. on vibrational analysis of bearings for EV applications.</span>
+        Executed static structural <strong>FEA in Ansys</strong> on the final
+        wing&ndash;fuselage configuration under limit load conditions, applying the
+        pressure distribution computed for <strong>steady, level flight</strong>
+        &mdash; the equilibrium condition in which thrust balances aerodynamic drag
+        and lift balances the weight of the aircraft.
+      </li>
+      <li>
+        Manufactured the junction via <strong>FDM 3D printing</strong> for rapid
+        prototyping and physical assembly checks.
       </li>
     </ul>
 
-    <h2>Toolkit</h2>
+    <h2>Fatigue Assessment</h2>
+    <p>
+      The fatigue verification was carried out following a <strong>safe-life
+      approach</strong>: the structure must not experience crack initiation and
+      propagation processes within the design life, defined as a number of target
+      missions.
+    </p>
+    <p>
+      From the mission profile (flight profile, duration and target number of
+      missions), the load spectrum was derived through the
+      <strong>GAG (Ground&ndash;Air&ndash;Ground)</strong> cycle &mdash; taxi, climb,
+      cruise, descent and ground &mdash; which rescales the static solution to each
+      flight phase.
+    </p>
+    <p>
+      Fatigue strength is described by <strong>S&ndash;N curves</strong>
+      (stress vs. cycles), while the damage accumulated per mission is computed with
+      the <strong>Palmgren&ndash;Miner rule</strong>. Considering the number of
+      critical cycles per mission, the damage contribution
+      <em>D<sub>i</sub></em> of each flight phase was calculated, from which the
+      total damage per mission was obtained; entered into the Palmgren&ndash;Miner
+      formula, it returns an estimate of the fatigue life.
+    </p>
+    <p>
+      The analysis therefore demonstrated the capability of the system to withstand
+      fatigue loading for the defined number of missions.
+    </p>
+
+    <h2>Results</h2>
+    <ul>
+      <li>Delivered a fully parameterized, structurally validated virtual prototype of the UAV wing.</li>
+      <li>
+        Confirmed the static structural validity of the final configuration:
+        maximum deformation extremely small compared with the wing span.
+      </li>
+      <li>
+        Principal and transverse stresses found well below the yield strength limits
+        of the materials employed in the different zones of the structure.
+      </li>
+      <li>Produced a physical 3D-printed junction, consistent with the CAD envelope.</li>
+      <li>Closed the design loop between analytical load estimation, CAE validation and additive manufacturing.</li>
+      <li>Demonstrated, via safe-life analysis, the capability of the structure to withstand fatigue loading for the target number of missions.</li>
+    </ul>
+    <p class="muted-note">
+      Quantitative performance figures are omitted, as they are subject to confidentiality.
+    </p>
+
+    <h2>Skills</h2>
     <div class="skills">
-      <span>CATIA / 3DEXPERIENCE</span>
-      <span>Autodesk Inventor</span>
-      <span>AutoCAD</span>
-      <span>FreeCAD</span>
-      <span>CATIA Magic System Architect (SysML)</span>
-      <span>Ansys (FEA/CFD)</span>
-      <span>MATLAB / Simulink</span>
-      <span>Python</span>
-      <span>Fortran</span>
-      <span>Arduino</span>
-      <span>GD&amp;T</span>
-      <span>Additive Manufacturing</span>
+      <span>CATIA V5</span>
+      <span>Ansys (FEA)</span>
+      <span>Structural sizing</span>
+      <span>Aerodynamic loads (steady flight)</span>
+      <span>Safe-life fatigue assessment</span>
+      <span>GAG load spectrum</span>
+      <span>S&ndash;N curves</span>
+      <span>Palmgren&ndash;Miner rule</span>
+      <span>Rapid prototyping (FDM)</span>
+      <span>Assembly &amp; testing</span>
+    </div>
+
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <figure>
+        <img src="../assets/uav-wing-skin-structure.png"
+             alt="Translucent view of the UAV wing skin over the internal structure, with root attachment (CATIA V5)"
+             width="1732" height="821" loading="lazy">
+        <figcaption>Wing skin over the internal structure &mdash; CATIA V5</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/uav-wing-internal-structure.jpg"
+             alt="UAV wing internal architecture — spars and ribs (CATIA V5)"
+             width="1356" height="784" loading="lazy">
+        <figcaption>Internal architecture &mdash; spars and ribs</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/uav-wing-fea-mesh.png"
+             alt="FEA mesh of the UAV wing box — spars and ribs (Ansys)"
+             width="1503" height="416" loading="lazy">
+        <figcaption>Wing box FEA model &mdash; Ansys</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/uav-wing-total-deformation.jpg"
+             alt="Total deformation contour of the wing structure under limit load — maximum at tip, minimum at root (values omitted for confidentiality)"
+             width="1735" height="608" loading="lazy">
+        <figcaption>Static FEA &mdash; total deformation under limit load (values omitted)</figcaption>
+      </figure>
+
+      <!-- Photo of the physical prototype: un-comment and upload the image
+           to assets/ when you have it (the Results section promises it!):
+      <figure>
+        <img src="../assets/uav-wing-junction-print.jpg"
+             alt="Wing–fuselage junction — FDM 3D printed prototype">
+        <figcaption>Wing&ndash;fuselage junction &mdash; FDM 3D printed prototype</figcaption>
+      </figure>
+      -->
     </div>
 
     <div class="contact-strip">
-      Get in touch &mdash;
+      Questions about the methodology? I am happy to discuss it in detail during an
+      interview &mdash;
       <a href="mailto:maiullari.michele@icloud.com">maiullari.michele@icloud.com</a>
     </div>
 
