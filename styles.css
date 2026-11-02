@@ -127,23 +127,30 @@ li { margin-bottom: 8px; }
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
 }
 
-.gallery figure { margin: 0; }
+.gallery figure {
+  margin: 0;
+  border: 1px solid #d9dee6;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f7f9fb;
+}
 
 .gallery img {
   display: block;
   width: 100%;
-  border: 1px solid var(--line);
-  border-radius: 6px;
+  height: auto;
 }
 
 .gallery figcaption {
-  font-size: 0.85rem;
-  color: var(--muted);
-  margin-top: 6px;
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  color: #5a6572;
+  border-top: 1px solid #e6eaf0;
 }
 
 /* ---------- Notes and contact ---------- */
@@ -171,34 +178,6 @@ footer {
   text-align: center;
   padding: 18px;
   font-size: 0.85rem;
-}
-/* ---------- Project gallery ---------- */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
-}
-
-.gallery figure {
-  margin: 0;
-  border: 1px solid #d9dee6;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #f7f9fb;
-}
-
-.gallery img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.gallery figcaption {
-  padding: 0.6rem 1rem;
-  font-size: 0.9rem;
-  color: #5a6572;
-  border-top: 1px solid #e6eaf0;
 }
 
 /* ---------- Homepage cards ---------- */
