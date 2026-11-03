@@ -31,7 +31,7 @@
 
     <p class="breadcrumb"><a href="../index.html">&larr; Home</a></p>
 
-    <p class="context-line">Tech Startup Project &mdash; AI-Based Airfoil Generation Platform &middot; Role: Project Lead</p>
+    <p class="context-line">Tech Startup Project &mdash; AI-Based Aerodynamic Geometries Generation Platform &middot; Role: Project Lead</p>
 
     <h1>AI-Driven Aerodynamic Design &amp; CFD Validation Platform</h1>
 
@@ -57,24 +57,18 @@
     <h2>Overview</h2>
     <p>
       The aerodynamic design of wings and control surfaces still runs on a
-      manually-driven loop: every geometry variant means a new domain, a new mesh,
-      a new case setup and a new convergence watch &mdash; days of engineering time
-      per iteration, and a hard ceiling on how many candidates a team can afford to
-      explore. GenAir, the tech startup where I worked as Aerospace/CFD engineer,
+      manually-driven loop. the tech project
       was built on a different workflow: let a generative model propose geometries
       already consistent with the target aerodynamic coefficients, and concentrate
       CFD where it creates value &mdash; verification, validation and physical
       refinement.
     </p>
     <p>
-      I owned the CFD and physical-modelling side of the platform end-to-end:
+      Owned the CFD and physical-modelling side of the platform end-to-end:
       solver configuration, automated validation pipelines, the aerodynamic
       evaluation of everything the model generates, and the design of the
       physics-informed fine-tuning strategy. The work brought me into direct
-      technical discussions with leading aerospace players &mdash; Embraer among
-      them &mdash; and with the DTA aerospace technology district, and I authored
-      the complete technical roadmap for the platform's industrial evolution,
-      drafted for a leading international aerospace group.
+      technical discussions with leading aerospace players.
     </p>
 
     <h2>Starting Point: Feasibility Proven, Physics Missing</h2>
@@ -93,7 +87,7 @@
 
     <h2>Platform Architecture</h2>
     <p>
-      I structured the platform as eight distinct layers, each replaceable without
+      Structured the platform as eight distinct layers, each replaceable without
       touching the others &mdash; the precondition for evolving from prototype to
       industrial tool:
     </p>
@@ -110,7 +104,7 @@
 
     <figure style="margin: 2rem 0;">
       <svg viewBox="0 0 960 228" width="100%" role="img"
-           aria-label="IA-CFD loop: requirements, inverse AI model, geometric checks, automated CFD and validated output, with physical fine-tuning return paths"
+           aria-label="AI-CFD loop: requirements, inverse AI model, geometric checks, automated CFD and validated output, with physical fine-tuning return paths"
            style="font-family: inherit; display: block;">
         <defs>
           <marker id="arr-flow" viewBox="0 0 10 10" refX="9" refY="5"
@@ -167,7 +161,7 @@
 
     <h2>Solver Chain: From Incompressible Baseline to Shock-Capturing</h2>
     <p>
-      I configured the validation chain on two physical tiers. The
+      configured the validation chain on two physical tiers. The
       <strong>incompressible solver</strong> covers the fast tier: screening
       candidates and supporting the training-data pipeline where compressibility
       effects are negligible. The <strong>compressible tier</strong> is where
@@ -183,20 +177,18 @@
       preliminary screening validator for quick 2D subsonic tests, never the final
       word on any geometry. That division of labour &mdash; cheap screening,
       expensive verification &mdash; is what keeps the loop fast without lying
-      about the physics. The shock-capturing fundamentals behind this tier are the
-      same I implemented from scratch in Fortran in my
-      <a href="cfd-shock-solver.html">shock-wave CFD solver project</a>.
+      about the physics.
     </p>
 
     <h2>Automated CFD Pipelines</h2>
     <p>
-      I developed automated CFD pipelines that take any geometry the model
+      Developed automated CFD pipelines that take any geometry the model
       generates through the entire chain unattended: computational domain, mesh
       generation, boundary conditions, solve, extraction of lift, drag and moment
       coefficients and of pressure distributions, and convergence checks. Every
       outcome is registered into the dataset &mdash; including non-convergent or
       physically implausible geometries, logged as such. Treating failures as data
-      is what makes the IA&ndash;CFD pipeline more robust with every iteration,
+      is what makes the AI&ndash;CFD pipeline more robust with every iteration,
       instead of silently biasing the training set towards the cases that happen
       to converge.
     </p>
@@ -205,27 +197,12 @@
     <p>
       The layer that turns the platform from a generator into a learning system is
       physical fine-tuning &mdash; closing the loop between what the flow solver
-      measures and what the network generates. I implemented it at two levels and
-      architected the third:
+      measures and what the network generates. 
     </p>
-    <ul>
-      <li><strong>Supervised pre-training.</strong> The model learns from dataset pairs: aerodynamic parameters &rarr; reference geometry.</li>
-      <li><strong>Black-box fine-tuning &mdash; implemented.</strong> Generated geometries are scored by a fast aerodynamic evaluator against an aerodynamic loss with geometric and smoothness penalties; a gradient-free estimator updates the model without backpropagating through the solver. Computationally cheap, and the working baseline.</li>
-      <li><strong>Adjoint-based fine-tuning &mdash; architecture defined by me; end-to-end implementation scheduled.</strong> The CFD solver solves the discrete adjoint problem and returns the sensitivities of the objective with respect to the geometry; the network computes how the geometry depends on its own weights; the two gradients compose into a single update.</li>
-    </ul>
-    <p>
-      In formula terms: the solver supplies
-      <strong>&part;L/&part;geometry</strong>, the network propagates
-      <strong>&part;geometry/&part;weights</strong>, and the weight update follows
-      the chain product of the two &mdash; a true physical gradient reaching the
-      network's weights, with no surrogate model standing between the flow solver
-      and the training loop. This is the transition I designed to move the
-      platform from gradient-free tuning to physics-informed optimisation.
-    </p>
-
+  
     <h2>Extending to 3D Control Surfaces</h2>
     <p>
-      Control surfaces are three-dimensional objects, so the architecture extends
+      Wings are three-dimensional objects, so the architecture extends
       generation from 2D sections to 3D surfaces in two stages. Stage one is
       geometric: the inverse model keeps generating 2D sections, and a dedicated
       module stacks root and tip sections along the span &mdash; first along a
@@ -239,32 +216,12 @@
       direct 3D generation remains a roadmap objective, tracked as such below.
     </p>
 
-    <h2>Status and Roadmap</h2>
-    <p>
-      I structured the industrial evolution as a phased roadmap. Status at the end
-      of my contribution:
-    </p>
-    <ul>
-      <li>Supervised inverse model (parameters &rarr; 2D airfoil) &mdash; <strong>implemented</strong></li>
-      <li>Panel-method preliminary validator (screening only) &mdash; <strong>implemented</strong></li>
-      <li>Black-box physical fine-tuning &mdash; <strong>implemented</strong></li>
-      <li>Automated 2D CFD pipeline with convergence handling &mdash; <strong>implemented</strong></li>
-      <li>Incompressible + compressible solver chain (shock-capturing, RANS) &mdash; <strong>configured, integrated in the validation pipeline</strong></li>
-      <li>Adjoint-based fine-tuning (CFD sensitivities &rarr; network weights) &mdash; <strong>architecture defined; end-to-end implementation scheduled</strong></li>
-      <li>3D generation pipeline (section stacking &rarr; direct generation) &mdash; <strong>architecture defined, proof-of-concept level</strong></li>
-      <li>Client-domain dataset and supersonic retraining &mdash; <strong>planned</strong></li>
-      <li>Wind-tunnel experimental validation &mdash; <strong>outside the initial scope</strong></li>
-    </ul>
-    <p>
-      Keeping implemented and planned work visibly separate is deliberate: the
-      platform's value proposition stands on what already runs, and the roadmap
-      shows where it goes next.
-    </p>
+
 
     <h2>Results</h2>
     <ul>
       <li>
-        Delivered a working proof-of-concept IA&ndash;CFD architecture: from target
+        Delivered a working proof-of-concept AI&ndash;CFD architecture: from target
         aerodynamic coefficients to a generated airfoil, through automated CFD
         validation &mdash; demonstrated to industry leaders.
       </li>
