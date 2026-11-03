@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Modular two-section wheelchair ramp for rear vehicle access, engineered top-down in Autodesk Inventor against a generic car package: gas-strut actuation, heat-treated aluminium structure, parametric assembly adaptable to cars, minivans, campers and buses.">
+  <title>Automotive Integration: Modular Wheelchair Ramp — Michele Maiullari</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="site-title" href="../index.html">Michele Maiullari</a>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <p class="breadcrumb"><a href="../index.html">&larr; Home</a></p>
+
+    <p class="context-line">Virtual Prototyping &amp; Simulation &mdash; Politecnico di Bari &middot; A.Y. 2023&ndash;2024</p>
+
+    <h1>Automotive Integration: Modular Wheelchair Ramp</h1>
+
+    <p class="subtitle">
+      A <strong>modular, two-section wheelchair ramp</strong> for rear vehicle
+      access, engineered top-down in Autodesk Inventor around a generic car
+      package: purely mechanical gas-strut actuation, heat-treated aluminium
+      structure, and a parametric assembly designed to adapt to most existing
+      chassis &mdash; cars, minivans, campers and buses.
+    </p>
+
+    <!-- Evidence link: upload the SPV presentation and the Inventor BOM to Drive,
+         paste the URL, then un-comment this block.
+    <p class="source-link">
+      <strong>Complete evidence:</strong>
+      <a href="GOOGLE_DRIVE_URL" target="_blank" rel="noopener">Project presentation &amp; BOM &middot; Google Drive</a>
+    </p>
+    -->
+
+    <h2>Overview</h2>
+    <p>
+      The problem: autonomous mobility for a wheelchair user in and out of a
+      standard passenger vehicle. Dedicated accessible cars exist, but they are
+      expensive, low-speed or one-off. The goal I set for this project was
+      different &mdash; a <strong>standardised rear-access ramp system</strong>
+      that could be adapted to the largest possible share of vehicles already on
+      the road, instead of designing yet another bespoke vehicle.
+    </p>
+    <p>
+      The final outcome is a fully parametric, modular 3D assembly: a folding
+      two-section ramp driven entirely by mechanical gas struts, modelled in
+      Autodesk Inventor against an imported generic car model that defined every
+      spatial constraint of the package.
+    </p>
+
+    <h2>Design Evolution</h2>
+    <p>
+      The concept went through a deliberate selection loop before any component
+      was modelled. A first rear-entry solution with servo-actuated, stowable
+      ramp was dropped for its electronic complexity; a side-entry layout was
+      rejected on three concrete counts: excessive package intrusion, no room
+      for a climbing aid, and a driver transfer position that simply does not
+      work in practice. Benchmarking the existing market &mdash; front-entry
+      microcars like the Elbee (80 km/h) and rear-entry solutions like the
+      Kenguru (45 km/h) &mdash; confirmed the gap: every product on the market
+      leans on electro-actuation.
+    </p>
+    <p>
+      The winning concept borrows from the most reliable mechanism in every car:
+      the <strong>rear bonnet hinge</strong>. A two-piece ramp folds in rest
+      position and is operated by <strong>two independent gas-strut groups</strong>
+      &mdash; one deploying the ramp, one commanding the relative rotation between
+      the two sections. No actuators, no electronics, no fixed piston stroke: the
+      ramp can be opened fully even on uneven ground such as a kerb or a
+      sidewalk, something a stroke-bound actuator can never guarantee.
+    </p>
+
+    <h2>Requirements</h2>
+    <ul>
+      <li><strong>Easy maintenance and inspection</strong> of the mechanism, with every functional group reachable</li>
+      <li><strong>Effortless actuation</strong> &mdash; gas struts do the work, the user only guides</li>
+      <li><strong>Component interchangeability</strong> &mdash; the architecture minimises interdependence between parts</li>
+      <li><strong>Low weight</strong> &mdash; heat-treated aluminium alloys throughout</li>
+      <li><strong>Versatility</strong> &mdash; one system for cars, minivans, campers and buses</li>
+    </ul>
+
+    <h2>System Architecture</h2>
+    <p>
+      The structure is organised as a clean make-vs-buy split, tracked in a
+      24-line Inventor bill of materials (16 made, 8 bought):
+    </p>
+    <ul>
+      <li><strong>TLO &mdash; support frame</strong> (EN AW 7075 T6, welded and drilled): carries the mechanism and anchors it to the vehicle</li>
+      <li><strong>RPM1 / RPM2 &mdash; the two ramp sections</strong> (EN AW 2024 T6, press-bent): RPM1 links to frame and second section, RPM2 touches the ground</li>
+      <li><strong>PFP-TLO plates</strong> (EN AW 7075 T6, press-bent, drilled, welded, threaded): strut-to-frame interfaces</li>
+      <li><strong>PST-TLO plates</strong> (EN AW 7075 T6): attachment between vehicle chassis and support frame, welded to the vehicle and to be reviewed per application</li>
+      <li><strong>Junction hinges with bushings</strong>: the foldable connection between the two sections</li>
+    </ul>
+    <p>
+      Every fastener is a standard part &mdash; ISO 4017 and ISO 4018 hex screws,
+      ISO 4033 nuts, threaded collars and bushing retainers &mdash; so the whole
+      system can be assembled, disassembled and repaired with off-the-shelf
+      hardware. Modularity is not a slogan here: it is traceable in the BOM,
+      where each functional group (frame, ramps, struts, hinges) lives
+      independently of the others.
+    </p>
+
+    <h2>Top-Down Parametric Workflow</h2>
+    <p>
+      A generic car model was imported into Inventor <em>first</em>, and the ramp
+      was designed inside its constraints, not next to them: package volumes,
+      ground clearance, loading height and wheel arch position all came from the
+      vehicle model and drove the kinematic layout of the struts and hinges.
+      Because the assembly is fully parametric, adapting the system to a
+      different chassis means updating the skeleton constraints &mdash; the
+      components regenerate around the new package. That is what turns a
+      wheelchair ramp into a <em>platform</em> valid across vehicle classes.
+    </p>
+
+    <h2>Results</h2>
+    <ul>
+      <li>
+        Delivered a fully parametric, modular 3D assembly integrating seamlessly
+        with the imported vehicle package &mdash; ramp, frame, strut groups and
+        hinges modelled as independent, interchangeable groups.
+      </li>
+      <li>
+        Achieved a purely mechanical actuation concept (gas struts, zero
+        electronics) that deploys fully even on uneven terrain, with no fixed
+        stroke limitation.
+      </li>
+      <li>
+        Documented the architecture in a 24-line make-vs-buy BOM with fully
+        standardised fasteners (ISO 4017 / 4018 / 4033).
+      </li>
+      <li>
+        Covered the full design loop: benchmarking, concept selection,
+        requirement definition, kinematic layout, CAD modelling and BOM
+        structuring &mdash; within a single course project.
+      </li>
+    </ul>
+
+    <h2>Skills</h2>
+    <div class="skills">
+      <span>Autodesk Inventor</span>
+      <span>Top-down design</span>
+      <span>Parametric assembly</span>
+      <span>Automotive packaging</span>
+      <span>Kinematic linkages</span>
+      <span>Gas-strut actuation</span>
+      <span>Benchmarking &amp; concept selection</span>
+      <span>Make-vs-buy BOM</span>
+      <span>ISO fasteners</span>
+      <span>Design for maintenance</span>
+    </div>
+
+    <!-- Gallery: un-comment this block after uploading the 7 files to assets/
+         (renders exported from the Inventor presentation; sizes already set).
+
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <figure style="grid-column: 1 / -1;">
+        <img src="../assets/ramp-deployed.jpg"
+             alt="Two-section ramp fully deployed to the ground at the rear wheel of the vehicle"
+             width="800" height="550" loading="lazy">
+        <figcaption>Fully deployed configuration &mdash; rear wheel integration</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/ramp-raised.jpg"
+             alt="Ramp raised in the deployment sequence driven by the gas strut groups"
+             width="796" height="800" loading="lazy">
+        <figcaption>Deployment sequence &mdash; strut group 1</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/ramp-folding.jpg"
+             alt="Intermediate folding kinematics between the two ramp sections"
+             width="800" height="458" loading="lazy">
+        <figcaption>Intermediate kinematics &mdash; relative rotation between sections</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/ramp-flat.jpg"
+             alt="Both ramp sections flat and connected at the junction hinge"
+             width="800" height="437" loading="lazy">
+        <figcaption>Two-section ramp &mdash; junction detail</figcaption>
+      </figure>
+      <figure style="grid-column: 1 / -1;">
+        <img src="../assets/ramp-frame.png"
+             alt="TLO support frame in EN AW 7075 T6 with anchoring uprights"
+             width="1282" height="703" loading="lazy">
+        <figcaption>TLO support frame &mdash; EN AW 7075 T6, welded and drilled</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/ramp-panel.png"
+             alt="Press-bent ramp section in EN AW 2024 T6"
+             width="1167" height="505" loading="lazy">
+        <figcaption>Ramp section (RPM1/RPM2) &mdash; EN AW 2024 T6, press-bent</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/ramp-hinge.png"
+             alt="Junction hinge with bushing and threaded collar"
+             width="770" height="592" loading="lazy">
+        <figcaption>Junction hinge &mdash; bushing and threaded collar</figcaption>
+      </figure>
+    </div>
+    -->
+
+    <div class="contact-strip">
+      Questions about the methodology? I am happy to discuss it in detail during an
+      interview &mdash;
+      <a href="mailto:maiullari.michele@icloud.com">maiullari.michele@icloud.com</a>
+    </div>
+
+  </main>
+
+  <footer>
+    &copy; 2026 Michele Maiullari &middot; maiullari.michele@icloud.com
+  </footer>
+
+</body>
+</html>
