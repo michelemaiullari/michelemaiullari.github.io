@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MBSE architecture of an automotive cooling system: executable SysML model in CATIA Magic linking requirements, functional architecture and physical components, with automated verification workflows (RWTH Aachen).">
+  <title>MBSE &amp; System Architecture: Automotive Cooling System — Michele Maiullari</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="site-title" href="../index.html">Michele Maiullari</a>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <p class="breadcrumb"><a href="../index.html">&larr; Home</a></p>
+
+    <p class="context-line">Model-based Product Development — RWTH Aachen · Erasmus Exchange · Summer Semester 2025</p>
+
+    <h1>MBSE &amp; System Architecture: Automotive Cooling System</h1>
+
+    <p class="subtitle">
+      Model-Based Systems Engineering of an automotive cooling system in
+      <strong>CATIA Magic</strong>: a single executable SysML model linking stakeholder
+      scenarios to verifiable requirements, functional architecture and physical
+      components, with automated design-verification workflows.
+    </p>
+
+    <h2>Overview</h2>
+    <p>
+      As the systems-engineering project of the <em>Model-based Product Development</em>
+      course (MSE — Institute for Machine Elements and System Development) during my
+      Erasmus semester at RWTH Aachen, I developed the complete MBSE architecture of an
+      automotive cooling system. The vehicle is offered in three performance classes
+      (135 / 185 / 250 kW) and has to serve conflicting usage scenarios &mdash; city
+      commuting and alpine long-distance trips &mdash; under strict thermal and spatial
+      constraints. The use case follows the cooling-system benchmark published by BMW
+      (H&ouml;pfner et al., 2021) that forms the backbone of the course.
+    </p>
+    <p>
+      The objective was a single, fully integrated SysML model in CATIA Magic
+      (Cameo Systems Modeler) that links customer requirements directly to functional
+      structures and physical component geometries &mdash; so that component suitability
+      is verified automatically upon parameter change, instead of through manual
+      iteration on documents and spreadsheets.
+    </p>
+
+    <h2>Requirements Engineering</h2>
+    <p>
+      The two usage scenarios were first translated into boundary conditions and then
+      into <strong>verifiable requirements</strong>: the engine temperature must stay
+      within <strong>80&ndash;120 &deg;C</strong> for every power class; the pump speed
+      must not exceed <strong>8,000 rpm</strong>; the impeller must fit the
+      <strong>installation space</strong> of the engine compartment; and, wherever
+      possible, the same components must be shared across the three performance
+      classes (purchasing constraint).
+    </p>
+    <p>
+      Each requirement was modelled as a SysML requirement block and traced
+      (<em>satisfy</em> / <em>verify</em>) to the functions and components that realize
+      and check it. The parameter space of the system model acts as the
+      <strong>single point of truth (SPOT)</strong>: every diagram and every workflow
+      reads the same, unambiguous parameter set, eliminating the redundancy of
+      document-centred development.
+    </p>
+
+    <h2>Functional &amp; Structural Architecture</h2>
+    <p>
+      The functional architecture was decomposed with
+      <strong>Block Definition Diagrams (BDD)</strong> and detailed with
+      <strong>Internal Block Diagrams (IBD)</strong>, distinguishing the three flow
+      types of a technical system: mechanical energy input, coolant volume flow and
+      control signals. This made explicit which subsystems have a functional influence
+      on the engine temperature &mdash; the property that ultimately drives the design.
+    </p>
+    <p>
+      Behaviour was modelled with <strong>Activity diagrams</strong> for the
+      calculation workflows (thermal balance of the circuit &rarr; required volume flow
+      &rarr; pump operating point) and <strong>Sequence diagrams</strong> for the
+      interaction between system elements and the automated verification workflow. On
+      the structural side, the solution context (vehicle, engine unit) and the solution
+      structure (cooling circuit, water pump, roller bearing) were modelled as
+      parameterized blocks connected across the SysML hierarchy.
+    </p>
+
+    <h2>Solution Space: Morphological Box</h2>
+    <p>
+      Alternative technologies for transferring mechanical power to the fluid were
+      explored systematically through a <strong>morphological box</strong>:
+      <strong>centrifugal and axial-flow</strong> concepts were benchmarked against
+      displacement-type alternatives (external gear pump, axial piston pump), each
+      characterized by its own flow law &mdash; displacement machines deliver
+      <em>V&#775; = n &middot; V<sub>0</sub></em>, while rotodynamic machines follow
+      their pressure&ndash;flow characteristic.
+    </p>
+    <p>
+      The candidates were assessed against the requirements &mdash; operating point,
+      speed limit, installation space and controllability across the three power
+      classes. The <strong>centrifugal pump with a parameterized impeller</strong>
+      (width as design variable) emerged as the preferred concept and became the
+      physical architecture verified by the workflows below.
+    </p>
+
+    <h2>Automated Verification Workflows</h2>
+    <p>
+      The model was made <strong>executable and parameterized</strong>: workflows
+      orchestrated through the Activity and Sequence diagrams run the verification
+      automatically for each power class. Starting from the engine's thermal load, the
+      workflow computes the required coolant volume flow, scales the pump operating
+      point across the classes, and checks &mdash; without manual intervention &mdash;
+      that the engine temperature stays within the [80, 120] &deg;C window, that the
+      impeller speed remains &le; 8,000 rpm, and that the impeller width keeps the pump
+      inside its installation space. Design adaptations act on both levers of the
+      benchmark: the <strong>software side</strong> (control resistance) and the
+      <strong>mechanics side</strong> (impeller width), matching the variant logic of
+      the reference use case.
+    </p>
+
+    <h2>Results</h2>
+    <ul>
+      <li>
+        Delivered an executable, parameterized SysML system model of the cooling
+        system, built entirely in CATIA Magic.
+      </li>
+      <li>
+        Automated verification of component suitability against thermodynamic
+        requirements and spatial/production constraints for all three engine power
+        classes (135 / 185 / 250 kW).
+      </li>
+      <li>
+        Full traceability from stakeholder scenarios to requirements, functions,
+        components and verification links &mdash; within one model, not across
+        disconnected documents.
+      </li>
+      <li>
+        Technology selection (centrifugal vs. axial-flow and displacement
+        alternatives) documented in-model through the morphological box, with the
+        trade-off logic reproducible.
+      </li>
+      <li>
+        Removed manual iteration from the design-selection loop: any parameter change
+        re-triggers the verification workflow and immediately flags violated
+        requirements, significantly streamlining the selection of the pump design.
+      </li>
+    </ul>
+
+    <h2>Skills</h2>
+    <div class="skills">
+      <span>CATIA Magic (Cameo Systems Modeler)</span>
+      <span>SysML (BDD &middot; IBD &middot; Activity &middot; Sequence)</span>
+      <span>Requirements engineering</span>
+      <span>Functional architecture</span>
+      <span>Morphological box</span>
+      <span>Parameterized modelling &middot; SPOT</span>
+      <span>Automated verification workflows</span>
+      <span>Variant management</span>
+      <span>Automotive thermal management</span>
+      <span>VDI 2206 process frame</span>
+    </div>
+
+    <!-- Gallery: un-comment this block and upload the screenshots to assets/
+         when you have exportable material from CATIA Magic (no sensitive data —
+         it is a teaching use case). Suggested file names:
+         mbse-bdd.png, mbse-ibd.png, mbse-activity.png, mbse-sequence.png,
+         mbse-morphological-box.png — add width/height once you have the files.
+
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <figure>
+        <img src="../assets/mbse-bdd.png"
+             alt="Block Definition Diagram of the cooling system — functional and structural decomposition (CATIA Magic)"
+             loading="lazy">
+        <figcaption>System decomposition &mdash; BDD (CATIA Magic)</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/mbse-ibd.png"
+             alt="Internal Block Diagram of the functional architecture — energy, material and signal flows (CATIA Magic)"
+             loading="lazy">
+        <figcaption>Functional architecture &mdash; IBD, energy / material / signal flows</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/mbse-activity.png"
+             alt="Activity diagram of the automated verification workflow — thermal balance, operating point and requirement checks"
+             loading="lazy">
+        <figcaption>Automated verification workflow &mdash; Activity diagram</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/mbse-sequence.png"
+             alt="Sequence diagram of the interaction between system elements and the verification workflow"
+             loading="lazy">
+        <figcaption>System&ndash;workflow interaction &mdash; Sequence diagram</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/mbse-morphological-box.png"
+             alt="Morphological box of the pump technology alternatives — centrifugal, axial-flow and displacement pumps"
+             loading="lazy">
+        <figcaption>Morphological box &mdash; pump technology selection</figcaption>
+      </figure>
+    </div>
+    -->
+
+    <div class="contact-strip">
+      Questions about the methodology? I am happy to discuss it in detail during an
+      interview &mdash;
+      <a href="mailto:maiullari.michele@icloud.com">maiullari.michele@icloud.com</a>
+    </div>
+
+  </main>
+
+  <footer>
+    &copy; 2026 Michele Maiullari &middot; maiullari.michele@icloud.com
+  </footer>
+
+</body>
+</html>
