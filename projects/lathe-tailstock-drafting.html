@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Complete 2D manufacturing documentation for a lathe rotating tailstock: four AutoCAD sheets (point, shaft, body, assembly) with ISO fits, GD&amp;T runout control, surface roughness specification and an SKF/UNI catalogue bill of materials.">
+  <title>2D Technical Drafting: Lathe Rotating Tailstock — Michele Maiullari</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="site-title" href="../index.html">Michele Maiullari</a>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <p class="breadcrumb"><a href="../index.html">&larr; Home</a></p>
+
+    <p class="context-line">Technical Representation of Machines &mdash; Politecnico di Bari &middot; June 2023</p>
+
+    <h1>2D Technical Drafting: Lathe Rotating Tailstock</h1>
+
+    <p class="subtitle">
+      Complete 2D manufacturing documentation for a <strong>rotating centre for a
+      lathe tailstock</strong>: three component sheets and one assembly sheet,
+      drafted in AutoCAD with ISO fits, GD&amp;T runout control and a
+      catalogue-based bill of materials &mdash; a documentation package ready to
+      be handed to a machine shop as-is.
+    </p>
+
+    <!-- Evidence link: create the repository / Drive folder with the 4 PDF + 4 DWG
+         files, paste the URL, then un-comment this block.
+    <p class="source-link">
+      <strong>Complete evidence:</strong>
+      <a href="https://github.com/michelemaiullari/tailstock-2d-drawings"
+         target="_blank" rel="noopener">github.com/michelemaiullari/tailstock-2d-drawings &middot; 4 sheets (PDF + DWG)</a>
+    </p>
+    -->
+
+    <h2>Overview</h2>
+    <p>
+      A rotating tailstock centre looks simple and is anything but: a 60&deg;
+      working point spinning on bearings inside a Morse-taper body, where every
+      fit, runout and roughness value decides whether the point runs true or
+      wobbles the workpiece. The assignment was to produce the complete
+      manufacturing documentation for such a centre, designed to support medium
+      loads on a lathe: detailed 2D drawings of <strong>every individual
+      component</strong> plus the <strong>final assembly</strong>, dimensioned and
+      toleranced to workshop standards.
+    </p>
+    <p>
+      The deliverable is a four-sheet package in AutoCAD (DWG, with plotted PDF
+      copies): the hardened point, the shaft, the body, and the fully sectioned
+      assembly with a twelve-item bill of materials built on SKF and UNI catalogue
+      components.
+    </p>
+
+    <h2>The Assembly</h2>
+    <p>
+      The rotating centre mounts in the tailstock through a <strong>Morse taper
+      cone (CNE4/R)</strong> and carries the load chain that makes the point
+      rotate with the workpiece: a double-row deep-groove ball bearing for the
+      radial reaction, a thrust ball bearing for the axial reaction of the 60&deg;
+      point, and a drawn-cup needle roller shell guiding the nose. A V-Ring lip
+      seal protects the front bearing chamber, an external retaining ring and a
+      positioning washer locate the rotating group axially, and a class 45H grub
+      screw locks the adjustment.
+    </p>
+    <ul>
+      <li>Standardised lathe centre point &mdash; <strong>UNI 20514</strong></li>
+      <li>Cover with drive spigot, loose coupling &Oslash;30 <strong>j7</strong></li>
+      <li>V-Ring lip seal <strong>30&times;40&times;7</strong></li>
+      <li>Double-row deep-groove ball bearing &mdash; <strong>SKF 4205-1TN9</strong></li>
+      <li>Thrust ball bearing &mdash; <strong>SKF 51204</strong></li>
+      <li>Drawn-cup needle roller shell, open ends &mdash; <strong>SKF HK-1412</strong></li>
+      <li>Morse taper cone &mdash; <strong>CNE4/R</strong></li>
+      <li>Grub screw with cylindrical end, class <strong>45H</strong>, hex socket s = 8 mm</li>
+      <li>External retaining ring (Seeger) &mdash; <strong>A14</strong></li>
+      <li>Shaft</li>
+      <li>Positioning washer &mdash; 0.5 mm thick, &Oslash;25 ID &times; &Oslash;40 OD</li>
+      <li>Ring</li>
+    </ul>
+    <p>
+      Selecting catalogue bearings and standard seals instead of custom parts is a
+      deliberate documentation decision: every load-carrying component is
+      replaceable, and the drawing only has to guarantee the interfaces &mdash;
+      which is exactly what the fits and tolerances below do.
+    </p>
+
+    <h2>Component Drawings</h2>
+    <p>
+      <strong>The point (sheet 1, 1:1).</strong> The UNI 20514 centre point with
+      its 60&deg; working cone, whose flanks are dimensioned as percentage-slope
+      cones, filleted R2.5 / R1.5 at the transitions and chamfered 1&times;45&deg;
+      on the &Oslash;15 shank. The rear end view documents the flatted &Oslash;26
+      drive interface with the central &Oslash;10 bore.
+    </p>
+    <p>
+      <strong>The shaft (sheet 2, 2:1).</strong> The most tolerance-dense drawing
+      of the set: stepped seats on &Oslash;14 <strong>k7</strong>, &Oslash;20
+      <strong>k8</strong> and &Oslash;25 <strong>k8</strong> for the press-fitted
+      rotating group, an &Oslash;30 <strong>H9</strong> bore, the &Oslash;13.4
+      groove for the Seeger A14 retaining ring, and the 4.587% cone. Runout is
+      controlled at <strong>0.003&ndash;0.005 mm</strong> against a single datum on
+      the functional seats, with <strong>Ra 0.8</strong> on the bearing-relevant
+      surfaces and Ra 1.6 elsewhere. A technical note on the sheet fully defines
+      the tail hole (&Oslash;2.5 &times; 5 mm deep with a 90&deg;, 1 mm countersink)
+      so nothing is left to the machinist's interpretation.
+    </p>
+    <p>
+      <strong>The body (sheet 3, 1:1).</strong> The housing that carries everything:
+      flange diameters up to &Oslash;70, an <strong>M16 thread</strong>, and the
+      Morse No. 4 socket dimensioned at its standard large-end diameter
+      (<strong>&Oslash;31.267</strong>). The full section Y&ndash;Y carries the bore
+      tolerance classes for every seat, and the groove&ndash;undercut geometry
+      is blown up in <strong>detail X at 5:1</strong> (R0.3, 0.45&times;45&deg;
+      chamfer). Non-functional dimensions are quoted as reference values in
+      brackets, e.g. (48).
+    </p>
+
+    <h2>GD&amp;T and Fit Philosophy</h2>
+    <ul>
+      <li>
+        <strong>Rotating seats in press fit</strong> &mdash; k-class fits (k7, k8)
+        on the shaft seats carrying the bearings and the point group, so the inner
+        rotating parts cannot creep under load.
+      </li>
+      <li>
+        <strong>Stationary and clearance interfaces in H-class</strong> &mdash;
+        H9 / H11 / H13 bores where parts slide or simply locate, with the loose
+        coupling on the cover spigot called out as &Oslash;30 j7.
+      </li>
+      <li>
+        <strong>Runout before size</strong> &mdash; 0.003&ndash;0.005 mm runout
+        tolerances to a single datum on the rotating seats, because on a live
+        centre the geometric truth of the shaft matters more than any single
+        diameter.
+      </li>
+      <li>
+        <strong>Roughness matched to function</strong> &mdash; Ra 0.8 on bearing
+        and running surfaces, Ra 1.6 on the remaining machined faces, nothing
+        finer than needed: tolerance costs money.
+      </li>
+    </ul>
+
+    <h2>Results</h2>
+    <ul>
+      <li>
+        Delivered a four-sheet, workshop-ready documentation package (three
+        components + assembly) in DWG with plotted PDF copies, on the standard
+        Politecnico di Bari title block.
+      </li>
+      <li>
+        Documented a twelve-item bill of materials on standard SKF and UNI
+        components, with balloon references cross-checked against the sectioned
+        assembly view.
+      </li>
+      <li>
+        Applied a complete, internally consistent tolerance strategy: ISO fits on
+        every mating surface, runout control to a single datum, and surface
+        roughness graded by function.
+      </li>
+      <li>
+        Closed the documentation loop over two working weeks &mdash; component
+        sheets (03/06), body (16/06) and verified assembly (18/06) &mdash; with
+        each sheet dated and versioned like real production drawings.
+      </li>
+    </ul>
+
+    <h2>Skills</h2>
+    <div class="skills">
+      <span>Advanced 2D drafting</span>
+      <span>AutoCAD (DWG)</span>
+      <span>GD&amp;T (ISO)</span>
+      <span>ISO fits (k7 &middot; k8 &middot; j7 &middot; H9&ndash;H13)</span>
+      <span>Runout tolerancing to datum</span>
+      <span>Surface roughness (Ra)</span>
+      <span>Sections &amp; detail views (5:1)</span>
+      <span>Assembly BOM &amp; balloons</span>
+      <span>SKF / UNI catalogue integration</span>
+      <span>Manufacturing documentation</span>
+    </div>
+
+    <!-- Gallery: un-comment this block after uploading the 4 sheet PNGs to assets/
+         (rendered at 200 dpi from the plotted PDFs; sizes already set).
+         Optional: regenerate the PNGs from the DWG for maximum fidelity.
+
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <figure style="grid-column: 1 / -1;">
+        <img src="../assets/tailstock-assieme.png"
+             alt="Sectioned assembly drawing of the rotating tailstock with balloon references and twelve-item bill of materials"
+             width="3309" height="2339" loading="lazy">
+        <figcaption>Assembly &mdash; sectioned view, BOM (12 items) &middot; sheet 4</figcaption>
+      </figure>
+      <figure style="grid-column: 1 / -1;">
+        <img src="../assets/tailstock-albero.png"
+             alt="Shaft drawing at 2:1 with ISO fits, runout tolerances to datum A and roughness callouts"
+             width="3309" height="2339" loading="lazy">
+        <figcaption>Shaft &mdash; fits, runout 0.003&ndash;0.005 mm to datum A &middot; sheet 2</figcaption>
+      </figure>
+      <figure style="grid-column: 1 / -1;">
+        <img src="../assets/tailstock-corpo.png"
+             alt="Body drawing with Morse 4 socket, M16 thread, section Y-Y and detail X at 5:1"
+             width="3309" height="2339" loading="lazy">
+        <figcaption>Body &mdash; section Y&ndash;Y, detail X (5:1), Morse N.4 socket &middot; sheet 3</figcaption>
+      </figure>
+      <figure style="grid-column: 1 / -1;">
+        <img src="../assets/tailstock-punta.png"
+             alt="Centre point drawing with percentage-slope cones, flatted drive interface and end view"
+             width="1653" height="2339" loading="lazy">
+        <figcaption>Centre point (UNI 20514) &mdash; slope-dimensioned cones &middot; sheet 1</figcaption>
+      </figure>
+    </div>
+    -->
+
+    <div class="contact-strip">
+      Questions about the methodology? I am happy to discuss it in detail during an
+      interview &mdash;
+      <a href="mailto:maiullari.michele@icloud.com">maiullari.michele@icloud.com</a>
+    </div>
+
+  </main>
+
+  <footer>
+    &copy; 2026 Michele Maiullari &middot; maiullari.michele@icloud.com
+  </footer>
+
+</body>
+</html>
