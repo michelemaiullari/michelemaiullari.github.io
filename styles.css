@@ -127,7 +127,7 @@ li { margin-bottom: 8px; }
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr));
   gap: 1.5rem;
   margin: 2rem 0;
 }
@@ -223,3 +223,45 @@ footer {
   font-size: 0.9rem;
   color: var(--muted);
 }
+
+/* ---------- Nav: chip CV ---------- */
+
+.site-header nav a.nav-cv {
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  padding: 4px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.site-header nav a.nav-cv:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ---------- Footer link ---------- */
+
+footer a { color: var(--accent); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+/* ---------- About: foto profilo ---------- */
+
+.about-head {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.portrait {
+  width: 200px;
+  height: 250px;
+  object-fit: cover;
+  object-position: center 20%;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--bg-soft);
+}
+
+.about-intro { flex: 1 1 320px; }
