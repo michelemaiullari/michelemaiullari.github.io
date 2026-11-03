@@ -1,224 +1,355 @@
-<!doctype html>
-<html>
-  <head>
-    <title id="reader-title"></title>
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src chrome:; img-src data: *; media-src *; object-src 'none'"
-    />
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
-    <meta name="viewport" content="width=device-width; user-scalable=0" />
-    <link
-      rel="stylesheet"
-      href="chrome://global/skin/design-system/tokens-brand.css"
-    />
-    <link
-      rel="stylesheet"
-      href="chrome://global/skin/aboutReader.css"
-      type="text/css"
-    />
-    <link rel="localization" href="toolkit/about/aboutReader.ftl" />
-    <link rel="localization" href="toolkit/branding/brandings.ftl" />
-    <script
-      type="module"
-      src="chrome://global/content/reader/moz-slider.mjs"
-    ></script>
-    <script
-      type="module"
-      src="chrome://global/content/elements/moz-input-color.mjs"
-    ></script>
-    <script
-      type="module"
-      src="chrome://global/content/elements/named-deck.js"
-    ></script>
-  </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tech startup project: inverse generative-AI model coupled with automated high-fidelity CFD validation — from panel methods to compressible shock-capturing solvers, with a physics-informed fine-tuning loop for wings and control surfaces.">
+  <title>AI-Driven Aerodynamic Design &amp; CFD Validation Platform — Michele Maiullari</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
 
-  <body>
-    <div class="top-anchor"></div>
+  <header class="site-header">
+    <a class="site-title" href="../index.html">Michele Maiullari</a>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+    </nav>
+  </header>
 
-    <div id="toolbar" class="toolbar-container">
-      <div class="toolbar reader-toolbar">
-        <div class="reader-controls">
-          <button
-            class="close-button toolbar-button"
-            aria-labelledby="toolbar-close"
-            data-telemetry-id="reader-close"
-          >
-            <span
-              class="hover-label"
-              id="toolbar-close"
-              data-l10n-id="about-reader-toolbar-close"
-            ></span>
-          </button>
-          <ul class="dropdown text-layout-dropdown">
-            <li>
-              <button
-                class="dropdown-toggle toolbar-button text-layout-button"
-                aria-labelledby="toolbar-text-layout-controls"
-                data-telemetry-id="reader-text-layout-controls"
-              >
-                <span
-                  class="hover-label"
-                  id="toolbar-text-layout-controls"
-                  data-l10n-id="about-reader-toolbar-text-layout-controls"
-                ></span>
-              </button>
-            </li>
-            <li class="dropdown-popup" id="text-layout-controls" tabindex="-1">
-              <h2
-                data-l10n-id="about-reader-text-header"
-                id="about-reader-text-header"
-              ></h2>
-              <div id="text-size-controls">
-                <span
-                  data-l10n-id="about-reader-text-size-label"
-                  id="about-reader-text-size-label"
-                ></span>
-                <div class="text-size-buttons buttonrow">
-                  <button
-                    class="text-size-minus-button"
-                    data-l10n-id="about-reader-toolbar-minus"
-                    data-telemetry-id="text-size-minus-button"
-                  ></button>
-                  <button
-                    class="text-size-plus-button"
-                    data-l10n-id="about-reader-toolbar-plus"
-                    data-telemetry-id="text-size-plus-button"
-                  ></button>
-                </div>
-              </div>
-              <div id="font-controls">
-                <div id="font-type-dropdown" class="dropdown-selector">
-                  <label
-                    for="font-type-selector"
-                    data-l10n-id="about-reader-font-type-selector-label"
-                  ></label>
-                  <select
-                    name="font-type-selector"
-                    id="font-type-selector"
-                    data-telemetry-id="font-type-selector"
-                  ></select>
-                </div>
-                <div id="font-weight-dropdown" class="dropdown-selector">
-                  <label
-                    for="font-weight-selector"
-                    data-l10n-id="about-reader-font-weight-selector-label"
-                  ></label>
-                  <select
-                    name="font-weight-selector"
-                    id="font-weight-selector"
-                    data-telemetry-id="font-weight-selector"
-                  ></select>
-                </div>
-              </div>
-              <hr />
-              <h2
-                data-l10n-id="about-reader-layout-header"
-                id="about-reader-layout-header"
-              ></h2>
-              <div id="content-width-slider" class="slider-container"></div>
-              <div id="line-spacing-slider" class="slider-container"></div>
-              <hr />
-              <details id="about-reader-advanced-layout">
-                <summary class="accordion-header">
-                  <h2
-                    data-l10n-id="about-reader-advanced-layout-header"
-                    id="about-reader-advanced-layout-header"
-                  ></h2>
-                  <span class="chevron-icon"></span>
-                </summary>
-                <div
-                  id="character-spacing-slider"
-                  class="slider-container"
-                ></div>
-                <div id="word-spacing-slider" class="slider-container"></div>
-                <label
-                  for="text-alignment-buttons"
-                  data-l10n-id="about-reader-text-alignment-label"
-                ></label>
-                <div
-                  class="text-alignment-buttons radiorow"
-                  id="text-alignment-buttons"
-                ></div>
-                <button
-                  class="text-layout-reset-button reset-button"
-                  data-l10n-id="about-reader-reset-button"
-                ></button>
-              </details>
-            </li>
-          </ul>
-          <ul class="dropdown colors-dropdown">
-            <li>
-              <button
-                class="dropdown-toggle toolbar-button colors-button"
-                aria-labelledby="toolbar-color-controls"
-                data-telemetry-id="reader-color-controls"
-              >
-                <span
-                  class="hover-label"
-                  id="toolbar-color-controls"
-                  data-l10n-id="about-reader-toolbar-theme-controls"
-                ></span>
-              </button>
-            </li>
-            <li class="dropdown-popup" id="color-controls">
-              <h2
-                data-l10n-id="about-reader-colors-menu-header"
-                id="about-reader-colors-menu-header"
-              ></h2>
-              <button-group aria-labelledby="about-reader-colors-menu-header">
-                <button
-                  is="named-deck-button"
-                  deck="tabs-deck"
-                  name="fxtheme"
-                  data-l10n-id="about-reader-fxtheme-tab"
-                  data-telemetry-id="colors-menu-default-tab"
-                ></button>
-                <button
-                  is="named-deck-button"
-                  deck="tabs-deck"
-                  name="customtheme"
-                  data-l10n-id="about-reader-customtheme-tab"
-                  data-telemetry-id="colors-menu-custom-tab"
-                ></button>
-              </button-group>
-              <named-deck id="tabs-deck" is-tabbed>
-                <div name="fxtheme" class="color-scheme-buttons radiorow"></div>
-                <div name="customtheme">
-                  <ul class="custom-colors-selection"></ul>
-                  <button
-                    class="custom-colors-reset-button reset-button"
-                    data-l10n-id="about-reader-reset-button"
-                  ></button>
-                </div>
-              </named-deck>
-            </li>
-          </ul>
-        </div>
-      </div>
+  <main>
+
+    <p class="breadcrumb"><a href="../index.html">&larr; Home</a></p>
+
+    <p class="context-line">Tech Startup Project &mdash; GenAir &middot; Role: Aerospace / CFD Engineer</p>
+
+    <h1>AI-Driven Aerodynamic Design &amp; CFD Validation Platform</h1>
+
+    <p class="subtitle">
+      A <strong>generative-AI platform for aerodynamic design</strong>: an inverse neural
+      model proposes airfoil and control-surface geometries from target aerodynamic
+      requirements, automated high-fidelity CFD pipelines validate them against those
+      targets, and an adjoint-based fine-tuning architecture is designed to feed the
+      flow solver's sensitivities directly back into the network &mdash; replacing
+      manual CFD iteration with a closed IA&ndash;CFD loop for wings and control
+      surfaces.
+    </p>
+
+    <div class="nda-banner">
+      <strong>Confidentiality notice.</strong>
+      This project was developed in a tech-startup context involving external
+      aerospace stakeholders. The identity of the industrial partner, the full
+      technical dossier and quantitative results are subject to confidentiality
+      and cannot be published. The architecture, methodology and roadmap below are
+      described at a level of detail compatible with those obligations.
     </div>
 
-    <div class="container">
-      <div class="header reader-header">
-        <a class="domain reader-domain"></a>
-        <div class="domain-border"></div>
-        <h1 class="reader-title"></h1>
-        <div class="credits reader-credits"></div>
-        <div class="meta-data">
-          <div class="reader-estimated-time"></div>
-        </div>
-      </div>
+    <!-- Evidence link: upload the technical dossier / demo to Drive (STRIP the client
+         name from headers and footers first), paste the URL, then un-comment.
+    <p class="source-link">
+      <strong>Complete evidence:</strong>
+      <a href="GOOGLE_DRIVE_URL" target="_blank" rel="noopener">Technical dossier &amp; platform demo &middot; Google Drive</a>
+    </p>
+    -->
 
-      <hr />
+    <h2>Overview</h2>
+    <p>
+      The aerodynamic design of wings and control surfaces still runs on a
+      manually-driven loop: every geometry variant means a new domain, a new mesh,
+      a new case setup and a new convergence watch &mdash; days of engineering time
+      per iteration, and a hard ceiling on how many candidates a team can afford to
+      explore. GenAir, the tech startup where I worked as Aerospace/CFD engineer,
+      was built on a different workflow: let a generative model propose geometries
+      already consistent with the target aerodynamic coefficients, and concentrate
+      CFD where it creates value &mdash; verification, validation and physical
+      refinement.
+    </p>
+    <p>
+      I owned the CFD and physical-modelling side of the platform end-to-end:
+      solver configuration, automated validation pipelines, the aerodynamic
+      evaluation of everything the model generates, and the design of the
+      physics-informed fine-tuning strategy. The work brought me into direct
+      technical discussions with leading aerospace players &mdash; Embraer among
+      them &mdash; and with the DTA aerospace technology district, and I authored
+      the complete technical roadmap for the platform's industrial evolution,
+      drafted for a leading international aerospace group.
+    </p>
 
-      <div class="content">
-        <div class="moz-reader-content"></div>
-      </div>
+    <h2>Starting Point: Feasibility Proven, Physics Missing</h2>
+    <p>
+      The starting prototype had already demonstrated the core feasibility: a
+      supervised inverse model learning the map from aerodynamic parameters and
+      polar data to a 2D airfoil, with a panel method as a fast validator. Solid
+      as a demonstrator, it carried three structural limits for any industrial
+      domain:
+    </p>
+    <ul>
+      <li><strong>A physically blind validator.</strong> Panel methods assume incompressible, inviscid flow: no compressibility, no shock waves, no viscous drag &mdash; acceptable for subsonic screening, unacceptable where the real operating regime lives.</li>
+      <li><strong>A subsonic, strictly 2D world.</strong> Training data and generated geometry were both confined to 2D sections at low Mach numbers.</li>
+      <li><strong>An open loop.</strong> Nothing fed what validation learned back into the model: generation and physics never talked to each other.</li>
+    </ul>
 
-      <div>
-        <div class="reader-message"></div>
-      </div>
-      <div aria-owns="toolbar"></div>
+    <h2>Platform Architecture</h2>
+    <p>
+      I structured the platform as eight distinct layers, each replaceable without
+      touching the others &mdash; the precondition for evolving from prototype to
+      industrial tool:
+    </p>
+    <ul>
+      <li><strong>Data layer</strong> &mdash; airfoil geometries, polar data, operating conditions and CFD results, normalised for training, benchmarking and retraining.</li>
+      <li><strong>Geometric representation</strong> &mdash; continuous parametrisations (PARSEC, CST, B&eacute;zier/B-spline, FFD) chosen for smoothness, constraint control and mesh compatibility.</li>
+      <li><strong>Inverse neural model</strong> &mdash; the core: aerodynamic requirements &rarr; candidate geometry, with alternative variants and a confidence score.</li>
+      <li><strong>CFD validation layer</strong> &mdash; automated case generation, meshing, solve, coefficient extraction and convergence tracking.</li>
+      <li><strong>Physical fine-tuning layer</strong> &mdash; gradient-free baseline with an adjoint-based evolution path.</li>
+      <li><strong>3D geometry generation</strong> &mdash; section stacking with twist, sweep and taper, evolving towards direct 3D generation.</li>
+      <li><strong>Frontend / API layer</strong> &mdash; a web application orchestrating generation, parametric editing, exports and CFD runs.</li>
+      <li><strong>Experiment tracking</strong> &mdash; every run registered with its model, dataset, solver and mesh configuration: reproducible, auditable output.</li>
+    </ul>
+
+    <figure style="margin: 2rem 0;">
+      <svg viewBox="0 0 960 228" width="100%" role="img"
+           aria-label="IA-CFD loop: requirements, inverse AI model, geometric checks, automated CFD and validated output, with physical fine-tuning return paths"
+           style="font-family: inherit; display: block;">
+        <defs>
+          <marker id="arr-flow" viewBox="0 0 10 10" refX="9" refY="5"
+                  markerWidth="7" markerHeight="7" orient="auto">
+            <path d="M0,0 L10,5 L0,10 z" fill="#0b4f8a"/>
+          </marker>
+          <marker id="arr-teal" viewBox="0 0 10 10" refX="9" refY="5"
+                  markerWidth="7" markerHeight="7" orient="auto">
+            <path d="M0,0 L10,5 L0,10 z" fill="#0e7c86"/>
+          </marker>
+          <marker id="arr-navy" viewBox="0 0 10 10" refX="9" refY="5"
+                  markerWidth="7" markerHeight="7" orient="auto">
+            <path d="M0,0 L10,5 L0,10 z" fill="#0b4f8a"/>
+          </marker>
+        </defs>
+
+        <!-- boxes -->
+        <rect x="12"  y="56" width="164" height="72" rx="10" fill="#fbfcfe" stroke="#d9dfe7" stroke-width="1.5"/>
+        <rect x="206" y="56" width="164" height="72" rx="10" fill="#eaf2f9" stroke="#0b4f8a" stroke-width="1.5"/>
+        <rect x="400" y="56" width="164" height="72" rx="10" fill="#fbfcfe" stroke="#d9dfe7" stroke-width="1.5"/>
+        <rect x="594" y="56" width="164" height="72" rx="10" fill="#fbfcfe" stroke="#d9dfe7" stroke-width="1.5"/>
+        <rect x="788" y="56" width="164" height="72" rx="10" fill="#fbfcfe" stroke="#d9dfe7" stroke-width="1.5"/>
+
+        <!-- flow arrows -->
+        <line x1="176" y1="92" x2="200" y2="92" stroke="#0b4f8a" stroke-width="1.5" marker-end="url(#arr-flow)"/>
+        <line x1="370" y1="92" x2="394" y2="92" stroke="#0b4f8a" stroke-width="1.5" marker-end="url(#arr-flow)"/>
+        <line x1="564" y1="92" x2="588" y2="92" stroke="#0b4f8a" stroke-width="1.5" marker-end="url(#arr-flow)"/>
+        <line x1="758" y1="92" x2="782" y2="92" stroke="#0b4f8a" stroke-width="1.5" marker-end="url(#arr-flow)"/>
+
+        <!-- box titles -->
+        <text x="94"  y="97" text-anchor="middle" font-size="14" font-weight="700" fill="#0b4f8a">Requirements</text>
+        <text x="288" y="97" text-anchor="middle" font-size="14" font-weight="700" fill="#0b4f8a">Inverse AI model</text>
+        <text x="482" y="97" text-anchor="middle" font-size="14" font-weight="700" fill="#0b4f8a">Geometric checks</text>
+        <text x="676" y="97" text-anchor="middle" font-size="14" font-weight="700" fill="#0b4f8a">Automated CFD</text>
+        <text x="870" y="97" text-anchor="middle" font-size="14" font-weight="700" fill="#0b4f8a">Validated output</text>
+
+        <!-- return loop: implemented -->
+        <path d="M 676 128 V 170 H 288 V 134" fill="none" stroke="#0e7c86"
+              stroke-width="1.6" marker-end="url(#arr-teal)"/>
+        <text x="482" y="163" text-anchor="middle" font-size="12.5" fill="#0e7c86">
+          fine-tuning (implemented)</text>
+
+        <!-- return loop: planned -->
+        <path d="M 870 128 V 214 H 250 V 134" fill="none" stroke="#0b4f8a"
+              stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#arr-navy)"/>
+        <text x="560" y="207" text-anchor="middle" font-size="12.5" fill="#0b4f8a">
+          adjoint fine-tuning (planned)</text>
+      </svg>
+      <figcaption style="text-align: center; font-size: 0.9rem; color: #5a6472; margin-top: 8px;">
+        The IA&ndash;CFD loop. Solid path: implemented in the proof of concept.
+        Dashed path: adjoint-based fine-tuning, designed for the evolutionary phase.
+      </figcaption>
+    </figure>
+
+    <h2>Solver Chain: From Incompressible Baseline to Shock-Capturing</h2>
+    <p>
+      I configured the validation chain on two physical tiers. The
+      <strong>incompressible solver</strong> covers the fast tier: screening
+      candidates and supporting the training-data pipeline where compressibility
+      effects are negligible. The <strong>compressible tier</strong> is where
+      physical fidelity becomes non-negotiable: variable density, pressure&ndash;density&ndash;temperature
+      coupling and the energy equation, conservative formulations of the governing
+      equations, and shock-capturing numerical schemes with Riemann-solver-based
+      fluxes to handle shock waves and the steep pressure gradients of transonic
+      and supersonic regimes, with RANS turbulence models consistent with the
+      operating regime and the wall conditions.
+    </p>
+    <p>
+      The panel method was deliberately demoted, not deleted: it remains a
+      preliminary screening validator for quick 2D subsonic tests, never the final
+      word on any geometry. That division of labour &mdash; cheap screening,
+      expensive verification &mdash; is what keeps the loop fast without lying
+      about the physics. The shock-capturing fundamentals behind this tier are the
+      same I implemented from scratch in Fortran in my
+      <a href="cfd-shock-solver.html">shock-wave CFD solver project</a>.
+    </p>
+
+    <h2>Automated CFD Pipelines</h2>
+    <p>
+      I developed automated CFD pipelines that take any geometry the model
+      generates through the entire chain unattended: computational domain, mesh
+      generation, boundary conditions, solve, extraction of lift, drag and moment
+      coefficients and of pressure distributions, and convergence checks. Every
+      outcome is registered into the dataset &mdash; including non-convergent or
+      physically implausible geometries, logged as such. Treating failures as data
+      is what makes the IA&ndash;CFD pipeline more robust with every iteration,
+      instead of silently biasing the training set towards the cases that happen
+      to converge.
+    </p>
+
+    <h2>Physics-Informed Fine-Tuning: Black-Box Now, Adjoint Next</h2>
+    <p>
+      The layer that turns the platform from a generator into a learning system is
+      physical fine-tuning &mdash; closing the loop between what the flow solver
+      measures and what the network generates. I implemented it at two levels and
+      architected the third:
+    </p>
+    <ul>
+      <li><strong>Supervised pre-training.</strong> The model learns from dataset pairs: aerodynamic parameters &rarr; reference geometry.</li>
+      <li><strong>Black-box fine-tuning &mdash; implemented.</strong> Generated geometries are scored by a fast aerodynamic evaluator against an aerodynamic loss with geometric and smoothness penalties; a gradient-free estimator updates the model without backpropagating through the solver. Computationally cheap, and the working baseline.</li>
+      <li><strong>Adjoint-based fine-tuning &mdash; architecture defined by me; end-to-end implementation scheduled.</strong> The CFD solver solves the discrete adjoint problem and returns the sensitivities of the objective with respect to the geometry; the network computes how the geometry depends on its own weights; the two gradients compose into a single update.</li>
+    </ul>
+    <p>
+      In formula terms: the solver supplies
+      <strong>&part;L/&part;geometry</strong>, the network propagates
+      <strong>&part;geometry/&part;weights</strong>, and the weight update follows
+      the chain product of the two &mdash; a true physical gradient reaching the
+      network's weights, with no surrogate model standing between the flow solver
+      and the training loop. This is the transition I designed to move the
+      platform from gradient-free tuning to physics-informed optimisation.
+    </p>
+
+    <h2>Extending to 3D Control Surfaces</h2>
+    <p>
+      Control surfaces are three-dimensional objects, so the architecture extends
+      generation from 2D sections to 3D surfaces in two stages. Stage one is
+      geometric: the inverse model keeps generating 2D sections, and a dedicated
+      module stacks root and tip sections along the span &mdash; first along a
+      straight stacking axis, then along a curved guide &mdash; interpolating
+      intermediate sections and managing twist, sweep, taper and dihedral,
+      smoothing the surface and exporting it mesh-ready for volume-mesh generation
+      and finite-volume CFD 3D. Stage two is evolutionary: direct generation of 3D
+      parametric geometries by the model itself, trained and refined on CFD 3D
+      results. At the end of my contribution the proof-of-concept architecture was
+      structurally capable of predicting and validating 3D control surfaces, while
+      direct 3D generation remains a roadmap objective, tracked as such below.
+    </p>
+
+    <h2>Status and Roadmap</h2>
+    <p>
+      I structured the industrial evolution as a phased roadmap. Status at the end
+      of my contribution:
+    </p>
+    <ul>
+      <li>Supervised inverse model (parameters &rarr; 2D airfoil) &mdash; <strong>implemented</strong></li>
+      <li>Panel-method preliminary validator (screening only) &mdash; <strong>implemented</strong></li>
+      <li>Black-box physical fine-tuning &mdash; <strong>implemented</strong></li>
+      <li>Automated 2D CFD pipeline with convergence handling &mdash; <strong>implemented</strong></li>
+      <li>Incompressible + compressible solver chain (shock-capturing, RANS) &mdash; <strong>configured, integrated in the validation pipeline</strong></li>
+      <li>Adjoint-based fine-tuning (CFD sensitivities &rarr; network weights) &mdash; <strong>architecture defined; end-to-end implementation scheduled</strong></li>
+      <li>3D generation pipeline (section stacking &rarr; direct generation) &mdash; <strong>architecture defined, proof-of-concept level</strong></li>
+      <li>Client-domain dataset and supersonic retraining &mdash; <strong>planned</strong></li>
+      <li>Wind-tunnel experimental validation &mdash; <strong>outside the initial scope</strong></li>
+    </ul>
+    <p>
+      Keeping implemented and planned work visibly separate is deliberate: the
+      platform's value proposition stands on what already runs, and the roadmap
+      shows where it goes next.
+    </p>
+
+    <h2>Results</h2>
+    <ul>
+      <li>
+        Delivered a working proof-of-concept IA&ndash;CFD architecture: from target
+        aerodynamic coefficients to a generated airfoil, through automated CFD
+        validation &mdash; demonstrated to industry leaders.
+      </li>
+      <li>
+        Replaced simplified panel-method validation with physically robust CFD
+        pipelines capable of capturing shock waves and high pressure gradients
+        &mdash; the precondition for training data consistent with the real
+        operating regime.
+      </li>
+      <li>
+        Designed the transition from gradient-free black-box fine-tuning to
+        adjoint-based physical fine-tuning, linking CFD sensitivities directly to
+        the neural network's weights.
+      </li>
+      <li>
+        Authored the complete technical roadmap for the platform's industrial
+        evolution, drafted for a leading international aerospace group, with
+        direct exposure to Embraer and the DTA aerospace technology district.
+      </li>
+      <li>
+        Substantially compressed the design cycle: engineering time shifts from
+        running manual CFD iterations to judging validated candidate geometries.
+      </li>
+    </ul>
+
+    <h2>Skills</h2>
+    <div class="skills">
+      <span>Incompressible &amp; compressible CFD</span>
+      <span>Shock-capturing schemes</span>
+      <span>RANS turbulence models</span>
+      <span>Automated CFD pipelines</span>
+      <span>Adjoint-based optimization</span>
+      <span>Gradient-free optimization</span>
+      <span>Inverse neural networks &middot; PyTorch</span>
+      <span>Panel methods</span>
+      <span>Transonic&ndash;supersonic aerodynamics</span>
+      <span>3D geometry generation (twist &middot; sweep &middot; taper)</span>
+      <span>Experiment tracking</span>
+      <span>Technical roadmap &amp; proposal writing</span>
     </div>
-  </body>
+
+    <!-- Gallery: un-comment after adding real screenshots to assets/
+         (CFD contour plots, mesh views, training curves). CRITICAL: no client
+         name, logo or branding anywhere in the images; the deck as-is is NOT
+         usable because every page header/footer carries the client name.
+         Adjust width/height to the real files before un-commenting.
+
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <figure style="grid-column: 1 / -1;">
+        <img src="../assets/genair-architecture.png"
+             alt="Platform architecture overview: data, inverse model, CFD validation and fine-tuning layers"
+             width="1200" height="675" loading="lazy">
+        <figcaption>Platform architecture &mdash; layer overview</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/cfd-mesh.png"
+             alt="Computational mesh around a generated control-surface section"
+             width="1200" height="800" loading="lazy">
+        <figcaption>Automated meshing on a generated section</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/cfd-cp-contour.png"
+             alt="Pressure coefficient field on a compressible validation case"
+             width="1200" height="800" loading="lazy">
+        <figcaption>Cp field &mdash; compressible validation case</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/training-loop.png"
+             alt="Error against target aerodynamic coefficients across fine-tuning iterations"
+             width="1200" height="800" loading="lazy">
+        <figcaption>Fine-tuning loop &mdash; error vs target coefficients</figcaption>
+      </figure>
+    </div>
+    -->
+
+    <div class="contact-strip">
+      Questions about the methodology? I am happy to discuss it in detail during an
+      interview &mdash;
+      <a href="mailto:maiullari.michele@icloud.com">maiullari.michele@icloud.com</a>
+    </div>
+
+  </main>
+
+  <footer>
+    &copy; 2026 Michele Maiullari &middot; maiullari.michele@icloud.com
+  </footer>
+
+</body>
 </html>
