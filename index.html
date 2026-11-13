@@ -18,11 +18,19 @@
 
   <header class="site-header">
     <a class="site-title" href="index.html">Michele Maiullari</a>
-        <nav>
+    <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a>
+      <div class="nav-contact">
+        <button class="nav-contact-toggle" type="button" aria-expanded="false" aria-controls="contact-menu">
+          Contact
+        </button>
+        <div class="nav-contact-menu" id="contact-menu">
+          <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a>
+          <a href="mailto:maiullari.michele@icloud.com">Contact me</a>
+        </div>
+      </div>
     </nav>
   </header>
 
@@ -44,7 +52,7 @@
       International exposure across Germany, Montenegro and Israel,
       and project work with leading industrial players (Leonardo, SKF).
     </p>
-  
+
 
     <h2>Featured projects</h2>
     <div class="cards">
@@ -59,14 +67,14 @@
         <h3>NVH Analysis of EV Ball Bearings</h3>
         <p>MVH vibration testing, FFT and envelope spectral analysis on EV ball bearings, with defect correlation back to production process root causes.</p>
       </a>
-      
+
       <a class="card" href="projects/ai-cfd-platform.html">
         <span class="card-tag">Tech startup project</span>
         <h3>AI-Driven Aerodynamic Design &amp; CFD Validation Platform</h3>
         <p>High-fidelity CFD pipelines and adjoint-based optimization to train and validate AI-generated control surfaces.</p>
       </a>
 
-      
+
     </div>
 
     <h2>Other projects</h2>
@@ -81,7 +89,7 @@
         <h3>MBSE &amp; System Architecture: Automotive Cooling System</h3>
         <p>MBSE modeling of an automotive cooling system, developed at RWTH Aachen.</p>
       </a>
-     
+
       <a class="card" href="projects/strain-gauge-testing.html">
         <span class="card-tag">Strain gauges</span>
         <h3>Experimental Metrology &amp; Strain Gauge Testing</h3>
@@ -112,12 +120,46 @@
 
   </main>
 
-    <footer>
+  <footer>
     &copy; 2026 Michele Maiullari &middot; maiullari.michele@icloud.com &middot;
     <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a> &middot;
     <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a> &middot;
     <a href="assets/CV_Michele_Maiullari.pdf" target="_blank" rel="noopener">CV (PDF)</a>
   </footer>
+
+  <script>
+  (function () {
+    var box = document.querySelector('.nav-contact');
+    var toggle = document.querySelector('.nav-contact-toggle');
+    if (!box || !toggle) { return; }
+    function setOpen(open) {
+      box.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    toggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      setOpen(!box.classList.contains('open'));
+    });
+    document.addEventListener('click', function (e) {
+      if (!box.contains(e.target)) { setOpen(false); }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        setOpen(false);
+        toggle.blur();
+      }
+    });
+    box.addEventListener('focusout', function (e) {
+      if (box.contains(e.relatedTarget)) { return; }
+      setOpen(false);
+    });
+    if (window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      box.addEventListener('mouseenter', function () { setOpen(true); });
+      box.addEventListener('mouseleave', function () { setOpen(false); });
+    }
+  })();
+  </script>
 
 </body>
 </html>

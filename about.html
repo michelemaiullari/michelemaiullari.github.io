@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="About Michele Maiullari — aeronautical-mechanical engineer (MSc Politecnico di Bari, Erasmus RWTH Aachen). R&D, design and systems engineering, with a portfolio of verifiable project evidence.">
+  <meta name="description" content="About Michele Maiullari — aeronautical engineer (MSc, Politecnico di Bari) with a mechanical engineering foundation (BSc) and an Erasmus exchange at RWTH Aachen. Design, structural analysis and systems engineering experience across aerospace and industrial R&D.">
   <title>About — Michele Maiullari</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <meta property="og:title" content="About — Michele Maiullari">
-  <meta property="og:description" content="About Michele Maiullari — aeronautical-mechanical engineer (MSc Politecnico di Bari, Erasmus RWTH Aachen). R&D, design and systems engineering, with a portfolio of verifiable project evidence.">
+  <meta property="og:description" content="About Michele Maiullari — aeronautical engineer (MSc, Politecnico di Bari) with a mechanical engineering foundation (BSc) and an Erasmus exchange at RWTH Aachen. Design, structural analysis and systems engineering experience across aerospace and industrial R&D.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://michelemaiullari.github.io/">
   <meta property="og:site_name" content="Michele Maiullari — Portfolio">
@@ -18,11 +18,19 @@
 
   <header class="site-header">
     <a class="site-title" href="index.html">Michele Maiullari</a>
-        <nav>
+    <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a>
+      <div class="nav-contact">
+        <button class="nav-contact-toggle" type="button" aria-expanded="false" aria-controls="contact-menu">
+          Contact
+        </button>
+        <div class="nav-contact-menu" id="contact-menu">
+          <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a>
+          <a href="mailto:maiullari.michele@icloud.com">Contact me</a>
+        </div>
+      </div>
     </nav>
   </header>
 
@@ -36,41 +44,57 @@
       <img class="portrait" src="assets/profile.jpg"
            alt="Portrait of Michele Maiullari" width="420" height="520">
       <div class="about-intro">
-<p class="subtitle">
-      An aeronautical (MSc) and mechanical (BSc) engineer, oriented to R&amp;D and design.
-    </p>
+        <p class="subtitle">
+          Aeronautical engineer (MSc) with a mechanical engineering
+          foundation (BSc), oriented to R&amp;D, design and systems
+          engineering.
+        </p>
 
-    <p>
-      I am an aeronautical-mechanical engineer: BSc and MSc at Politecnico di Bari,
-      with an Erasmus exchange at RWTH Aachen focused on non-linear finite element
-      methods, fatigue of structures and model-based product development. My two
-      theses cover both ends of the product loop: design and testing of lightweight
-      UAV systems with Leonardo S.p.A. (MSc), and NVH analysis of electric-vehicle
-      bearings with SKF (BSc). In between, I led an early-stage AI project for
-      automated wing and control-surface generation.
-    </p>
+        <p>
+          I hold an MSc in Aeronautical Engineering and a BSc in Mechanical
+          Engineering from Politecnico di Bari, with an Erasmus exchange at
+          RWTH Aachen focused on non-linear finite element methods, fatigue
+          of structures and model-based product development. My MSc thesis
+          was developed within Leonardo S.p.A.'s AeroTech Academy programme
+          at the Aerostructures Business Unit in Grottaglie: the design and
+          structural validation of an ISR&ndash;UAV wing and its fuselage
+          junction, from CATIA V5 modelling and steady-flight load
+          estimation to static FEA in Ansys, a safe-life fatigue assessment
+          and an FDM-printed prototype of the junction. My BSc thesis was
+          carried out as an intern at SKF Industrie S.p.A. in Modugno,
+          analysing the vibration behaviour of deep-groove ball bearings
+          for electric-vehicle applications and tracing NVH signatures back
+          to production-process root causes.
+        </p>
 
-    <p>
-      A CV can only assert; this site lets you verify. Every project page carries
-      the actual evidence behind the corresponding CV line &mdash; the drawings,
-      the code, the test reports, the CAD.
-    </p>
+        <p>
+          Alongside the two thesis programmes, my experience covers CAD
+          design and GD&amp;T documentation, structural FEA and CFD,
+          experimental vibration and strain-gauge metrology, and
+          Model-Based Systems Engineering in SysML (CATIA Magic). Between
+          the two degrees I worked as project lead in a tech-startup
+          context, owning the CFD and physical-modelling side of an
+          AI-driven aerodynamic design platform: automated high-fidelity
+          validation pipelines, compressible shock-capturing solvers and
+          the design of an adjoint-based fine-tuning architecture,
+          including the technical roadmap drafted for a leading
+          international aerospace group.
+        </p>
 
-    <p>
-      I have lived and studied across Germany, Montenegro and Israel, and I am
-      immediately available for international travel and relocation. The full
-      timeline and formal details are in <a href="assets/CV_Michele_Maiullari.pdf" target="_blank" rel="noopener">my CV</a>.
-    </p>
+        <p>
+          I have lived and studied in Germany, Montenegro and Israel, and I
+          am immediately available for international travel and relocation.
+        </p>
       </div>
     </div>
 
     <h2>Currently Learning</h2>
-  
+
     <ul>
       <li>
         <strong>Advanced Python</strong> &mdash;
-        Through MIT's course< building on the scripting
-        toward data-processing and automation work.
+        Through MIT's course, building on scripting experience toward
+        data-processing and automation work.
       </li>
       <li>
         <strong>German</strong> &mdash; Currently attending a structured course.
@@ -123,12 +147,46 @@
 
   </main>
 
-    <footer>
+  <footer>
     &copy; 2026 Michele Maiullari &middot; maiullari.michele@icloud.com &middot;
     <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a> &middot;
     <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a> &middot;
     <a href="assets/CV_Michele_Maiullari.pdf" target="_blank" rel="noopener">CV (PDF)</a>
   </footer>
+
+  <script>
+  (function () {
+    var box = document.querySelector('.nav-contact');
+    var toggle = document.querySelector('.nav-contact-toggle');
+    if (!box || !toggle) { return; }
+    function setOpen(open) {
+      box.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    toggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      setOpen(!box.classList.contains('open'));
+    });
+    document.addEventListener('click', function (e) {
+      if (!box.contains(e.target)) { setOpen(false); }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        setOpen(false);
+        toggle.blur();
+      }
+    });
+    box.addEventListener('focusout', function (e) {
+      if (box.contains(e.relatedTarget)) { return; }
+      setOpen(false);
+    });
+    if (window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      box.addEventListener('mouseenter', function () { setOpen(true); });
+      box.addEventListener('mouseleave', function () { setOpen(false); });
+    }
+  })();
+  </script>
 
 </body>
 </html>

@@ -34,6 +34,12 @@ body {
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
+  /* Always-on-top navigation: same look, same size, same colours —
+     the bar simply stays visible and interactive while scrolling. */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--bg);
 }
 
 .site-title {
@@ -51,6 +57,96 @@ body {
 }
 
 .site-header nav a:hover { color: var(--accent); }
+
+/* ---------- Nav: "Contact" dropdown ---------- */
+
+.nav-contact {
+  position: relative;
+  display: inline-block;
+  margin-left: 18px;
+}
+
+.nav-contact-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--muted);
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.nav-contact-toggle:hover,
+.nav-contact.open .nav-contact-toggle { color: var(--accent); }
+
+.nav-contact-toggle::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 6px;
+  vertical-align: middle;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid currentColor;
+}
+
+.nav-contact.open .nav-contact-toggle::after { transform: rotate(180deg); }
+
+/* Invisible hover bridge over the 8px gap between toggle and menu, so on
+   desktop the pointer can travel from "Contact" into the menu without
+   triggering mouseleave. */
+.nav-contact::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 180px;
+  height: 8px;
+}
+
+.nav-contact-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 180px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(28, 36, 48, 0.12);
+  padding: 6px 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity .15s ease, transform .15s ease;
+  z-index: 1100;
+}
+
+.nav-contact.open .nav-contact-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.site-header .nav-contact-menu a {
+  display: block;
+  margin: 0;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.site-header .nav-contact-menu a:hover {
+  background: var(--bg-soft);
+  color: var(--accent);
+}
 
 /* ---------- Page layout ---------- */
 
