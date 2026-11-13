@@ -326,71 +326,7 @@
   })();
   </script>
 
-  <script>
-  /* Gallery images: click opens the picture in an overlay at its natural
-     size (scrollable when larger than the window). Click anywhere or press
-     Esc to close. Without JavaScript the link still works and opens the
-     full-size image in a new browser tab. */
-  (function () {
-    var links = document.querySelectorAll('a.img-zoom');
-    if (!links.length) { return; }
-    var overlay = null;
-
-    function close() {
-      if (!overlay) { return; }
-      overlay.parentNode.removeChild(overlay);
-      overlay = null;
-      document.body.style.overflow = '';
-      document.removeEventListener('keydown', onKey);
-    }
-    function onKey(e) {
-      if (e.key === 'Escape' || e.key === 'Esc') { close(); }
-    }
-    function open(link) {
-      var img = link.querySelector('img');
-      var fig = link.parentNode;
-      var cap = fig ? fig.querySelector('figcaption') : null;
-
-      overlay = document.createElement('div');
-      overlay.className = 'lightbox';
-      overlay.setAttribute('role', 'dialog');
-      overlay.setAttribute('aria-modal', 'true');
-      overlay.setAttribute('aria-label', img ? (img.alt || 'Image') : 'Image');
-
-      var inner = document.createElement('figure');
-      var big = document.createElement('img');
-      big.src = link.getAttribute('href');
-      if (img) { big.alt = img.alt; }
-      inner.appendChild(big);
-      if (cap) {
-        var fc = document.createElement('figcaption');
-        fc.textContent = cap.textContent;
-        inner.appendChild(fc);
-      }
-      overlay.appendChild(inner);
-
-      var btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'lightbox-close';
-      btn.setAttribute('aria-label', 'Close image');
-      btn.innerHTML = '&times;';
-      overlay.appendChild(btn);
-
-      overlay.addEventListener('click', close);
-      document.body.appendChild(overlay);
-      document.body.style.overflow = 'hidden';
-      document.addEventListener('keydown', onKey);
-      btn.focus();
-    }
-
-    Array.prototype.forEach.call(links, function (link) {
-      link.addEventListener('click', function (e) {
-        e.preventDefault();
-        open(link);
-      });
-    });
-  })();
-  </script>
+ 
 
 </body>
 </html>
