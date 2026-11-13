@@ -3,34 +3,94 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="About Michele Maiullari — aeronautical engineer (MSc, Politecnico di Bari) with a mechanical engineering foundation (BSc) and an Erasmus exchange at RWTH Aachen. Design, structural analysis and systems engineering experience across aerospace and industrial R&D.">
+  <meta name="description" content="About Michele Maiullari — aeronautical-mechanical engineer (MSc Politecnico di Bari, Erasmus RWTH Aachen). R&D, design and systems engineering, with a portfolio of verifiable project evidence.">
   <title>About — Michele Maiullari</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <meta property="og:title" content="About — Michele Maiullari">
-  <meta property="og:description" content="About Michele Maiullari — aeronautical engineer (MSc, Politecnico di Bari) with a mechanical engineering foundation (BSc) and an Erasmus exchange at RWTH Aachen. Design, structural analysis and systems engineering experience across aerospace and industrial R&D.">
+  <meta property="og:description" content="About Michele Maiullari — aeronautical-mechanical engineer (MSc Politecnico di Bari, Erasmus RWTH Aachen). R&D, design and systems engineering, with a portfolio of verifiable project evidence.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://michelemaiullari.github.io/">
   <meta property="og:site_name" content="Michele Maiullari — Portfolio">
   <meta name="twitter:card" content="summary">
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Image lightbox (page-local block; to be moved into the shared stylesheet
+       once approved site-wide). Click any content image to zoom it in place. -->
+  <style>
+    main img { cursor: zoom-in; }
+
+    html.lb-lock,
+    html.lb-lock body { overflow: hidden; }
+
+    /* Uniform dark backdrop behind the enlarged image */
+    .lb-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 999999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, .78);
+      opacity: 0;
+      transition: opacity .25s ease;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    .lb-overlay.lb-open { opacity: 1; }
+
+    /* Frame that traces the image shape: ~3 mm white edge, rounded corners */
+    .lb-frame {
+      position: relative;
+      box-sizing: content-box;
+      border: 3mm solid #fff;
+      border-radius: var(--lb-radius, 23px);
+      background: #fff;
+      overflow: hidden;
+      line-height: 0;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, .5);
+      will-change: transform;
+    }
+    .lb-frame img {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: calc(100vw - 6mm - 96px);
+      max-height: calc(100vh - 6mm - 80px);
+    }
+
+    .lb-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 46px;
+      height: 46px;
+      padding: 0;
+      border: 1px solid rgba(255, 255, 255, .45);
+      border-radius: 50%;
+      background: rgba(0, 0, 0, .35);
+      color: #fff;
+      font: 500 26px/44px system-ui, sans-serif;
+      text-align: center;
+      cursor: pointer;
+    }
+    .lb-close:hover,
+    .lb-close:focus-visible { background: rgba(0, 0, 0, .65); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .lb-overlay { transition: none; }
+      .lb-frame { transition: none !important; }
+    }
+  </style>
 </head>
 <body>
 
   <header class="site-header">
     <a class="site-title" href="index.html">Michele Maiullari</a>
-    <nav>
+        <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <div class="nav-contact">
-        <button class="nav-contact-toggle" type="button" aria-expanded="false" aria-controls="contact-menu">
-          Contact
-        </button>
-        <div class="nav-contact-menu" id="contact-menu">
-          <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a>
-          <a href="mailto:maiullari.michele@icloud.com">Contact me</a>
-        </div>
-      </div>
+      <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a>
     </nav>
   </header>
 
@@ -44,57 +104,41 @@
       <img class="portrait" src="assets/profile.jpg"
            alt="Portrait of Michele Maiullari" width="420" height="520">
       <div class="about-intro">
-        <p class="subtitle">
-          Aeronautical engineer (MSc) with a mechanical engineering
-          foundation (BSc), oriented to R&amp;D, design and systems
-          engineering.
-        </p>
+<p class="subtitle">
+      An aeronautical (MSc) and mechanical (BSc) engineer, oriented to R&amp;D and design.
+    </p>
 
-        <p>
-          I hold an MSc in Aeronautical Engineering and a BSc in Mechanical
-          Engineering from Politecnico di Bari, with an Erasmus exchange at
-          RWTH Aachen focused on non-linear finite element methods, fatigue
-          of structures and model-based product development. My MSc thesis
-          was developed within Leonardo S.p.A.'s AeroTech Academy programme
-          at the Aerostructures Business Unit in Grottaglie: the design and
-          structural validation of an ISR&ndash;UAV wing and its fuselage
-          junction, from CATIA V5 modelling and steady-flight load
-          estimation to static FEA in Ansys, a safe-life fatigue assessment
-          and an FDM-printed prototype of the junction. My BSc thesis was
-          carried out as an intern at SKF Industrie S.p.A. in Modugno,
-          analysing the vibration behaviour of deep-groove ball bearings
-          for electric-vehicle applications and tracing NVH signatures back
-          to production-process root causes.
-        </p>
+    <p>
+      I am an aeronautical-mechanical engineer: BSc and MSc at Politecnico di Bari,
+      with an Erasmus exchange at RWTH Aachen focused on non-linear finite element
+      methods, fatigue of structures and model-based product development. My two
+      theses cover both ends of the product loop: design and testing of lightweight
+      UAV systems with Leonardo S.p.A. (MSc), and NVH analysis of electric-vehicle
+      bearings with SKF (BSc). In between, I led an early-stage AI project for
+      automated wing and control-surface generation.
+    </p>
 
-        <p>
-          Alongside the two thesis programmes, my experience covers CAD
-          design and GD&amp;T documentation, structural FEA and CFD,
-          experimental vibration and strain-gauge metrology, and
-          Model-Based Systems Engineering in SysML (CATIA Magic). Between
-          the two degrees I worked as project lead in a tech-startup
-          context, owning the CFD and physical-modelling side of an
-          AI-driven aerodynamic design platform: automated high-fidelity
-          validation pipelines, compressible shock-capturing solvers and
-          the design of an adjoint-based fine-tuning architecture,
-          including the technical roadmap drafted for a leading
-          international aerospace group.
-        </p>
+    <p>
+      A CV can only assert; this site lets you verify. Every project page carries
+      the actual evidence behind the corresponding CV line &mdash; the drawings,
+      the code, the test reports, the CAD.
+    </p>
 
-        <p>
-          I have lived and studied in Germany, Montenegro and Israel, and I
-          am immediately available for international travel and relocation.
-        </p>
+    <p>
+      I have lived and studied across Germany, Montenegro and Israel, and I am
+      immediately available for international travel and relocation. The full
+      timeline and formal details are in <a href="assets/CV_Michele_Maiullari.pdf" target="_blank" rel="noopener">my CV</a>.
+    </p>
       </div>
     </div>
 
     <h2>Currently Learning</h2>
-
+  
     <ul>
       <li>
         <strong>Advanced Python</strong> &mdash;
-        Through MIT's course, building on scripting experience toward
-        data-processing and automation work.
+        Through MIT's course< building on the scripting
+        toward data-processing and automation work.
       </li>
       <li>
         <strong>German</strong> &mdash; Currently attending a structured course.
@@ -147,46 +191,161 @@
 
   </main>
 
-  <footer>
+    <footer>
     &copy; 2026 Michele Maiullari &middot; maiullari.michele@icloud.com &middot;
     <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a> &middot;
     <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a> &middot;
-    <a href="assets/CV_Michele_Maiullari.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+    <a href="assets/CV_Michele_Maiullari.pdf" target="_blank" rel="noopener">Curriculum Vitae</a>
   </footer>
 
-  <script>
-  (function () {
-    var box = document.querySelector('.nav-contact');
-    var toggle = document.querySelector('.nav-contact-toggle');
-    if (!box || !toggle) { return; }
-    function setOpen(open) {
-      box.classList.toggle('open', open);
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    }
-    toggle.addEventListener('click', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      setOpen(!box.classList.contains('open'));
-    });
-    document.addEventListener('click', function (e) {
-      if (!box.contains(e.target)) { setOpen(false); }
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') {
-        setOpen(false);
-        toggle.blur();
-      }
-    });
-    box.addEventListener('focusout', function (e) {
-      if (box.contains(e.relatedTarget)) { return; }
-      setOpen(false);
-    });
-    if (window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-      box.addEventListener('mouseenter', function () { setOpen(true); });
-      box.addEventListener('mouseleave', function () { setOpen(false); });
-    }
-  })();
-  </script>
 
+  <!-- Image lightbox behaviour (page-local block; to be moved to a shared asset
+       once approved site-wide). No dependencies, no new tabs: the image zooms
+       in place over a uniformly darkened page, inside a white ~3 mm frame with
+       rounded corners matching the image, capped at native resolution so it
+       stays sharp. Closes on backdrop click, close button or Escape. -->
+  <script>
+    (function () {
+      'use strict';
+
+      var FRAME_MM = 3;          /* white frame thickness (mm) */
+      var PX_PER_MM = 96 / 25.4; /* CSS reference px per mm   */
+      var OPEN_MS = 320;
+      var CLOSE_MS = 240;
+
+      var overlay = null, frame = null, big = null, source = null;
+
+      function reducedMotion() {
+        return window.matchMedia
+          && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      }
+
+      /* Same rounded shape as the clicked image: outer radius = image radius + frame */
+      function frameRadius(img) {
+        var r = parseFloat(getComputedStyle(img).borderTopLeftRadius);
+        var inner = (r > 1) ? r : 12;
+        return (inner + FRAME_MM * PX_PER_MM).toFixed(1) + 'px';
+      }
+
+      /* Never upscale past native resolution: the zoom stays sharp */
+      function capToNative() {
+        var nw = big.naturalWidth;
+        if (nw && big.getBoundingClientRect().width > nw) {
+          big.style.width = nw + 'px';
+          big.style.height = 'auto';
+        }
+      }
+
+      function open(img) {
+        if (overlay) { return; }
+        source = img;
+
+        overlay = document.createElement('div');
+        overlay.className = 'lb-overlay';
+        overlay.setAttribute('role', 'dialog');
+        overlay.setAttribute('aria-modal', 'true');
+        overlay.setAttribute('aria-label', 'Image preview');
+
+        frame = document.createElement('div');
+        frame.className = 'lb-frame';
+        frame.style.setProperty('--lb-radius', frameRadius(img));
+
+        big = new Image();
+        big.alt = img.alt || '';
+        big.draggable = false;
+        big.src = img.currentSrc || img.src;
+        frame.appendChild(big);
+        overlay.appendChild(frame);
+
+        var closeBtn = document.createElement('button');
+        closeBtn.type = 'button';
+        closeBtn.className = 'lb-close';
+        closeBtn.setAttribute('aria-label', 'Close image preview');
+        closeBtn.innerHTML = '&times;';
+        overlay.appendChild(closeBtn);
+
+        document.body.appendChild(overlay);
+        document.documentElement.classList.add('lb-lock');
+
+        if (big.complete && big.naturalWidth) {
+          start();
+        } else {
+          big.addEventListener('load', start, { once: true });
+          big.addEventListener('error', start, { once: true });
+        }
+        closeBtn.focus();
+      }
+
+      function start() {
+        capToNative();
+
+        if (reducedMotion()) {
+          overlay.classList.add('lb-open');
+          return;
+        }
+
+        var first = source.getBoundingClientRect();
+        var last = frame.getBoundingClientRect();
+        if (first.width < 4 || last.width < 4) {
+          overlay.classList.add('lb-open');
+          return;
+        }
+
+        /* FLIP: begin exactly on the thumbnail, then zoom to the centred frame */
+        var s = first.width / last.width;
+        frame.style.transformOrigin = '0 0';
+        frame.style.transform = 'translate(' + (first.left - last.left).toFixed(2) + 'px,'
+                              + (first.top - last.top).toFixed(2) + 'px)'
+                              + ' scale(' + s.toFixed(5) + ')';
+        void overlay.getBoundingClientRect(); /* flush styles */
+        overlay.classList.add('lb-open');
+        frame.style.transition = 'transform ' + OPEN_MS + 'ms cubic-bezier(.22,.61,.36,1)';
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () { frame.style.transform = 'none'; });
+        });
+      }
+
+      function close() {
+        if (!overlay || overlay.classList.contains('lb-closing')) { return; }
+        overlay.classList.add('lb-closing');
+        overlay.classList.remove('lb-open');
+
+        if (!reducedMotion() && source) {
+          var first = source.getBoundingClientRect();
+          var last = frame.getBoundingClientRect();
+          if (first.width > 4 && last.width > 4) {
+            var s = first.width / last.width;
+            frame.style.transition = 'transform ' + CLOSE_MS + 'ms cubic-bezier(.4,0,.6,1)';
+            frame.style.transform = 'translate(' + (first.left - last.left).toFixed(2) + 'px,'
+                                  + (first.top - last.top).toFixed(2) + 'px)'
+                                  + ' scale(' + s.toFixed(5) + ')';
+          }
+        }
+
+        setTimeout(function () {
+          overlay.remove();
+          overlay = frame = big = source = null;
+          document.documentElement.classList.remove('lb-lock');
+        }, reducedMotion() ? 0 : 260);
+      }
+
+      document.addEventListener('click', function (e) {
+        var img = e.target.closest ? e.target.closest('main img') : null;
+        if (img && !img.closest('a')) {
+          e.preventDefault();
+          open(img);
+          return;
+        }
+        if (overlay && (e.target === overlay
+             || (e.target.closest && e.target.closest('.lb-close')))) {
+          close();
+        }
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && overlay) { close(); }
+      });
+    })();
+  </script>
 </body>
 </html>
