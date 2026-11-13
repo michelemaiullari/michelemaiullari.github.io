@@ -13,24 +13,84 @@
   <meta property="og:site_name" content="Michele Maiullari — Portfolio">
   <meta name="twitter:card" content="summary">
   <link rel="stylesheet" href="../styles.css">
+
+  <!-- Image lightbox (page-local block; to be moved into the shared stylesheet
+       once approved site-wide). Click any content image to zoom it in place. -->
+  <style>
+    main img { cursor: zoom-in; }
+
+    html.lb-lock,
+    html.lb-lock body { overflow: hidden; }
+
+    /* Uniform dark backdrop behind the enlarged image */
+    .lb-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 999999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, .78);
+      opacity: 0;
+      transition: opacity .25s ease;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    .lb-overlay.lb-open { opacity: 1; }
+
+    /* Frame that traces the image shape: ~3 mm white edge, rounded corners */
+    .lb-frame {
+      position: relative;
+      box-sizing: content-box;
+      border: 3mm solid #fff;
+      border-radius: var(--lb-radius, 23px);
+      background: #fff;
+      overflow: hidden;
+      line-height: 0;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, .5);
+      will-change: transform;
+    }
+    .lb-frame img {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: calc(100vw - 6mm - 96px);
+      max-height: calc(100vh - 6mm - 80px);
+    }
+
+    .lb-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 46px;
+      height: 46px;
+      padding: 0;
+      border: 1px solid rgba(255, 255, 255, .45);
+      border-radius: 50%;
+      background: rgba(0, 0, 0, .35);
+      color: #fff;
+      font: 500 26px/44px system-ui, sans-serif;
+      text-align: center;
+      cursor: pointer;
+    }
+    .lb-close:hover,
+    .lb-close:focus-visible { background: rgba(0, 0, 0, .65); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .lb-overlay { transition: none; }
+      .lb-frame { transition: none !important; }
+    }
+  </style>
 </head>
 <body>
 
   <header class="site-header">
     <a class="site-title" href="../index.html">Michele Maiullari</a>
-    <nav>
+        <nav>
       <a href="../index.html">Home</a>
       <a href="../about.html">About</a>
-      <div class="nav-contact">
-        <button class="nav-contact-toggle" type="button" aria-expanded="false" aria-controls="contact-menu">
-          Contact
-        </button>
-        <div class="nav-contact-menu" id="contact-menu">
-          <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a>
-          <a href="mailto:maiullari.michele@icloud.com">Contact me</a>
-        </div>
-      </div>
+      <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a>
     </nav>
   </header>
 
@@ -52,25 +112,27 @@
 
     <h2>Overview</h2>
     <p>
-      The objective of this laboratory campaign was to evaluate the local surface
-      strains of metallic specimens under bending loads with electrical resistance
-      strain gauges, and to validate the analytical beam model against the measured
-      data while accounting for instrumental uncertainty, signal noise and
-      mechanical hysteresis.
+      Analytical beam formulas are only useful if someone has proven they survive
+      contact with a real, noisy measurement. The objective of this laboratory
+      campaign was to do exactly that: evaluate the local surface strains of
+      metallic specimens under bending loads with electrical resistance strain
+      gauges, and validate the analytical model against the measured data while
+      accounting for instrumental uncertainty, signal noise and mechanical
+      hysteresis.
     </p>
     <p>
-      The full metrological loop was run end to end: surface preparation and gauge
-      bonding, soldering and wiring, bridge configuration and balancing,
-      multi-channel acquisition through a scanning unit, deflection-stepped loading
-      programmes, and a statistical treatment of the results that separates
+      I ran the full metrological loop end to end: surface preparation and
+      gauge bonding, soldering and wiring, bridge configuration and balancing,
+      multi-channel acquisition through a scanning unit, deflection-stepped
+      loading programmes, and a statistical treatment of the results that separates
       systematic effects from random scatter.
     </p>
 
     <h2>Specimens and Instrumentation</h2>
     <p>
-      Three prismatic cantilever specimens (300 mm long, 25 mm wide) were tested,
-      one per material, each clamped at one end and loaded by a micrometric screw
-      at the free end:
+      Three prismatic cantilever specimens (300 mm long, 25 mm wide) were
+      tested, one per material, each clamped at one end and loaded by a
+      micrometric screw at the free end:
     </p>
     <ul>
       <li><strong>Aluminium</strong> &mdash; thickness b = 4.7 mm &middot; E = 60&ndash;110 GPa (literature range) &middot; 6 gauges at x = 16 / 106 / 196 mm, one per face</li>
@@ -83,46 +145,47 @@
       nominal resistance, 3 mm measurement base, gage factor
       <strong>K = 1.99</strong>, cyanoacrylate-bonded, thermal response matched to
       ferritic steel (&alpha; = 10.8&times;10<sup>&minus;6</sup> K<sup>&minus;1</sup>).
-      Signal conditioning and readout were handled by a <strong>P-3500 strain
-      indicator</strong> (bridge excitation, gage-factor setting, bridge balancing)
-      coupled to a <strong>switch &amp; balance unit</strong>, so that all gauges on
-      a specimen could be scanned sequentially at each load step.
+      Signal conditioning and readout were handled by a
+      <strong>P-3500 strain indicator</strong> (bridge excitation, gage-factor
+      setting, bridge balancing) coupled to a <strong>switch &amp; balance
+      unit</strong>, so that all gauges on a specimen could be scanned
+      sequentially at each load step.
     </p>
 
     <h2>Installation Procedure</h2>
     <p>
-      The installation was treated as a metrological operation in its own right,
-      since a poor bond invalidates everything downstream. Each installation site
-      was cleaned mechanically (abrasive paper, grit #320) and then chemically,
-      with consecutive acid and base treatments repeated three times, an isopropyl
-      wipe in between, and final layout marking of the alignment lines.
+      A sloppy bond invalidates everything downstream, so the installation was
+      treated as a metrological operation in its own right. I cleaned each installation site mechanically (abrasive paper, grit #320)
+      and then chemically, with consecutive acid and base treatments repeated
+      three times, an isopropyl wipe in between, and final layout marking of the
+      alignment lines.
     </p>
     <p>
-      The gauges were bonded longitudinally with a drop of cyanoacrylate, each one
-      held under adhesive tape for four minutes while the joint cured, and the tape
-      peeled back at &asymp;45&deg; to avoid lifting the grid. After insulating the
-      terminals from the specimen with paper tape, the lead wires were soldered
-      onto tinned contact bubbles &mdash; keeping the two joints separate to avoid
-      shorts &mdash; and every channel was verified with a resistance check within
-      <strong>1%</strong> of the nominal 120 &Omega; before connecting it to the
-      acquisition chain.
+      I bonded the gauges longitudinally with a drop of cyanoacrylate, holding
+      each one under adhesive tape for four minutes while the joint cured, and
+      peeled the tape back at &asymp;45&deg; to avoid lifting the grid. After
+      insulating the terminals from the specimen with paper tape, I soldered the
+      lead wires onto tinned contact bubbles &mdash; keeping the two joints
+      separate to avoid shorts &mdash; and verified every channel with a
+      resistance check within <strong>1%</strong> of the nominal 120 &Omega;
+      before connecting it to the acquisition chain.
     </p>
 
     <h2>Bridge Configurations and Acquisition</h2>
     <p>
-      Two Wheatstone configurations were used. In the <strong>quarter-bridge</strong>
+      I ran two Wheatstone configurations. In the <strong>quarter-bridge</strong>
       setup each reading comes from a single active gauge, with the instrument
-      applying &Delta;R/R = K&middot;&epsilon; through the gage-factor setting. In
-      the <strong>half-bridge</strong> setup, two gauges bonded at the same station
-      on opposite faces (one in tension, one in compression) were wired into
-      adjacent arms: the two strain contributions add up, so the instrument reads
-      an amplified signal &mdash; and the symmetric thermal contribution cancels.
+      applying &Delta;R/R = K&middot;&epsilon; through the gage-factor setting. In the
+      <strong>half-bridge</strong> setup, two gauges bonded at the same station on
+      opposite faces (one in tension, one in compression) were wired into adjacent
+      arms: the two strain contributions add up, so the instrument reads an
+      amplified signal &mdash; and the symmetric thermal contribution cancels.
     </p>
     <p>
       Each test consisted of deflection-stepped loading cycles through the
       micrometric screw, with a gradual unload back to zero at every step, and a
       bridge balance (zeroing) before acquisition. Before the measurement cycles,
-      conditioning cycles were run on the specimens to stabilise the
+      I ran conditioning cycles on the specimens to stabilise the
       gauge&ndash;adhesive system and progressively reduce mechanical hysteresis.
       Every measured value was then compared with the analytical prediction.
     </p>
@@ -130,9 +193,9 @@
     <h2>Analytical Reference Model</h2>
     <p>
       Schematising the rig as a cantilever of length L (clamp to load point,
-      L = 255 mm) loaded by a tip force, the bending theory chain (moment
-      distribution, section modulus, load&ndash;deflection relation and Hooke's
-      law) collapses to a closed-form surface strain field:
+      L = 255 mm) loaded by a tip force, the bending theory chain
+      (moment distribution, section modulus, load&ndash;deflection relation and
+      Hooke's law) collapses to a closed-form surface strain field:
     </p>
     <p style="text-align: center;">
       <em>&epsilon;(x) = (3/2) &middot; (L &minus; x) &middot; b &middot; f / L<sup>3</sup></em>
@@ -174,25 +237,27 @@
     </p>
     <h3>Induced systematic error (gage factor manipulation)</h3>
     <p>
-      To test the sensitivity of the chain to a mis-initialisation, the
-      indicator's gage factor was intentionally set to <strong>K = 1.95</strong>
-      while the true gauge constant is 1.99. Since the instrument divides by the
-      set constant, the predicted effect is a purely multiplicative over-read of
-      1.99/1.95 = <strong>+2.05%</strong>, flat across the load range. The
-      measured cycle-to-cycle ratio confirmed it: mean <strong>+1.8%</strong>, with
-      the residual gap consistent with the &plusmn;1 &mu;&epsilon; display
-      resolution of the indicator (&plusmn;0.7% on the smallest reading). A flat
-      ratio identifies a systematic, not random, effect.
+      To test the sensitivity of the chain to a mis-initialisation, I
+      intentionally set the indicator's
+      gage factor to <strong>K = 1.95</strong> while the true
+      gauge constant is 1.99. Since the instrument divides by the set constant, the
+      predicted effect is a purely multiplicative over-read of
+      1.99/1.95 = <strong>+2.05%</strong>, flat across the load range. The measured
+      cycle-to-cycle ratio confirmed it: mean <strong>+1.8%</strong>, with the
+      residual gap consistent with the &plusmn;1 &mu;&epsilon; display resolution of
+      the indicator (&plusmn;0.7% on the smallest reading). A flat ratio means
+      systematic, not random &mdash; exactly the diagnostic value of running the
+      experiment this way.
     </p>
     <h3>Half-bridge amplification</h3>
     <p>
       The half-bridge configuration delivered the expected signal amplification:
       the opposite-face pair at the primary station read a mean
-      <strong>&times;1.97</strong> of the quarter-bridge reading at the same
-      station and deflection (&times;1.99 at full scale, against the ideal
-      &times;2.00), while the output stayed linear across the whole loading range.
-      This closes the loop on bridge theory: quarter-bridge for simplicity,
-      half-bridge when signal level and thermal cancellation matter.
+      <strong>&times;1.97</strong> of the quarter-bridge reading at the same station
+      and deflection (&times;1.99 at full scale, against the ideal &times;2.00),
+      while the output stayed linear across the whole loading range. This closes
+      the loop on bridge theory: quarter-bridge for simplicity, half-bridge when
+      signal level and thermal cancellation matter.
     </p>
 
     <h2>Metrological Synthesis</h2>
@@ -232,6 +297,8 @@
       <span>Beam bending theory validation</span>
     </div>
 
+  
+
     <h2>Gallery</h2>
     <div class="gallery">
       <figure style="grid-column: 1 / -1;">
@@ -258,7 +325,7 @@
              width="803" height="1070" loading="lazy">
         <figcaption>Instrumented specimen &mdash; four gauges, two per face</figcaption>
       </figure>
-
+     
       <figure>
         <img src="../assets/strain-switch.jpg"
              alt="Switch and balance unit wired to the strain gauges for multi-channel scanning"
@@ -266,13 +333,15 @@
         <figcaption>Switch &amp; balance unit &mdash; multi-channel scanning</figcaption>
       </figure>
 
-      <figure>
+       <figure>
         <img src="../assets/strain-p3500.jpg"
              alt="P-3500 strain indicator front panel with gage factor and bridge balance controls"
              width="401" height="291" loading="lazy">
         <figcaption>P-3500 strain indicator &mdash; gage factor &amp; balance</figcaption>
       </figure>
 
+
+      
       <figure style="grid-column: 1 / -1;">
         <img src="../assets/strain-al-validation.png"
              alt="Measured loading and unloading strain versus the analytical cantilever model for gauge 1"
@@ -292,7 +361,7 @@
         <figcaption>Half-bridge signal amplification &mdash; pair #1&ndash;#4</figcaption>
       </figure>
     </div>
-
+    
 
     <div class="contact-strip">
       Questions about the methodology? I am happy to discuss it in detail during an
@@ -302,46 +371,161 @@
 
   </main>
 
-  <footer>
+    <footer>
     &copy; 2026 Michele Maiullari &middot; maiullari.michele@icloud.com &middot;
     <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a> &middot;
     <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a> &middot;
-    <a href="../assets/CV_Michele_Maiullari.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+    <a href="../assets/CV_Michele_Maiullari.pdf" target="_blank" rel="noopener">Curriculum Vitae</a>
   </footer>
 
-  <script>
-  (function () {
-    var box = document.querySelector('.nav-contact');
-    var toggle = document.querySelector('.nav-contact-toggle');
-    if (!box || !toggle) { return; }
-    function setOpen(open) {
-      box.classList.toggle('open', open);
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    }
-    toggle.addEventListener('click', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      setOpen(!box.classList.contains('open'));
-    });
-    document.addEventListener('click', function (e) {
-      if (!box.contains(e.target)) { setOpen(false); }
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') {
-        setOpen(false);
-        toggle.blur();
-      }
-    });
-    box.addEventListener('focusout', function (e) {
-      if (box.contains(e.relatedTarget)) { return; }
-      setOpen(false);
-    });
-    if (window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-      box.addEventListener('mouseenter', function () { setOpen(true); });
-      box.addEventListener('mouseleave', function () { setOpen(false); });
-    }
-  })();
-  </script>
 
+  <!-- Image lightbox behaviour (page-local block; to be moved to a shared asset
+       once approved site-wide). No dependencies, no new tabs: the image zooms
+       in place over a uniformly darkened page, inside a white ~3 mm frame with
+       rounded corners matching the image, capped at native resolution so it
+       stays sharp. Closes on backdrop click, close button or Escape. -->
+  <script>
+    (function () {
+      'use strict';
+
+      var FRAME_MM = 3;          /* white frame thickness (mm) */
+      var PX_PER_MM = 96 / 25.4; /* CSS reference px per mm   */
+      var OPEN_MS = 320;
+      var CLOSE_MS = 240;
+
+      var overlay = null, frame = null, big = null, source = null;
+
+      function reducedMotion() {
+        return window.matchMedia
+          && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      }
+
+      /* Same rounded shape as the clicked image: outer radius = image radius + frame */
+      function frameRadius(img) {
+        var r = parseFloat(getComputedStyle(img).borderTopLeftRadius);
+        var inner = (r > 1) ? r : 12;
+        return (inner + FRAME_MM * PX_PER_MM).toFixed(1) + 'px';
+      }
+
+      /* Never upscale past native resolution: the zoom stays sharp */
+      function capToNative() {
+        var nw = big.naturalWidth;
+        if (nw && big.getBoundingClientRect().width > nw) {
+          big.style.width = nw + 'px';
+          big.style.height = 'auto';
+        }
+      }
+
+      function open(img) {
+        if (overlay) { return; }
+        source = img;
+
+        overlay = document.createElement('div');
+        overlay.className = 'lb-overlay';
+        overlay.setAttribute('role', 'dialog');
+        overlay.setAttribute('aria-modal', 'true');
+        overlay.setAttribute('aria-label', 'Image preview');
+
+        frame = document.createElement('div');
+        frame.className = 'lb-frame';
+        frame.style.setProperty('--lb-radius', frameRadius(img));
+
+        big = new Image();
+        big.alt = img.alt || '';
+        big.draggable = false;
+        big.src = img.currentSrc || img.src;
+        frame.appendChild(big);
+        overlay.appendChild(frame);
+
+        var closeBtn = document.createElement('button');
+        closeBtn.type = 'button';
+        closeBtn.className = 'lb-close';
+        closeBtn.setAttribute('aria-label', 'Close image preview');
+        closeBtn.innerHTML = '&times;';
+        overlay.appendChild(closeBtn);
+
+        document.body.appendChild(overlay);
+        document.documentElement.classList.add('lb-lock');
+
+        if (big.complete && big.naturalWidth) {
+          start();
+        } else {
+          big.addEventListener('load', start, { once: true });
+          big.addEventListener('error', start, { once: true });
+        }
+        closeBtn.focus();
+      }
+
+      function start() {
+        capToNative();
+
+        if (reducedMotion()) {
+          overlay.classList.add('lb-open');
+          return;
+        }
+
+        var first = source.getBoundingClientRect();
+        var last = frame.getBoundingClientRect();
+        if (first.width < 4 || last.width < 4) {
+          overlay.classList.add('lb-open');
+          return;
+        }
+
+        /* FLIP: begin exactly on the thumbnail, then zoom to the centred frame */
+        var s = first.width / last.width;
+        frame.style.transformOrigin = '0 0';
+        frame.style.transform = 'translate(' + (first.left - last.left).toFixed(2) + 'px,'
+                              + (first.top - last.top).toFixed(2) + 'px)'
+                              + ' scale(' + s.toFixed(5) + ')';
+        void overlay.getBoundingClientRect(); /* flush styles */
+        overlay.classList.add('lb-open');
+        frame.style.transition = 'transform ' + OPEN_MS + 'ms cubic-bezier(.22,.61,.36,1)';
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () { frame.style.transform = 'none'; });
+        });
+      }
+
+      function close() {
+        if (!overlay || overlay.classList.contains('lb-closing')) { return; }
+        overlay.classList.add('lb-closing');
+        overlay.classList.remove('lb-open');
+
+        if (!reducedMotion() && source) {
+          var first = source.getBoundingClientRect();
+          var last = frame.getBoundingClientRect();
+          if (first.width > 4 && last.width > 4) {
+            var s = first.width / last.width;
+            frame.style.transition = 'transform ' + CLOSE_MS + 'ms cubic-bezier(.4,0,.6,1)';
+            frame.style.transform = 'translate(' + (first.left - last.left).toFixed(2) + 'px,'
+                                  + (first.top - last.top).toFixed(2) + 'px)'
+                                  + ' scale(' + s.toFixed(5) + ')';
+          }
+        }
+
+        setTimeout(function () {
+          overlay.remove();
+          overlay = frame = big = source = null;
+          document.documentElement.classList.remove('lb-lock');
+        }, reducedMotion() ? 0 : 260);
+      }
+
+      document.addEventListener('click', function (e) {
+        var img = e.target.closest ? e.target.closest('main img') : null;
+        if (img && !img.closest('a')) {
+          e.preventDefault();
+          open(img);
+          return;
+        }
+        if (overlay && (e.target === overlay
+             || (e.target.closest && e.target.closest('.lb-close')))) {
+          close();
+        }
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && overlay) { close(); }
+      });
+    })();
+  </script>
 </body>
 </html>
