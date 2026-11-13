@@ -169,35 +169,60 @@
       <span>Assembly &amp; testing</span>
     </div>
 
-    <h2>Gallery</h2>
-    <div class="gallery">
-      <figure>
-        <img src="../assets/uav-wing-skin-structure.png"
-             alt="Translucent view of the UAV wing skin over the internal structure, with root attachment (CATIA V5)"
-             width="1732" height="821" loading="lazy">
-        <figcaption>Wing skin over the internal structure &mdash; CATIA V5</figcaption>
-      </figure>
-      <figure>
-        <img src="../assets/uav-wing-internal-structure.jpg"
-             alt="UAV wing internal architecture — spars and ribs (CATIA V5)"
-             width="1732" height="821" loading="lazy">
-        <figcaption>Internal architecture &mdash; spars and ribs</figcaption>
-      </figure>
-      <figure>
-        <img src="../assets/uav-wing-fea-mesh.png"
-             alt="FEA mesh of the UAV wing box — spars and ribs (Ansys)"
-             width="1503" height="416" loading="lazy">
-        <figcaption>Wing box FEA model &mdash; Ansys</figcaption>
-      </figure>
-      <figure>
-        <img src="../assets/uav-wing-total-deformation.jpg"
-             alt="Total deformation contour of the wing structure under limit load — maximum at tip, minimum at root (values omitted for confidentiality)"
-             width="1735" height="608" loading="lazy">
-        <figcaption>Static FEA &mdash; total deformation under limit load (values omitted)</figcaption>
-      </figure>
+<h2>Gallery</h2>
+<style>
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+  .gallery figure {
+    flex: 0 1 320px;        /* larghezza uniforme delle figure */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .gallery figure img {
+    width: 100%;             /* tutte le immagini occupano la stessa larghezza */
+    height: 200px;           /* altezza uniforme */
+    object-fit: contain;     /* mantiene le proporzioni senza distorcere */
+    display: block;
+  }
+  .gallery figcaption {
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+</style>
 
-    </div>
-
+<div class="gallery">
+  <figure>
+    <img src="../assets/uav-wing-skin-structure.png"
+         alt="Translucent view of the UAV wing skin over the internal structure, with root attachment (CATIA V5)"
+         width="1732" height="821" loading="lazy">
+    <figcaption>Wing skin over the internal structure &mdash; CATIA V5</figcaption>
+  </figure>
+  <figure>
+    <img src="../assets/uav-wing-internal-structure.jpg"
+         alt="UAV wing internal architecture — spars and ribs (CATIA V5)"
+         width="1732" height="821" loading="lazy">
+    <figcaption>Internal architecture &mdash; spars and ribs</figcaption>
+  </figure>
+  <figure>
+    <img src="../assets/uav-wing-fea-mesh.png"
+         alt="FEA mesh of the UAV wing box — spars and ribs (Ansys)"
+         width="1503" height="416" loading="lazy">
+    <figcaption>Wing box FEA model &mdash; Ansys</figcaption>
+  </figure>
+  <figure>
+    <img src="../assets/uav-wing-total-deformation.jpg"
+         alt="Total deformation contour of the wing structure under limit load — maximum at tip, minimum at root"
+         width="1735" height="608" loading="lazy">
+    <figcaption>Static FEA &mdash; total deformation under limit load (values omitted)</figcaption>
+  </figure>
+</div>
     <div class="contact-strip">
       Questions about the methodology? I am happy to discuss it in detail during an
       interview &mdash;
