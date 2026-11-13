@@ -18,11 +18,19 @@
 
   <header class="site-header">
     <a class="site-title" href="../index.html">Michele Maiullari</a>
-        <nav>
+    <nav>
       <a href="../index.html">Home</a>
       <a href="../about.html">About</a>
-      <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a>
+      <div class="nav-contact">
+        <button class="nav-contact-toggle" type="button" aria-expanded="false" aria-controls="contact-menu">
+          Contact
+        </button>
+        <div class="nav-contact-menu" id="contact-menu">
+          <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a>
+          <a href="mailto:maiullari.michele@icloud.com">Contact me</a>
+        </div>
+      </div>
     </nav>
   </header>
 
@@ -30,13 +38,15 @@
 
     <p class="breadcrumb"><a href="../index.html">&larr; Home</a></p>
 
-    <p class="context-line">MSc Thesis Internship &middot; Leonardo S.p.A. · Aerostructures Business Unit &middot; Grottaglie (TA) · 2025–2026</p>
+    <p class="context-line">MSc Thesis Internship &middot; Leonardo S.p.A. &middot; Aerostructures Business Unit &middot; Grottaglie (TA) &middot; 2025&ndash;2026</p>
 
     <h1>UAV Wing Design &amp; Structural Validation</h1>
 
     <p class="subtitle">
-      CAD design, aerodynamic load estimation, FEA validation and safe-life fatigue
-      assessment of a UAV wing and its fuselage junction system.
+      Design and structural validation of an ISR&ndash;UAV wing and its fuselage
+      junction system: CATIA V5 modelling, analytical aerodynamic load estimation,
+      static FEA in Ansys and safe-life fatigue assessment, completed by an
+      FDM-printed prototype of the junction.
     </p>
 
     <div class="nda-banner">
@@ -49,39 +59,42 @@
 
     <h2>Overview</h2>
     <p>
-      The requirement was to design, structurally validate and prototype
-      a ISR&ndash;UAV wing together with its fuselage junction system. The work integrated
+      The project was developed as MSc thesis work within Leonardo S.p.A.'s
+      AeroTech Academy programme, at the Aerostructures Business Unit in Grottaglie.
+      The requirement was to design, structurally validate and prototype an
+      ISR&ndash;UAV wing together with its fuselage junction system, integrating
       analytical load estimation, numerical validation and additive manufacturing
-      within a design loop.
+      within a single design loop.
     </p>
     <p>
-      The task covered the complete 3D CAD modeling of the wing internal
-      structure, the analytical estimation of aerodynamic loads, the engineering of a
-      wing&ndash;fuselage Coupling System, and the structural validation of the assembly
-      via FEA, followed by a safe-life fatigue assessment of the wing structure.
+      The scope covered the complete 3D CAD modelling of the wing's internal
+      structure, the analytical estimation of the aerodynamic loads in steady
+      flight, the engineering of the wing&ndash;fuselage Coupling System, the
+      structural validation of the assembly by FEA, and the subsequent safe-life
+      fatigue assessment of the wing structure.
     </p>
 
     <h2>Approach</h2>
     <ul>
       <li>
-        Imported airfoil geometry from AirfoilTools into <strong>CATIA V5</strong> and
-        modeled the full internal structural architecture: spars, ribs and
-        L/U-shaped junction connectors.
+        Imported the reference airfoil geometry from AirfoilTools into
+        <strong>CATIA V5</strong> and modelled the complete internal structural
+        architecture: spars, ribs and L/U-shaped junction connectors.
       </li>
       <li>
-        Executed static structural <strong>FEA in Ansys</strong> on the
-        wing&ndash;fuselage configuration under limit load conditions, applying the
-        pressure distribution computed for <strong>steady, level flight</strong>.
+        Estimated the aerodynamic load distribution for steady, level flight and
+        executed the static structural <strong>FEA in Ansys</strong> on the
+        wing&ndash;fuselage configuration under limit load conditions.
       </li>
-
-       <li>
-        Executed fatigue analysis in Ansys</strong> on the
-        wing&ndash;fuselage configuration under GAG</strong> load cycle.
-      </li>
-      
       <li>
-        Manufactured the junction via <strong>FDM 3D printing</strong> for rapid
-        prototyping and physical assembly checks.
+        Performed the <strong>fatigue analysis in Ansys</strong> on the
+        wing&ndash;fuselage configuration under the <strong>GAG
+        (Ground&ndash;Air&ndash;Ground) load cycle</strong>, rescaling the static
+        solution to each flight phase.
+      </li>
+      <li>
+        Manufactured the fuselage junction via <strong>FDM 3D printing</strong> for
+        rapid prototyping and physical assembly checks.
       </li>
     </ul>
 
@@ -92,18 +105,18 @@
     </p>
     <p>
       From the mission profile (flight profile, duration and target number of
-      missions), the load spectrum was derived through the
-      <strong>GAG (Ground&ndash;Air&ndash;Ground)</strong> cycle which 
-      rescales the static solution to each flight phase.
+      missions), the load spectrum was derived through the <strong>GAG
+      (Ground&ndash;Air&ndash;Ground)</strong> cycle, which rescales the static
+      solution to each flight phase.
     </p>
     <p>
       Fatigue strength is described by <strong>S&ndash;N curves</strong>
-      (stress vs. cycles), while the damage accumulated per mission is computed with
-      the <strong>Palmgren&ndash;Miner rule</strong>. Considering the number of
-      critical cycles per mission, the damage contribution
-      <em>D<sub>i</sub></em> of each flight phase was calculated, from which the
-      total damage per mission was obtained; entered into the Palmgren&ndash;Miner
-      formula, it returns an estimate of the fatigue life.
+      (stress vs. cycles), while the damage accumulated per mission is computed
+      with the <strong>Palmgren&ndash;Miner rule</strong>. Considering the number
+      of critical cycles per mission, the damage contribution <em>D<sub>i</sub></em>
+      of each flight phase was calculated, from which the total damage per mission
+      was obtained; entered into the Palmgren&ndash;Miner formula, it returns an
+      estimate of the fatigue life.
     </p>
     <p>
       The analysis therefore demonstrated the capability of the system to withstand
@@ -112,21 +125,38 @@
 
     <h2>Results</h2>
     <ul>
-      <li>Delivered a fully parameterized, structurally validated virtual prototype of the UAV wing.</li>
       <li>
-        Confirmed the static structural validity of the final configuration:
-        maximum deformation extremely small compared with the wing span.
+        Delivered a fully parameterized, structurally validated virtual prototype
+        of the UAV wing.
       </li>
       <li>
-        Principal and transverse stresses found well below the yield strength limits
-        of the materials employed in the different zones of the structure.
+        Confirmed the static structural validity of the final configuration under
+        limit load: maximum total deformation of [INSERIRE DATO: deformazione
+        massima, in mm o in % dell'apertura alare] of the wing span.
       </li>
-      <li>Produced a physical 3D-printed junction, consistent with the CAD envelope.</li>
-      <li>Closed the design loop between analytical load estimation, CAE validation and additive manufacturing.</li>
-      <li>Demonstrated, via safe-life analysis, the capability of the structure to withstand fatigue loading for the target number of missions.</li>
+      <li>
+        Principal and transverse stresses remained below the yield strength limits
+        of the materials employed in the different zones of the structure, with a
+        minimum margin of [INSERIRE DATO: margine minimo rispetto allo snervamento,
+        in %].
+      </li>
+      <li>
+        Demonstrated, through the safe-life analysis, the capability of the
+        structure to withstand fatigue loading for the target of [INSERIRE DATO:
+        numero di missioni target] missions.
+      </li>
+      <li>
+        Produced a physical FDM-printed junction, consistent with the CAD envelope.
+      </li>
+      <li>
+        Closed the design loop between analytical load estimation, CAE validation
+        and additive manufacturing.
+      </li>
     </ul>
     <p class="muted-note">
-      Quantitative performance figures are omitted, as they are subject to confidentiality.
+      Quantitative performance figures are omitted, as they are subject to
+      confidentiality; the fields in square brackets are placeholders for
+      publishable, normalised values.
     </p>
 
     <h2>Skills</h2>
@@ -170,7 +200,7 @@
         <figcaption>Static FEA &mdash; total deformation under limit load (values omitted)</figcaption>
       </figure>
 
-      </div>
+    </div>
 
     <div class="contact-strip">
       Questions about the methodology? I am happy to discuss it in detail during an
@@ -180,12 +210,46 @@
 
   </main>
 
-    <footer>
+  <footer>
     &copy; 2026 Michele Maiullari &middot; maiullari.michele@icloud.com &middot;
     <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a> &middot;
     <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a> &middot;
     <a href="../assets/CV_Michele_Maiullari.pdf" target="_blank" rel="noopener">CV (PDF)</a>
   </footer>
+
+  <script>
+  (function () {
+    var box = document.querySelector('.nav-contact');
+    var toggle = document.querySelector('.nav-contact-toggle');
+    if (!box || !toggle) { return; }
+    function setOpen(open) {
+      box.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    toggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      setOpen(!box.classList.contains('open'));
+    });
+    document.addEventListener('click', function (e) {
+      if (!box.contains(e.target)) { setOpen(false); }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        setOpen(false);
+        toggle.blur();
+      }
+    });
+    box.addEventListener('focusout', function (e) {
+      if (box.contains(e.relatedTarget)) { return; }
+      setOpen(false);
+    });
+    if (window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      box.addEventListener('mouseenter', function () { setOpen(true); });
+      box.addEventListener('mouseleave', function () { setOpen(false); });
+    }
+  })();
+  </script>
 
 </body>
 </html>

@@ -18,11 +18,19 @@
 
   <header class="site-header">
     <a class="site-title" href="../index.html">Michele Maiullari</a>
-        <nav>
+    <nav>
       <a href="../index.html">Home</a>
       <a href="../about.html">About</a>
-      <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a>
+      <div class="nav-contact">
+        <button class="nav-contact-toggle" type="button" aria-expanded="false" aria-controls="contact-menu">
+          Contact
+        </button>
+        <div class="nav-contact-menu" id="contact-menu">
+          <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a>
+          <a href="mailto:maiullari.michele@icloud.com">Contact me</a>
+        </div>
+      </div>
     </nav>
   </header>
 
@@ -54,7 +62,7 @@
     </p>
     <p>
       The objective was a single, fully integrated SysML model in CATIA Magic
-      (Cameo Systems Modeler) that links customer requirements directly to functional
+      (Cameo Systems Modeler) linking customer requirements directly to functional
       structures and physical component geometries &mdash; so that component suitability
       is verified automatically upon parameter change, instead of through manual
       iteration on documents and spreadsheets.
@@ -173,7 +181,6 @@
       <span>VDI 2206 process frame</span>
     </div>
 
-    
 
     <div class="contact-strip">
       Questions about the methodology? I am happy to discuss it in detail during an
@@ -183,12 +190,46 @@
 
   </main>
 
-    <footer>
+  <footer>
     &copy; 2026 Michele Maiullari &middot; maiullari.michele@icloud.com &middot;
     <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a> &middot;
     <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a> &middot;
     <a href="../assets/CV_Michele_Maiullari.pdf" target="_blank" rel="noopener">CV (PDF)</a>
   </footer>
+
+  <script>
+  (function () {
+    var box = document.querySelector('.nav-contact');
+    var toggle = document.querySelector('.nav-contact-toggle');
+    if (!box || !toggle) { return; }
+    function setOpen(open) {
+      box.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    toggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      setOpen(!box.classList.contains('open'));
+    });
+    document.addEventListener('click', function (e) {
+      if (!box.contains(e.target)) { setOpen(false); }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        setOpen(false);
+        toggle.blur();
+      }
+    });
+    box.addEventListener('focusout', function (e) {
+      if (box.contains(e.relatedTarget)) { return; }
+      setOpen(false);
+    });
+    if (window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      box.addEventListener('mouseenter', function () { setOpen(true); });
+      box.addEventListener('mouseleave', function () { setOpen(false); });
+    }
+  })();
+  </script>
 
 </body>
 </html>

@@ -18,11 +18,19 @@
 
   <header class="site-header">
     <a class="site-title" href="../index.html">Michele Maiullari</a>
-        <nav>
+    <nav>
       <a href="../index.html">Home</a>
       <a href="../about.html">About</a>
-      <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a>
+      <div class="nav-contact">
+        <button class="nav-contact-toggle" type="button" aria-expanded="false" aria-controls="contact-menu">
+          Contact
+        </button>
+        <div class="nav-contact-menu" id="contact-menu">
+          <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a>
+          <a href="mailto:maiullari.michele@icloud.com">Contact me</a>
+        </div>
+      </div>
     </nav>
   </header>
 
@@ -40,32 +48,31 @@
       Steger&ndash;Warming flux-splitting scheme.
     </p>
 
-     <p class="source-link">
+    <p class="source-link">
       <strong>Source code:</strong>
       <a href="https://github.com/michelemaiullari/cfd-projects/tree/main/shock-solver/nozzle_w.f"
          target="_blank" rel="noopener">github.com/michelemaiullari/cfd-projects &middot; shock-solver</a>
     </p>
 
-    
-
     <h2>Overview</h2>
     <p>
-      As the year project of the Computational Fluid Dynamics course at Politecnico di
-      Bari, the evolution of an airflow inside a shock tube was analysed &mdash; the classical
-      Riemann problem for the one-dimensional Euler equations of a gamma-law gas, in
-      which two states at different pressure and density are initially separated by a
-      discontinuity. The project was built around an existing Fortran 77 code,
-      <strong>nozzle_w.f</strong>, based on <strong>Roe's approximate Riemann solver</strong>,
-      with a twofold objective: first verify the correctness of the code, then extend it
-      with a second, independent numerical scheme.
+      As the annual project of the Computational Fluid Dynamics course at Politecnico
+      di Bari, the evolution of an airflow inside a shock tube was analysed &mdash;
+      the classical Riemann problem for the one-dimensional Euler equations of a
+      gamma-law gas, in which two states at different pressure and density are
+      initially separated by a discontinuity. The project was built around an
+      existing Fortran 77 code, <strong>nozzle_w.f</strong>, based on
+      <strong>Roe's approximate Riemann solver</strong>, with a twofold objective:
+      first verify the correctness of the code, then extend it with a second,
+      independent numerical scheme.
     </p>
     <p>
-      The work therefore split into two parts: validating the Roe-based solver against
-      the reference solutions of Toro's <em>Riemann Solvers and Numerical Methods for
-      Fluid Dynamics</em> (Springer), and implementing the
-      <strong>Steger&ndash;Warming flux vector splitting</strong> method within the same
-      code, comparing the two schemes in terms of accuracy, robustness and behaviour on
-      strong shocks, rarefactions and contact discontinuities.
+      The work was therefore split into two parts: validating the Roe-based solver
+      against the reference solutions of Toro's <em>Riemann Solvers and Numerical
+      Methods for Fluid Dynamics</em> (Springer), and implementing the
+      <strong>Steger&ndash;Warming flux vector splitting</strong> method within the
+      same code, comparing the two schemes in terms of accuracy, robustness and
+      behaviour on strong shocks, rarefactions and contact discontinuities.
     </p>
 
     <h2>Approach</h2>
@@ -124,9 +131,9 @@
       non-physical expansion shocks, an entropy fix is applied across rarefactions.
     </p>
     <p>
-      The <strong>Steger&ndash;Warming method</strong> belongs instead to the flux vector
-      splitting family: exploiting the homogeneity of the Euler flux, the flux vector is
-      split into two contributions with non-negative and non-positive eigenvalue
+      The <strong>Steger&ndash;Warming method</strong> belongs to the flux vector
+      splitting family: exploiting the homogeneity of the Euler flux, the flux vector
+      is split into two contributions with non-negative and non-positive eigenvalue
       spectra, each upwinded according to the direction along which information
       propagates. FVS schemes are simpler and cheaper than Godunov-type solvers, at the
       price of a lower resolution of contact discontinuities and shear waves.
@@ -292,19 +299,19 @@
         <figure>
           <img src="../assets/cfd-sw-test3-density.png"
                alt="Density profile along the tube for Test 3 (blast-wave problem) computed with the implemented Steger–Warming flux splitting (gnuplot)"
-               width="640" height="384" loading="lazy">
+               width="677" height="418" loading="lazy">
           <figcaption>Density &rho; vs position</figcaption>
         </figure>
         <figure>
           <img src="../assets/cfd-sw-test3-velocity.png"
                alt="Velocity profile along the tube for Test 3 (blast-wave problem) computed with the implemented Steger–Warming flux splitting (gnuplot)"
-               width="640" height="384" loading="lazy">
+               width="677" height="418" loading="lazy">
           <figcaption>Velocity u vs position</figcaption>
         </figure>
         <figure>
           <img src="../assets/cfd-sw-test3-pressure.png"
                alt="Pressure profile along the tube for Test 3 (blast-wave problem) computed with the implemented Steger–Warming flux splitting (gnuplot)"
-               width="640" height="384" loading="lazy">
+               width="677" height="418" loading="lazy">
           <figcaption>Pressure p vs position</figcaption>
         </figure>
       </div>
@@ -362,12 +369,46 @@
 
   </main>
 
-    <footer>
+  <footer>
     &copy; 2026 Michele Maiullari &middot; maiullari.michele@icloud.com &middot;
     <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a> &middot;
     <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a> &middot;
     <a href="../assets/CV_Michele_Maiullari.pdf" target="_blank" rel="noopener">CV (PDF)</a>
   </footer>
+
+  <script>
+  (function () {
+    var box = document.querySelector('.nav-contact');
+    var toggle = document.querySelector('.nav-contact-toggle');
+    if (!box || !toggle) { return; }
+    function setOpen(open) {
+      box.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    toggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      setOpen(!box.classList.contains('open'));
+    });
+    document.addEventListener('click', function (e) {
+      if (!box.contains(e.target)) { setOpen(false); }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        setOpen(false);
+        toggle.blur();
+      }
+    });
+    box.addEventListener('focusout', function (e) {
+      if (box.contains(e.relatedTarget)) { return; }
+      setOpen(false);
+    });
+    if (window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      box.addEventListener('mouseenter', function () { setOpen(true); });
+      box.addEventListener('mouseleave', function () { setOpen(false); });
+    }
+  })();
+  </script>
 
 </body>
 </html>

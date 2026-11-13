@@ -18,11 +18,19 @@
 
   <header class="site-header">
     <a class="site-title" href="../index.html">Michele Maiullari</a>
-        <nav>
+    <nav>
       <a href="../index.html">Home</a>
       <a href="../about.html">About</a>
-      <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a>
+      <div class="nav-contact">
+        <button class="nav-contact-toggle" type="button" aria-expanded="false" aria-controls="contact-menu">
+          Contact
+        </button>
+        <div class="nav-contact-menu" id="contact-menu">
+          <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a>
+          <a href="mailto:maiullari.michele@icloud.com">Contact me</a>
+        </div>
+      </div>
     </nav>
   </header>
 
@@ -44,27 +52,25 @@
 
     <h2>Overview</h2>
     <p>
-      Analytical beam formulas are only useful if someone has proven they survive
-      contact with a real, noisy measurement. The objective of this laboratory
-      campaign was to do exactly that: evaluate the local surface strains of
-      metallic specimens under bending loads with electrical resistance strain
-      gauges, and validate the analytical model against the measured data while
-      accounting for instrumental uncertainty, signal noise and mechanical
-      hysteresis.
+      The objective of this laboratory campaign was to evaluate the local surface
+      strains of metallic specimens under bending loads with electrical resistance
+      strain gauges, and to validate the analytical beam model against the measured
+      data while accounting for instrumental uncertainty, signal noise and
+      mechanical hysteresis.
     </p>
     <p>
-      I ran the full metrological loop end to end: surface preparation and
-      gauge bonding, soldering and wiring, bridge configuration and balancing,
-      multi-channel acquisition through a scanning unit, deflection-stepped
-      loading programmes, and a statistical treatment of the results that separates
+      The full metrological loop was run end to end: surface preparation and gauge
+      bonding, soldering and wiring, bridge configuration and balancing,
+      multi-channel acquisition through a scanning unit, deflection-stepped loading
+      programmes, and a statistical treatment of the results that separates
       systematic effects from random scatter.
     </p>
 
     <h2>Specimens and Instrumentation</h2>
     <p>
-      Three prismatic cantilever specimens (300 mm long, 25 mm wide) were
-      tested, one per material, each clamped at one end and loaded by a
-      micrometric screw at the free end:
+      Three prismatic cantilever specimens (300 mm long, 25 mm wide) were tested,
+      one per material, each clamped at one end and loaded by a micrometric screw
+      at the free end:
     </p>
     <ul>
       <li><strong>Aluminium</strong> &mdash; thickness b = 4.7 mm &middot; E = 60&ndash;110 GPa (literature range) &middot; 6 gauges at x = 16 / 106 / 196 mm, one per face</li>
@@ -77,47 +83,46 @@
       nominal resistance, 3 mm measurement base, gage factor
       <strong>K = 1.99</strong>, cyanoacrylate-bonded, thermal response matched to
       ferritic steel (&alpha; = 10.8&times;10<sup>&minus;6</sup> K<sup>&minus;1</sup>).
-      Signal conditioning and readout were handled by a
-      <strong>P-3500 strain indicator</strong> (bridge excitation, gage-factor
-      setting, bridge balancing) coupled to a <strong>switch &amp; balance
-      unit</strong>, so that all gauges on a specimen could be scanned
-      sequentially at each load step.
+      Signal conditioning and readout were handled by a <strong>P-3500 strain
+      indicator</strong> (bridge excitation, gage-factor setting, bridge balancing)
+      coupled to a <strong>switch &amp; balance unit</strong>, so that all gauges on
+      a specimen could be scanned sequentially at each load step.
     </p>
 
     <h2>Installation Procedure</h2>
     <p>
-      A sloppy bond invalidates everything downstream, so the installation was
-      treated as a metrological operation in its own right. I cleaned each installation site mechanically (abrasive paper, grit #320)
-      and then chemically, with consecutive acid and base treatments repeated
-      three times, an isopropyl wipe in between, and final layout marking of the
-      alignment lines.
+      The installation was treated as a metrological operation in its own right,
+      since a poor bond invalidates everything downstream. Each installation site
+      was cleaned mechanically (abrasive paper, grit #320) and then chemically,
+      with consecutive acid and base treatments repeated three times, an isopropyl
+      wipe in between, and final layout marking of the alignment lines.
     </p>
     <p>
-      I bonded the gauges longitudinally with a drop of cyanoacrylate, holding
-      each one under adhesive tape for four minutes while the joint cured, and
-      peeled the tape back at &asymp;45&deg; to avoid lifting the grid. After
-      insulating the terminals from the specimen with paper tape, I soldered the
-      lead wires onto tinned contact bubbles &mdash; keeping the two joints
-      separate to avoid shorts &mdash; and verified every channel with a
-      resistance check within <strong>1%</strong> of the nominal 120 &Omega;
-      before connecting it to the acquisition chain.
+      The gauges were bonded longitudinally with a drop of cyanoacrylate, each one
+      held under adhesive tape for four minutes while the joint cured, and the tape
+      peeled back at &asymp;45&deg; to avoid lifting the grid. After insulating the
+      terminals from the specimen with paper tape, the lead wires were soldered
+      onto tinned contact bubbles &mdash; keeping the two joints separate to avoid
+      shorts &mdash; and every channel was verified with a resistance check within
+      <strong>1%</strong> of the nominal 120 &Omega; before connecting it to the
+      acquisition chain.
     </p>
 
     <h2>Bridge Configurations and Acquisition</h2>
     <p>
-      I ran two Wheatstone configurations. In the <strong>quarter-bridge</strong>
+      Two Wheatstone configurations were used. In the <strong>quarter-bridge</strong>
       setup each reading comes from a single active gauge, with the instrument
-      applying &Delta;R/R = K&middot;&epsilon; through the gage-factor setting. In the
-      <strong>half-bridge</strong> setup, two gauges bonded at the same station on
-      opposite faces (one in tension, one in compression) were wired into adjacent
-      arms: the two strain contributions add up, so the instrument reads an
-      amplified signal &mdash; and the symmetric thermal contribution cancels.
+      applying &Delta;R/R = K&middot;&epsilon; through the gage-factor setting. In
+      the <strong>half-bridge</strong> setup, two gauges bonded at the same station
+      on opposite faces (one in tension, one in compression) were wired into
+      adjacent arms: the two strain contributions add up, so the instrument reads
+      an amplified signal &mdash; and the symmetric thermal contribution cancels.
     </p>
     <p>
       Each test consisted of deflection-stepped loading cycles through the
       micrometric screw, with a gradual unload back to zero at every step, and a
       bridge balance (zeroing) before acquisition. Before the measurement cycles,
-      I ran conditioning cycles on the specimens to stabilise the
+      conditioning cycles were run on the specimens to stabilise the
       gauge&ndash;adhesive system and progressively reduce mechanical hysteresis.
       Every measured value was then compared with the analytical prediction.
     </p>
@@ -125,9 +130,9 @@
     <h2>Analytical Reference Model</h2>
     <p>
       Schematising the rig as a cantilever of length L (clamp to load point,
-      L = 255 mm) loaded by a tip force, the bending theory chain
-      (moment distribution, section modulus, load&ndash;deflection relation and
-      Hooke's law) collapses to a closed-form surface strain field:
+      L = 255 mm) loaded by a tip force, the bending theory chain (moment
+      distribution, section modulus, load&ndash;deflection relation and Hooke's
+      law) collapses to a closed-form surface strain field:
     </p>
     <p style="text-align: center;">
       <em>&epsilon;(x) = (3/2) &middot; (L &minus; x) &middot; b &middot; f / L<sup>3</sup></em>
@@ -169,27 +174,25 @@
     </p>
     <h3>Induced systematic error (gage factor manipulation)</h3>
     <p>
-      To test the sensitivity of the chain to a mis-initialisation, I
-      intentionally set the indicator's
-      gage factor to <strong>K = 1.95</strong> while the true
-      gauge constant is 1.99. Since the instrument divides by the set constant, the
-      predicted effect is a purely multiplicative over-read of
-      1.99/1.95 = <strong>+2.05%</strong>, flat across the load range. The measured
-      cycle-to-cycle ratio confirmed it: mean <strong>+1.8%</strong>, with the
-      residual gap consistent with the &plusmn;1 &mu;&epsilon; display resolution of
-      the indicator (&plusmn;0.7% on the smallest reading). A flat ratio means
-      systematic, not random &mdash; exactly the diagnostic value of running the
-      experiment this way.
+      To test the sensitivity of the chain to a mis-initialisation, the
+      indicator's gage factor was intentionally set to <strong>K = 1.95</strong>
+      while the true gauge constant is 1.99. Since the instrument divides by the
+      set constant, the predicted effect is a purely multiplicative over-read of
+      1.99/1.95 = <strong>+2.05%</strong>, flat across the load range. The
+      measured cycle-to-cycle ratio confirmed it: mean <strong>+1.8%</strong>, with
+      the residual gap consistent with the &plusmn;1 &mu;&epsilon; display
+      resolution of the indicator (&plusmn;0.7% on the smallest reading). A flat
+      ratio identifies a systematic, not random, effect.
     </p>
     <h3>Half-bridge amplification</h3>
     <p>
       The half-bridge configuration delivered the expected signal amplification:
       the opposite-face pair at the primary station read a mean
-      <strong>&times;1.97</strong> of the quarter-bridge reading at the same station
-      and deflection (&times;1.99 at full scale, against the ideal &times;2.00),
-      while the output stayed linear across the whole loading range. This closes
-      the loop on bridge theory: quarter-bridge for simplicity, half-bridge when
-      signal level and thermal cancellation matter.
+      <strong>&times;1.97</strong> of the quarter-bridge reading at the same
+      station and deflection (&times;1.99 at full scale, against the ideal
+      &times;2.00), while the output stayed linear across the whole loading range.
+      This closes the loop on bridge theory: quarter-bridge for simplicity,
+      half-bridge when signal level and thermal cancellation matter.
     </p>
 
     <h2>Metrological Synthesis</h2>
@@ -229,8 +232,6 @@
       <span>Beam bending theory validation</span>
     </div>
 
-  
-
     <h2>Gallery</h2>
     <div class="gallery">
       <figure style="grid-column: 1 / -1;">
@@ -257,7 +258,7 @@
              width="803" height="1070" loading="lazy">
         <figcaption>Instrumented specimen &mdash; four gauges, two per face</figcaption>
       </figure>
-     
+
       <figure>
         <img src="../assets/strain-switch.jpg"
              alt="Switch and balance unit wired to the strain gauges for multi-channel scanning"
@@ -265,15 +266,13 @@
         <figcaption>Switch &amp; balance unit &mdash; multi-channel scanning</figcaption>
       </figure>
 
-       <figure>
+      <figure>
         <img src="../assets/strain-p3500.jpg"
              alt="P-3500 strain indicator front panel with gage factor and bridge balance controls"
              width="401" height="291" loading="lazy">
         <figcaption>P-3500 strain indicator &mdash; gage factor &amp; balance</figcaption>
       </figure>
 
-
-      
       <figure style="grid-column: 1 / -1;">
         <img src="../assets/strain-al-validation.png"
              alt="Measured loading and unloading strain versus the analytical cantilever model for gauge 1"
@@ -293,7 +292,7 @@
         <figcaption>Half-bridge signal amplification &mdash; pair #1&ndash;#4</figcaption>
       </figure>
     </div>
-    
+
 
     <div class="contact-strip">
       Questions about the methodology? I am happy to discuss it in detail during an
@@ -303,12 +302,46 @@
 
   </main>
 
-    <footer>
+  <footer>
     &copy; 2026 Michele Maiullari &middot; maiullari.michele@icloud.com &middot;
     <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a> &middot;
     <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a> &middot;
     <a href="../assets/CV_Michele_Maiullari.pdf" target="_blank" rel="noopener">CV (PDF)</a>
   </footer>
+
+  <script>
+  (function () {
+    var box = document.querySelector('.nav-contact');
+    var toggle = document.querySelector('.nav-contact-toggle');
+    if (!box || !toggle) { return; }
+    function setOpen(open) {
+      box.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    toggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      setOpen(!box.classList.contains('open'));
+    });
+    document.addEventListener('click', function (e) {
+      if (!box.contains(e.target)) { setOpen(false); }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        setOpen(false);
+        toggle.blur();
+      }
+    });
+    box.addEventListener('focusout', function (e) {
+      if (box.contains(e.relatedTarget)) { return; }
+      setOpen(false);
+    });
+    if (window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      box.addEventListener('mouseenter', function () { setOpen(true); });
+      box.addEventListener('mouseleave', function () { setOpen(false); });
+    }
+  })();
+  </script>
 
 </body>
 </html>

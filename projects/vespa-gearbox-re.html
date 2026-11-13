@@ -18,11 +18,19 @@
 
   <header class="site-header">
     <a class="site-title" href="../index.html">Michele Maiullari</a>
-        <nav>
+    <nav>
       <a href="../index.html">Home</a>
       <a href="../about.html">About</a>
-      <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a>
+      <div class="nav-contact">
+        <button class="nav-contact-toggle" type="button" aria-expanded="false" aria-controls="contact-menu">
+          Contact
+        </button>
+        <div class="nav-contact-menu" id="contact-menu">
+          <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a>
+          <a href="mailto:maiullari.michele@icloud.com">Contact me</a>
+        </div>
+      </div>
     </nav>
   </header>
 
@@ -55,14 +63,14 @@
       Special &mdash; a design shared across the RLN, PK, S, XL and 125 ET3 gearbox
       families. As the project of the <em>Technical Representation of Machines &amp;
       Virtual Prototyping</em> course at Politecnico di Bari, the task was to run the
-      complete reverse-engineering loop on it: measure the part, reconstruct a
-      parametric 3D geometry, and deliver the full technical documentation needed to
+      complete reverse-engineering loop: measure the part, reconstruct a parametric
+      3D geometry, and deliver the full technical documentation needed to
       manufacture it again.
     </p>
     <p>
       The result is a complete digital twin &mdash; a fully parametric Autodesk
-      Inventor part and an AutoCAD manufacturing drawing &mdash; closing the gap between a
-      legacy physical component and a modern CAD environment.
+      Inventor part and an AutoCAD manufacturing drawing &mdash; closing the gap
+      between a legacy physical component and a modern CAD environment.
     </p>
 
     <h2>The Part</h2>
@@ -70,13 +78,13 @@
       The component is a stepped shaft with <strong>four integral spur gears</strong>
       (10, 14, 18 and 22 teeth), an overall length of 109.20 mm and diameters ranging
       from &Oslash;10.00 mm at the threaded end to &Oslash;50.50 mm on the largest gear
-      rim. The feature inventory is anything but trivial: an ISO metric external
-      thread <strong>M10&times;1.5 &ndash; 6g</strong> at the output end, a
-      <strong>3.00 P9</strong> keyway, cross-holes with <strong>37&deg;
-      countersinks</strong> (&Oslash;1.50 / &Oslash;3.00), radii from R0.25 up to
-      R22.75 on the web transitions, angular features (85&deg;, 103&deg;, 109&deg;)
-      and a dedicated undercut geometry on the gear rims &mdash; two 0.85 mm edges at
-      135&deg; with the gear front face, produced by the original milling.
+      rim. The feature inventory is dense: an ISO metric external thread
+      <strong>M10&times;1.5 &ndash; 6g</strong> at the output end, a <strong>3.00 P9</strong>
+      keyway, cross-holes with <strong>37&deg; countersinks</strong> (&Oslash;1.50 /
+      &Oslash;3.00), radii from R0.25 up to R22.75 on the web transitions, angular
+      features (85&deg;, 103&deg;, 109&deg;) and a dedicated undercut geometry on the
+      gear rims &mdash; two 0.85 mm edges at 135&deg; with the gear front face,
+      produced by the original milling.
     </p>
     <p>
       Each of these features had to be measured, identified and re-documented from
@@ -128,10 +136,10 @@
       The digital twin was built as a <strong>fully parametric part in Autodesk
       Inventor</strong> (.ipt), with a sketch-driven feature tree following the
       manufacturing logic of the component: the stepped shaft profile revolved around
-      the axis, the keyway, the cross-holes with their countersinks, the M10&times;1.5
-      thread, and the four gear rims modelled from the reconstructed tooth data (z, m,
-      &alpha;) with the measured root radii and the 0.85 mm / 135&deg; undercut
-      captured in the profiles.
+      the axis, the keyway, the cross-holes with their countersinks, the
+      M10&times;1.5 thread, and the four gear rims modelled from the reconstructed
+      tooth data (z, m, &alpha;) with the measured root radii and the 0.85 mm /
+      135&deg; undercut captured in the profiles.
     </p>
     <p>
       Because the model is parametric, every dimension is driven by an editable
@@ -143,17 +151,16 @@
     <h2>2D Manufacturing Drawing Package</h2>
     <p>
       The documentation deliverable is a complete <strong>A2 manufacturing
-      drawing</strong>, drafted in <strong>AutoCAD</strong>, on the Politecnico di Bari
-      standard title block (Standard_Poliba), designed on 28.03.2024 and checked on
-      10.04.2024. The sheet
-      contains the main longitudinal view; four full sections
-      <strong>A&ndash;A, B&ndash;B, C&ndash;C, D&ndash;D (1:1)</strong> through each
-      gear; the <strong>M&ndash;M (1:1)</strong> section with the 3.00 P9 keyway; and
-      high-magnification details for the micro-features:
+      drawing</strong>, drafted in <strong>AutoCAD</strong>, on the Politecnico di
+      Bari standard title block (Standard_Poliba), designed on 28.03.2024 and
+      checked on 10.04.2024. The sheet contains the main longitudinal view; four
+      full sections <strong>A&ndash;A, B&ndash;B, C&ndash;C, D&ndash;D (1:1)</strong>
+      through each gear; the <strong>M&ndash;M (1:1)</strong> section with the 3.00
+      P9 keyway; and high-magnification details for the micro-features:
       <strong>F (10:1)</strong> for the gear undercut, <strong>H (10:1)</strong> for
       the R4.00 root geometry, <strong>L&ndash;L (2:1)</strong> for the R22.75 web
-      transition and <strong>N (10:1)</strong> for the 37&deg; countersink &mdash; the
-      quoted measurement sketch adds X and Y details at 5:1 for the same holes.
+      transition and <strong>N (10:1)</strong> for the 37&deg; countersink &mdash;
+      the quoted measurement sketch adds X and Y details at 5:1 for the same holes.
     </p>
     <p>
       Annotations cover the M10&times;1.5 &ndash; 6g thread, the P9 keyway tolerance,
@@ -166,9 +173,9 @@
     <h2>Results</h2>
     <ul>
       <li>
-        Delivered a complete, parametric digital twin (Autodesk Inventor .ipt) with a
-        fully annotated AutoCAD drawing package (DWG) for a legacy component that had
-        zero digital footprint.
+        Delivered a complete, parametric digital twin (Autodesk Inventor .ipt) with
+        a fully annotated AutoCAD drawing package (DWG) for a legacy component that
+        had zero digital footprint.
       </li>
       <li>
         Delivered a production-ready A2 drawing package: four sections, six detail
@@ -176,16 +183,16 @@
       </li>
       <li>
         Reverse-engineered the full gearing data set (z, m, &alpha;, d, p, s for all
-        four wheels), enabling future repair, replacement or gear matching without OEM
-        documentation.
+        four wheels), enabling future repair, replacement or gear matching without
+        OEM documentation.
       </li>
       <li>
-        Kept every dimension in the documentation traceable to a physical measurement,
-        with reference dimensions explicitly marked.
+        Kept every dimension in the documentation traceable to a physical
+        measurement, with reference dimensions explicitly marked.
       </li>
       <li>
-        Closed the loop from physical metrology to parametric CAD to standards-based
-        technical drawing, within a single course project.
+        Closed the loop from physical metrology to parametric CAD to
+        standards-based technical drawing, within a single course project.
       </li>
     </ul>
 
@@ -203,27 +210,21 @@
       <span>DWG</span>
     </div>
 
-        
-    
-    
-    
-    
-
     <h2>Gallery</h2>
-   
+    <div class="gallery">
       <figure>
         <img src="../assets/vespa-a2-drawing.png"
              alt="Complete A2 manufacturing drawing of the MF0160 shaft: sections A-A to D-D, details and gear table (Standard_Poliba)"
-              width="800" height="572" loading="lazy">
+             width="800" height="572" loading="lazy">
         <figcaption>A2 manufacturing drawing &mdash; sections, details, gear table</figcaption>
       </figure>
-     <figure>
+      <figure>
         <img src="../assets/vespa-sketch.png"
              alt="Quoted measurement sketch of the MF0160 shaft with X and Y details at 5:1"
-              width="800" height="572" loading="lazy">
+             width="800" height="572" loading="lazy">
         <figcaption>Quoted measurement sketch (2:1) &mdash; details X / Y at 5:1</figcaption>
       </figure>
-       
+    </div>
 
     <div class="contact-strip">
       Questions about the methodology? I am happy to discuss it in detail during an
@@ -233,12 +234,46 @@
 
   </main>
 
-    <footer>
+  <footer>
     &copy; 2026 Michele Maiullari &middot; maiullari.michele@icloud.com &middot;
     <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a> &middot;
     <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a> &middot;
     <a href="../assets/CV_Michele_Maiullari.pdf" target="_blank" rel="noopener">CV (PDF)</a>
   </footer>
+
+  <script>
+  (function () {
+    var box = document.querySelector('.nav-contact');
+    var toggle = document.querySelector('.nav-contact-toggle');
+    if (!box || !toggle) { return; }
+    function setOpen(open) {
+      box.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    toggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      setOpen(!box.classList.contains('open'));
+    });
+    document.addEventListener('click', function (e) {
+      if (!box.contains(e.target)) { setOpen(false); }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        setOpen(false);
+        toggle.blur();
+      }
+    });
+    box.addEventListener('focusout', function (e) {
+      if (box.contains(e.relatedTarget)) { return; }
+      setOpen(false);
+    });
+    if (window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      box.addEventListener('mouseenter', function () { setOpen(true); });
+      box.addEventListener('mouseleave', function () { setOpen(false); });
+    }
+  })();
+  </script>
 
 </body>
 </html>

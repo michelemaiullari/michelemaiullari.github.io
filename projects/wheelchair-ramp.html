@@ -18,11 +18,19 @@
 
   <header class="site-header">
     <a class="site-title" href="../index.html">Michele Maiullari</a>
-        <nav>
+    <nav>
       <a href="../index.html">Home</a>
       <a href="../about.html">About</a>
-      <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a>
+      <div class="nav-contact">
+        <button class="nav-contact-toggle" type="button" aria-expanded="false" aria-controls="contact-menu">
+          Contact
+        </button>
+        <div class="nav-contact-menu" id="contact-menu">
+          <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a>
+          <a href="mailto:maiullari.michele@icloud.com">Contact me</a>
+        </div>
+      </div>
     </nav>
   </header>
 
@@ -44,12 +52,12 @@
 
     <h2>Overview</h2>
     <p>
-      The problem: autonomous mobility for a wheelchair user in and out of a
-      standard passenger vehicle. Dedicated accessible cars exist, but they are
-      expensive, low-speed or one-off. The goal I set for this project was
-      different &mdash; a <strong>standardised rear-access ramp system</strong>
-      that could be adapted to the largest possible share of vehicles already on
-      the road, instead of designing yet another bespoke vehicle.
+      The project addressed autonomous mobility for a wheelchair user in and out
+      of a standard passenger vehicle. Dedicated accessible cars exist, but they
+      are expensive, low-speed or one-off products. The goal was a
+      <strong>standardised rear-access ramp system</strong> that could be adapted
+      to the largest possible share of vehicles already on the road, instead of
+      designing yet another bespoke vehicle.
     </p>
     <p>
       The final outcome is a fully parametric, modular 3D assembly: a folding
@@ -60,24 +68,23 @@
 
     <h2>Design Evolution</h2>
     <p>
-      The concept went through a deliberate selection loop before any component
-      was modelled. A first rear-entry solution with servo-actuated, stowable
-      ramp was dropped for its electronic complexity; a side-entry layout was
-      rejected on three concrete counts: excessive package intrusion, no room
-      for a climbing aid, and a driver transfer position that simply does not
-      work in practice. Benchmarking the existing market &mdash; front-entry
-      microcars like the Elbee (80 km/h) and rear-entry solutions like the
-      Kenguru (45 km/h) &mdash; confirmed the gap: every product on the market
-      leans on electro-actuation.
+      The concept went through a structured selection loop before any component
+      was modelled. A first rear-entry solution with servo-actuated, stowable ramp
+      was dropped for its electronic complexity; a side-entry layout was rejected
+      on three counts: excessive package intrusion, no room for a climbing aid, and
+      a driver transfer position that does not work in practice. Benchmarking the
+      existing market &mdash; front-entry microcars like the Elbee (80 km/h) and
+      rear-entry solutions like the Kenguru (45 km/h) &mdash; confirmed the gap:
+      every product on the market leans on electro-actuation.
     </p>
     <p>
-      The winning concept borrows from the most reliable mechanism in every car:
-      the <strong>rear bonnet hinge</strong>. A two-piece ramp folds in rest
-      position and is operated by <strong>two independent gas-strut groups</strong>
-      &mdash; one deploying the ramp, one commanding the relative rotation between
-      the two sections. No actuators, no electronics, no fixed piston stroke: the
-      ramp can be opened fully even on uneven ground such as a kerb or a
-      sidewalk, something a stroke-bound actuator can never guarantee.
+      The selected concept borrows from one of the most reliable mechanisms in
+      every car: the <strong>rear bonnet hinge</strong>. A two-piece ramp folds in
+      rest position and is operated by <strong>two independent gas-strut
+      groups</strong> &mdash; one deploying the ramp, one commanding the relative
+      rotation between the two sections. No actuators, no electronics, no fixed
+      piston stroke: the ramp can be opened fully even on uneven ground such as a
+      kerb or a sidewalk, something a stroke-bound actuator cannot guarantee.
     </p>
 
     <h2>Requirements</h2>
@@ -91,8 +98,8 @@
 
     <h2>System Architecture</h2>
     <p>
-      The structure is organised as a clean make-vs-buy split, tracked in a
-      24-line Inventor bill of materials (16 made, 8 bought):
+      The structure is organised as a make-vs-buy split, tracked in a 24-line
+      Inventor bill of materials (16 made, 8 bought):
     </p>
     <ul>
       <li><strong>TLO &mdash; support frame</strong> (EN AW 7075 T6, welded and drilled): carries the mechanism and anchors it to the vehicle</li>
@@ -105,9 +112,8 @@
       Every fastener is a standard part &mdash; ISO 4017 and ISO 4018 hex screws,
       ISO 4033 nuts, threaded collars and bushing retainers &mdash; so the whole
       system can be assembled, disassembled and repaired with off-the-shelf
-      hardware. Modularity is not a slogan here: it is traceable in the BOM,
-      where each functional group (frame, ramps, struts, hinges) lives
-      independently of the others.
+      hardware. Modularity is traceable in the BOM, where each functional group
+      (frame, ramps, struts, hinges) lives independently of the others.
     </p>
 
     <h2>Top-Down Parametric Workflow</h2>
@@ -116,10 +122,10 @@
       was designed inside its constraints, not next to them: package volumes,
       ground clearance, loading height and wheel arch position all came from the
       vehicle model and drove the kinematic layout of the struts and hinges.
-      Because the assembly is fully parametric, adapting the system to a
-      different chassis means updating the skeleton constraints &mdash; the
-      components regenerate around the new package. That is what turns a
-      wheelchair ramp into a <em>platform</em> valid across vehicle classes.
+      Because the assembly is fully parametric, adapting the system to a different
+      chassis means updating the skeleton constraints &mdash; the components
+      regenerate around the new package. This is what turns a wheelchair ramp into
+      a <em>platform</em> valid across vehicle classes.
     </p>
 
     <h2>Results</h2>
@@ -205,7 +211,7 @@
         <figcaption>Junction hinge &mdash; bushing and threaded collar</figcaption>
       </figure>
     </div>
-    
+
     <div class="contact-strip">
       Questions about the methodology? I am happy to discuss it in detail during an
       interview &mdash;
@@ -214,12 +220,46 @@
 
   </main>
 
-    <footer>
+  <footer>
     &copy; 2026 Michele Maiullari &middot; maiullari.michele@icloud.com &middot;
     <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a> &middot;
     <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a> &middot;
     <a href="../assets/CV_Michele_Maiullari.pdf" target="_blank" rel="noopener">CV (PDF)</a>
   </footer>
+
+  <script>
+  (function () {
+    var box = document.querySelector('.nav-contact');
+    var toggle = document.querySelector('.nav-contact-toggle');
+    if (!box || !toggle) { return; }
+    function setOpen(open) {
+      box.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    toggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      setOpen(!box.classList.contains('open'));
+    });
+    document.addEventListener('click', function (e) {
+      if (!box.contains(e.target)) { setOpen(false); }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        setOpen(false);
+        toggle.blur();
+      }
+    });
+    box.addEventListener('focusout', function (e) {
+      if (box.contains(e.relatedTarget)) { return; }
+      setOpen(false);
+    });
+    if (window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      box.addEventListener('mouseenter', function () { setOpen(true); });
+      box.addEventListener('mouseleave', function () { setOpen(false); });
+    }
+  })();
+  </script>
 
 </body>
 </html>

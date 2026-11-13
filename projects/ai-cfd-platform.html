@@ -18,11 +18,19 @@
 
   <header class="site-header">
     <a class="site-title" href="../index.html">Michele Maiullari</a>
-        <nav>
+    <nav>
       <a href="../index.html">Home</a>
       <a href="../about.html">About</a>
-      <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a>
+      <div class="nav-contact">
+        <button class="nav-contact-toggle" type="button" aria-expanded="false" aria-controls="contact-menu">
+          Contact
+        </button>
+        <div class="nav-contact-menu" id="contact-menu">
+          <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a>
+          <a href="mailto:maiullari.michele@icloud.com">Contact me</a>
+        </div>
+      </div>
     </nav>
   </header>
 
@@ -35,13 +43,12 @@
     <h1>AI-Driven Aerodynamic Design &amp; CFD Validation Platform</h1>
 
     <p class="subtitle">
-      A <strong>generative-AI platform for aerodynamic design</strong>: an inverse neural
-      model proposes airfoil and control-surface geometries from target aerodynamic
-      requirements, automated high-fidelity CFD pipelines validate them against those
-      targets, and an adjoint-based fine-tuning architecture is designed to feed the
-      flow solver's sensitivities directly back into the network &mdash; replacing
-      manual CFD iteration with a closed IA&ndash;CFD loop for wings and control
-      surfaces.
+      A <strong>generative-AI platform for aerodynamic design</strong>: an inverse
+      neural model proposes airfoil and control-surface geometries from target
+      aerodynamic requirements, automated high-fidelity CFD pipelines validate them
+      against those targets, and an adjoint-based fine-tuning architecture is
+      designed to feed the flow solver's sensitivities directly back into the
+      network &mdash; closing the AI&ndash;CFD loop for wings and control surfaces.
     </p>
 
     <div class="nda-banner">
@@ -55,38 +62,38 @@
 
     <h2>Overview</h2>
     <p>
-      The aerodynamic design of wings and control surfaces still runs on a
-      manually-driven loop. the tech project
-      was built on a different workflow: let a generative model propose geometries
-      already consistent with the target aerodynamic coefficients, and concentrate
-      CFD where it creates value &mdash; verification, validation and physical
-      refinement.
+      The aerodynamic design of wings and control surfaces still relies on a
+      manually driven iteration loop between geometry definition and CFD
+      verification. The project was built on a different workflow: a generative
+      model proposes geometries already consistent with the target aerodynamic
+      coefficients, and CFD is concentrated where it creates value &mdash;
+      verification, validation and physical refinement.
     </p>
     <p>
-      Owned the CFD and physical-modelling side of the platform end-to-end:
-      solver configuration, automated validation pipelines, the aerodynamic
-      evaluation of everything the model generates, and the design of the
-      physics-informed fine-tuning strategy. The work brought me into direct
-      technical discussions with leading aerospace players.
+      As Project Lead, I owned the CFD and physical-modelling side of the platform
+      end-to-end: solver configuration, automated validation pipelines, aerodynamic
+      evaluation of every generated geometry, and the design of the physics-informed
+      fine-tuning strategy. The role involved direct technical discussions with
+      leading aerospace players.
     </p>
 
     <h2>Starting Point: Feasibility Proven, Physics Missing</h2>
     <p>
       The starting prototype had already demonstrated the core feasibility: a
       supervised inverse model learning the map from aerodynamic parameters and
-      polar data to a 2D airfoil, with a panel method as a fast validator. Solid
-      as a demonstrator, it carried three structural limits for any industrial
-      domain:
+      polar data to a 2D airfoil, with a panel method as a fast validator. As a
+      demonstrator it was solid; for any industrial domain it carried three
+      structural limits:
     </p>
     <ul>
-      <li><strong>A physically blind validator.</strong> Panel methods assume incompressible, inviscid flow: no compressibility, no shock waves, no viscous drag &mdash; acceptable for subsonic screening, unacceptable where the real operating regime lives.</li>
-      <li><strong>A subsonic, strictly 2D world.</strong> Training data and generated geometry were both confined to 2D sections at low Mach numbers.</li>
-      <li><strong>An open loop.</strong> Nothing fed what validation learned back into the model: generation and physics never talked to each other.</li>
+      <li><strong>A physically blind validator.</strong> Panel methods assume incompressible, inviscid flow: no compressibility, no shock waves, no viscous drag &mdash; acceptable for subsonic screening, insufficient where the real operating regime lives.</li>
+      <li><strong>A subsonic, strictly 2D domain.</strong> Training data and generated geometry were both confined to 2D sections at low Mach numbers.</li>
+      <li><strong>An open loop.</strong> Nothing fed what validation learned back into the model: generation and physics never exchanged information.</li>
     </ul>
 
     <h2>Platform Architecture</h2>
     <p>
-      Structured the platform as eight distinct layers, each replaceable without
+      The platform was structured in eight layers, each replaceable without
       touching the others &mdash; the precondition for evolving from prototype to
       industrial tool:
     </p>
@@ -153,69 +160,72 @@
           adjoint fine-tuning (planned)</text>
       </svg>
       <figcaption style="text-align: center; font-size: 0.9rem; color: #5a6472; margin-top: 8px;">
-        The IA&ndash;CFD loop. Solid path: implemented in the proof of concept.
+        The AI&ndash;CFD loop. Solid path: implemented in the proof of concept.
         Dashed path: adjoint-based fine-tuning, designed for the evolutionary phase.
       </figcaption>
     </figure>
 
     <h2>Solver Chain: From Incompressible Baseline to Shock-Capturing</h2>
     <p>
-      configured the validation chain on two physical tiers. The
+      The validation chain was configured on two physical tiers. The
       <strong>incompressible solver</strong> covers the fast tier: screening
       candidates and supporting the training-data pipeline where compressibility
       effects are negligible. The <strong>compressible tier</strong> is where
-      physical fidelity becomes non-negotiable: variable density, pressure&ndash;density&ndash;temperature
-      coupling and the energy equation, conservative formulations of the governing
-      equations, and shock-capturing numerical schemes with Riemann-solver-based
-      fluxes to handle shock waves and the steep pressure gradients of transonic
-      and supersonic regimes, with RANS turbulence models consistent with the
-      operating regime and the wall conditions.
+      physical fidelity becomes non-negotiable: variable density,
+      pressure&ndash;density&ndash;temperature coupling and the energy equation,
+      conservative formulations of the governing equations, and shock-capturing
+      numerical schemes with Riemann-solver-based fluxes to handle shock waves and
+      the steep pressure gradients of transonic and supersonic regimes, with RANS
+      turbulence models consistent with the operating regime and the wall
+      conditions.
     </p>
     <p>
       The panel method was deliberately demoted, not deleted: it remains a
       preliminary screening validator for quick 2D subsonic tests, never the final
-      word on any geometry. That division of labour &mdash; cheap screening,
-      expensive verification &mdash; is what keeps the loop fast without lying
-      about the physics.
+      word on any geometry. This division of labour &mdash; cheap screening,
+      expensive verification &mdash; keeps the loop fast without compromising the
+      physics.
     </p>
 
     <h2>Automated CFD Pipelines</h2>
     <p>
-      Developed automated CFD pipelines that take any geometry the model
-      generates through the entire chain unattended: computational domain, mesh
-      generation, boundary conditions, solve, extraction of lift, drag and moment
-      coefficients and of pressure distributions, and convergence checks. Every
-      outcome is registered into the dataset &mdash; including non-convergent or
-      physically implausible geometries, logged as such. Treating failures as data
-      is what makes the AI&ndash;CFD pipeline more robust with every iteration,
-      instead of silently biasing the training set towards the cases that happen
-      to converge.
+      The automated CFD pipelines take any geometry the model generates through the
+      entire chain unattended: computational domain, mesh generation, boundary
+      conditions, solve, extraction of lift, drag and moment coefficients and of
+      pressure distributions, and convergence checks. Every outcome is registered
+      into the dataset &mdash; including non-convergent or physically implausible
+      geometries, logged as such. Treating failures as data makes the AI&ndash;CFD
+      pipeline more robust at every iteration, instead of silently biasing the
+      training set towards the cases that happen to converge.
     </p>
 
     <h2>Physics-Informed Fine-Tuning: Black-Box Now, Adjoint Next</h2>
     <p>
-      The layer that turns the platform from a generator into a learning system is
-      physical fine-tuning &mdash; closing the loop between what the flow solver
-      measures and what the network generates. 
+      Physical fine-tuning is the layer that turns the platform from a generator
+      into a learning system: it closes the loop between what the flow solver
+      measures and what the network generates. The implemented baseline is
+      gradient-free &mdash; the model is fine-tuned on the validation outcomes
+      registered by the pipelines, failures included. The designed evolution path
+      is adjoint-based: the flow solver's sensitivities are linked directly to the
+      network's weights, replacing black-box iteration with a physically informed
+      one.
     </p>
-  
+
     <h2>Extending to 3D Control Surfaces</h2>
     <p>
-      Wings are three-dimensional objects, so the architecture extends
-      generation from 2D sections to 3D surfaces in two stages. Stage one is
-      geometric: the inverse model keeps generating 2D sections, and a dedicated
-      module stacks root and tip sections along the span &mdash; first along a
-      straight stacking axis, then along a curved guide &mdash; interpolating
-      intermediate sections and managing twist, sweep, taper and dihedral,
-      smoothing the surface and exporting it mesh-ready for volume-mesh generation
-      and finite-volume CFD 3D. Stage two is evolutionary: direct generation of 3D
-      parametric geometries by the model itself, trained and refined on CFD 3D
-      results. At the end of my contribution the proof-of-concept architecture was
-      structurally capable of predicting and validating 3D control surfaces, while
-      direct 3D generation remains a roadmap objective, tracked as such below.
+      Wings are three-dimensional objects, so the architecture extends generation
+      from 2D sections to 3D surfaces in two stages. Stage one is geometric: the
+      inverse model keeps generating 2D sections, and a dedicated module stacks
+      root and tip sections along the span &mdash; first along a straight stacking
+      axis, then along a curved guide &mdash; interpolating intermediate sections
+      and managing twist, sweep, taper and dihedral, smoothing the surface and
+      exporting it mesh-ready for volume-mesh generation and finite-volume CFD 3D.
+      Stage two is evolutionary: direct generation of 3D parametric geometries by
+      the model itself, trained and refined on CFD 3D results. At the end of my
+      contribution the proof-of-concept architecture was structurally capable of
+      predicting and validating 3D control surfaces, while direct 3D generation
+      remains a roadmap objective.
     </p>
-
-
 
     <h2>Results</h2>
     <ul>
@@ -237,12 +247,13 @@
       </li>
       <li>
         Authored the complete technical roadmap for the platform's industrial
-        evolution, drafted for a leading international aerospace group, with
-        direct exposure to Embraer and the DTA aerospace technology district.
+        evolution, drafted for a leading international aerospace group, with direct
+        exposure to Embraer and the DTA aerospace technology district.
       </li>
       <li>
-        Substantially compressed the design cycle: engineering time shifts from
-        running manual CFD iterations to judging validated candidate geometries.
+        Compressed the design cycle by [INSERIRE DATO: riduzione del tempo di
+        iterazione, in %]: engineering time shifts from running manual CFD
+        iterations to judging validated candidate geometries.
       </li>
     </ul>
 
@@ -262,7 +273,6 @@
       <span>Technical roadmap &amp; proposal writing</span>
     </div>
 
-    
 
     <div class="contact-strip">
       Questions about the methodology? I am happy to discuss it in detail during an
@@ -272,12 +282,46 @@
 
   </main>
 
-    <footer>
+  <footer>
     &copy; 2026 Michele Maiullari &middot; maiullari.michele@icloud.com &middot;
     <a href="https://www.linkedin.com/in/michelemaiullari/" target="_blank" rel="noopener">LinkedIn</a> &middot;
     <a href="https://github.com/michelemaiullari" target="_blank" rel="noopener">GitHub</a> &middot;
     <a href="../assets/CV_Michele_Maiullari.pdf" target="_blank" rel="noopener">CV (PDF)</a>
   </footer>
+
+  <script>
+  (function () {
+    var box = document.querySelector('.nav-contact');
+    var toggle = document.querySelector('.nav-contact-toggle');
+    if (!box || !toggle) { return; }
+    function setOpen(open) {
+      box.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    toggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      setOpen(!box.classList.contains('open'));
+    });
+    document.addEventListener('click', function (e) {
+      if (!box.contains(e.target)) { setOpen(false); }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        setOpen(false);
+        toggle.blur();
+      }
+    });
+    box.addEventListener('focusout', function (e) {
+      if (box.contains(e.relatedTarget)) { return; }
+      setOpen(false);
+    });
+    if (window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      box.addEventListener('mouseenter', function () { setOpen(true); });
+      box.addEventListener('mouseleave', function () { setOpen(false); });
+    }
+  })();
+  </script>
 
 </body>
 </html>
